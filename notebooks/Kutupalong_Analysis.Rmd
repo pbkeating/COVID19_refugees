@@ -240,19 +240,19 @@ We can do this locally or on a cluster if needed.
 
 ```{r}
 betas <- betas_low
-sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, sigma=sigma,
+sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="low", sigma=sigma,
                                    gamma=gamma,
                           seeds=seeds, start_date_=start_date_, step.size=step.size,
                           run_time=run_time, cores=cores)
 
 betas <- betas_mid
-sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, sigma=sigma,
+sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="mid", sigma=sigma,
                                    gamma=gamma,
                           seeds=seeds, start_date_=start_date_, step.size=step.size,
                           run_time=run_time, cores=cores)
 
 betas <- betas_high
-sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, sigma=sigma,
+sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="high", sigma=sigma,
                                    gamma=gamma,
                           seeds=seeds, start_date_=start_date_, step.size=step.size,
                           run_time=run_time, cores=cores)
