@@ -59,7 +59,10 @@ run_seir_model <- function(n.sims=20, N=600000, betas=betas_low, sigma=sigma, ga
 
 
 
-run_seir_model_parallel <- function(n.sims=20, N=600000, betas=betas_low, sigma=sigma, gamma=gamma, 
+
+
+
+run_seir_model_parallel <- function(n.sims=20, N=600000, betas=betas_low, R0_val="low", sigma=sigma, gamma=gamma, 
                            seeds=1, start_date_="2020-03-15", step.size=.25, run_time=360, cores=4){
     
     sim_res <- list()
@@ -111,6 +114,8 @@ run_seir_model_parallel <- function(n.sims=20, N=600000, betas=betas_low, sigma=
         mutate(sim_beta = paste0(sim, "-", beta_ind)) %>% 
         mutate(sim_id = as.integer(as.factor(sim_beta)))
     
+    
+    write_csv(sim_res, paste0("./results/sim_res_nohosp_", R0_val,".csv"))
     return(sim_res)
 
 }
