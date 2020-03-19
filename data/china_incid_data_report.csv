@@ -1,0 +1,1207 @@
+prov_state,country,date,cum_cases,cases_incid,epiweek,China_source
+Anhui,Mainland China,2020-01-20,0,0,4,TRUE
+Anhui,Mainland China,2020-01-21,0,0,4,TRUE
+Anhui,Mainland China,2020-01-22,1,1,4,TRUE
+Anhui,Mainland China,2020-01-23,9,8,4,TRUE
+Anhui,Mainland China,2020-01-24,15,6,4,TRUE
+Anhui,Mainland China,2020-01-25,60,45,4,TRUE
+Anhui,Mainland China,2020-01-26,70,10,5,TRUE
+Anhui,Mainland China,2020-01-27,106,36,5,TRUE
+Anhui,Mainland China,2020-01-28,152,46,5,TRUE
+Anhui,Mainland China,2020-01-29,200,48,5,TRUE
+Anhui,Mainland China,2020-01-30,200,0,5,TRUE
+Anhui,Mainland China,2020-01-31,237,37,5,TRUE
+Anhui,Mainland China,2020-02-01,297,60,5,TRUE
+Anhui,Mainland China,2020-02-02,408,111,6,TRUE
+Anhui,Mainland China,2020-02-03,480,72,6,TRUE
+Anhui,Mainland China,2020-02-04,530,50,6,TRUE
+Anhui,Mainland China,2020-02-05,530,0,6,TRUE
+Anhui,Mainland China,2020-02-06,591,61,6,TRUE
+Arizona,US,2020-01-20,0,0,4,FALSE
+Arizona,US,2020-01-21,0,0,4,FALSE
+Arizona,US,2020-01-22,0,0,4,FALSE
+Arizona,US,2020-01-23,0,0,4,FALSE
+Arizona,US,2020-01-24,0,0,4,FALSE
+Arizona,US,2020-01-25,0,0,4,FALSE
+Arizona,US,2020-01-26,1,1,5,FALSE
+Arizona,US,2020-01-27,1,0,5,FALSE
+Arizona,US,2020-01-28,1,0,5,FALSE
+Arizona,US,2020-01-29,1,0,5,FALSE
+Arizona,US,2020-01-30,1,0,5,FALSE
+Arizona,US,2020-01-31,1,0,5,FALSE
+Arizona,US,2020-02-01,1,0,5,FALSE
+Arizona,US,2020-02-02,1,0,6,FALSE
+Arizona,US,2020-02-03,1,0,6,FALSE
+Arizona,US,2020-02-04,1,0,6,FALSE
+Arizona,US,2020-02-05,1,0,6,FALSE
+Arizona,US,2020-02-06,1,0,6,FALSE
+Beijing,Mainland China,2020-01-20,0,0,4,TRUE
+Beijing,Mainland China,2020-01-21,10,10,4,TRUE
+Beijing,Mainland China,2020-01-22,14,4,4,TRUE
+Beijing,Mainland China,2020-01-23,22,8,4,TRUE
+Beijing,Mainland China,2020-01-24,36,14,4,TRUE
+Beijing,Mainland China,2020-01-25,51,15,4,TRUE
+Beijing,Mainland China,2020-01-26,68,17,5,TRUE
+Beijing,Mainland China,2020-01-27,80,12,5,TRUE
+Beijing,Mainland China,2020-01-28,91,11,5,TRUE
+Beijing,Mainland China,2020-01-29,111,20,5,TRUE
+Beijing,Mainland China,2020-01-30,114,3,5,TRUE
+Beijing,Mainland China,2020-01-31,139,25,5,TRUE
+Beijing,Mainland China,2020-02-01,168,29,5,TRUE
+Beijing,Mainland China,2020-02-02,191,23,6,TRUE
+Beijing,Mainland China,2020-02-03,212,21,6,TRUE
+Beijing,Mainland China,2020-02-04,228,16,6,TRUE
+Beijing,Mainland China,2020-02-05,253,25,6,TRUE
+Beijing,Mainland China,2020-02-06,274,21,6,TRUE
+"Boston, MA",US,2020-01-20,0,0,4,FALSE
+"Boston, MA",US,2020-01-21,0,0,4,FALSE
+"Boston, MA",US,2020-01-22,0,0,4,FALSE
+"Boston, MA",US,2020-01-23,0,0,4,FALSE
+"Boston, MA",US,2020-01-24,0,0,4,FALSE
+"Boston, MA",US,2020-01-25,0,0,4,FALSE
+"Boston, MA",US,2020-01-26,0,0,5,FALSE
+"Boston, MA",US,2020-01-27,0,0,5,FALSE
+"Boston, MA",US,2020-01-28,0,0,5,FALSE
+"Boston, MA",US,2020-01-29,0,0,5,FALSE
+"Boston, MA",US,2020-01-30,0,0,5,FALSE
+"Boston, MA",US,2020-01-31,0,0,5,FALSE
+"Boston, MA",US,2020-02-01,0,0,5,FALSE
+"Boston, MA",US,2020-02-02,1,1,6,FALSE
+"Boston, MA",US,2020-02-03,1,0,6,FALSE
+"Boston, MA",US,2020-02-04,1,0,6,FALSE
+"Boston, MA",US,2020-02-05,1,0,6,FALSE
+"Boston, MA",US,2020-02-06,1,0,6,FALSE
+British Columbia,Canada,2020-01-20,0,0,4,FALSE
+British Columbia,Canada,2020-01-21,0,0,4,FALSE
+British Columbia,Canada,2020-01-22,0,0,4,FALSE
+British Columbia,Canada,2020-01-23,0,0,4,FALSE
+British Columbia,Canada,2020-01-24,0,0,4,FALSE
+British Columbia,Canada,2020-01-25,0,0,4,FALSE
+British Columbia,Canada,2020-01-26,0,0,5,FALSE
+British Columbia,Canada,2020-01-27,0,0,5,FALSE
+British Columbia,Canada,2020-01-28,1,1,5,FALSE
+British Columbia,Canada,2020-01-29,1,0,5,FALSE
+British Columbia,Canada,2020-01-30,1,0,5,FALSE
+British Columbia,Canada,2020-01-31,1,0,5,FALSE
+British Columbia,Canada,2020-02-01,1,0,5,FALSE
+British Columbia,Canada,2020-02-02,1,0,6,FALSE
+British Columbia,Canada,2020-02-03,1,0,6,FALSE
+British Columbia,Canada,2020-02-04,1,0,6,FALSE
+British Columbia,Canada,2020-02-05,1,0,6,FALSE
+British Columbia,Canada,2020-02-06,2,1,6,FALSE
+California,US,2020-01-20,0,0,4,FALSE
+California,US,2020-01-21,0,0,4,FALSE
+California,US,2020-01-22,0,0,4,FALSE
+California,US,2020-01-23,0,0,4,FALSE
+California,US,2020-01-24,0,0,4,FALSE
+California,US,2020-01-25,0,0,4,FALSE
+California,US,2020-01-26,2,2,5,FALSE
+California,US,2020-01-27,2,0,5,FALSE
+California,US,2020-01-28,2,0,5,FALSE
+California,US,2020-01-29,2,0,5,FALSE
+California,US,2020-01-30,2,0,5,FALSE
+California,US,2020-01-31,3,1,5,FALSE
+California,US,2020-02-01,3,0,5,FALSE
+California,US,2020-02-02,4,1,6,FALSE
+California,US,2020-02-03,4,0,6,FALSE
+California,US,2020-02-04,6,2,6,FALSE
+California,US,2020-02-05,6,0,6,FALSE
+California,US,2020-02-06,6,0,6,FALSE
+Chongqing,Mainland China,2020-01-20,0,0,4,TRUE
+Chongqing,Mainland China,2020-01-21,5,5,4,TRUE
+Chongqing,Mainland China,2020-01-22,6,1,4,TRUE
+Chongqing,Mainland China,2020-01-23,9,3,4,TRUE
+Chongqing,Mainland China,2020-01-24,27,18,4,TRUE
+Chongqing,Mainland China,2020-01-25,75,48,4,TRUE
+Chongqing,Mainland China,2020-01-26,110,35,5,TRUE
+Chongqing,Mainland China,2020-01-27,132,22,5,TRUE
+Chongqing,Mainland China,2020-01-28,147,15,5,TRUE
+Chongqing,Mainland China,2020-01-29,165,18,5,TRUE
+Chongqing,Mainland China,2020-01-30,182,17,5,TRUE
+Chongqing,Mainland China,2020-01-31,238,56,5,TRUE
+Chongqing,Mainland China,2020-02-01,247,9,5,TRUE
+Chongqing,Mainland China,2020-02-02,300,53,6,TRUE
+Chongqing,Mainland China,2020-02-03,337,37,6,TRUE
+Chongqing,Mainland China,2020-02-04,366,29,6,TRUE
+Chongqing,Mainland China,2020-02-05,376,10,6,TRUE
+Chongqing,Mainland China,2020-02-06,400,24,6,TRUE
+Fujian,Mainland China,2020-01-20,0,0,4,TRUE
+Fujian,Mainland China,2020-01-21,0,0,4,TRUE
+Fujian,Mainland China,2020-01-22,1,1,4,TRUE
+Fujian,Mainland China,2020-01-23,5,4,4,TRUE
+Fujian,Mainland China,2020-01-24,10,5,4,TRUE
+Fujian,Mainland China,2020-01-25,18,8,4,TRUE
+Fujian,Mainland China,2020-01-26,35,17,5,TRUE
+Fujian,Mainland China,2020-01-27,59,24,5,TRUE
+Fujian,Mainland China,2020-01-28,82,23,5,TRUE
+Fujian,Mainland China,2020-01-29,101,19,5,TRUE
+Fujian,Mainland China,2020-01-30,101,0,5,TRUE
+Fujian,Mainland China,2020-01-31,120,19,5,TRUE
+Fujian,Mainland China,2020-02-01,144,24,5,TRUE
+Fujian,Mainland China,2020-02-02,159,15,6,TRUE
+Fujian,Mainland China,2020-02-03,179,20,6,TRUE
+Fujian,Mainland China,2020-02-04,194,15,6,TRUE
+Fujian,Mainland China,2020-02-05,205,11,6,TRUE
+Fujian,Mainland China,2020-02-06,215,10,6,TRUE
+Gansu,Mainland China,2020-01-20,0,0,4,TRUE
+Gansu,Mainland China,2020-01-21,0,0,4,TRUE
+Gansu,Mainland China,2020-01-22,0,0,4,TRUE
+Gansu,Mainland China,2020-01-23,2,2,4,TRUE
+Gansu,Mainland China,2020-01-24,2,0,4,TRUE
+Gansu,Mainland China,2020-01-25,7,5,4,TRUE
+Gansu,Mainland China,2020-01-26,14,7,5,TRUE
+Gansu,Mainland China,2020-01-27,19,5,5,TRUE
+Gansu,Mainland China,2020-01-28,24,5,5,TRUE
+Gansu,Mainland China,2020-01-29,26,2,5,TRUE
+Gansu,Mainland China,2020-01-30,26,0,5,TRUE
+Gansu,Mainland China,2020-01-31,35,9,5,TRUE
+Gansu,Mainland China,2020-02-01,35,0,5,TRUE
+Gansu,Mainland China,2020-02-02,51,16,6,TRUE
+Gansu,Mainland China,2020-02-03,55,4,6,TRUE
+Gansu,Mainland China,2020-02-04,57,2,6,TRUE
+Gansu,Mainland China,2020-02-05,57,0,6,TRUE
+Gansu,Mainland China,2020-02-06,62,5,6,TRUE
+Guangdong,Mainland China,2020-01-20,0,0,4,TRUE
+Guangdong,Mainland China,2020-01-21,17,17,4,TRUE
+Guangdong,Mainland China,2020-01-22,26,9,4,TRUE
+Guangdong,Mainland China,2020-01-23,32,6,4,TRUE
+Guangdong,Mainland China,2020-01-24,53,21,4,TRUE
+Guangdong,Mainland China,2020-01-25,98,45,4,TRUE
+Guangdong,Mainland China,2020-01-26,146,48,5,TRUE
+Guangdong,Mainland China,2020-01-27,151,5,5,TRUE
+Guangdong,Mainland China,2020-01-28,241,90,5,TRUE
+Guangdong,Mainland China,2020-01-29,311,70,5,TRUE
+Guangdong,Mainland China,2020-01-30,354,43,5,TRUE
+Guangdong,Mainland China,2020-01-31,436,82,5,TRUE
+Guangdong,Mainland China,2020-02-01,535,99,5,TRUE
+Guangdong,Mainland China,2020-02-02,683,148,6,TRUE
+Guangdong,Mainland China,2020-02-03,725,42,6,TRUE
+Guangdong,Mainland China,2020-02-04,870,145,6,TRUE
+Guangdong,Mainland China,2020-02-05,895,25,6,TRUE
+Guangdong,Mainland China,2020-02-06,970,75,6,TRUE
+Guangxi,Mainland China,2020-01-20,0,0,4,TRUE
+Guangxi,Mainland China,2020-01-21,0,0,4,TRUE
+Guangxi,Mainland China,2020-01-22,2,2,4,TRUE
+Guangxi,Mainland China,2020-01-23,5,3,4,TRUE
+Guangxi,Mainland China,2020-01-24,23,18,4,TRUE
+Guangxi,Mainland China,2020-01-25,33,10,4,TRUE
+Guangxi,Mainland China,2020-01-26,46,13,5,TRUE
+Guangxi,Mainland China,2020-01-27,51,5,5,TRUE
+Guangxi,Mainland China,2020-01-28,58,7,5,TRUE
+Guangxi,Mainland China,2020-01-29,78,20,5,TRUE
+Guangxi,Mainland China,2020-01-30,78,0,5,TRUE
+Guangxi,Mainland China,2020-01-31,88,10,5,TRUE
+Guangxi,Mainland China,2020-02-01,100,12,5,TRUE
+Guangxi,Mainland China,2020-02-02,127,27,6,TRUE
+Guangxi,Mainland China,2020-02-03,139,12,6,TRUE
+Guangxi,Mainland China,2020-02-04,150,11,6,TRUE
+Guangxi,Mainland China,2020-02-05,150,0,6,TRUE
+Guangxi,Mainland China,2020-02-06,168,18,6,TRUE
+Guizhou,Mainland China,2020-01-20,0,0,4,TRUE
+Guizhou,Mainland China,2020-01-21,0,0,4,TRUE
+Guizhou,Mainland China,2020-01-22,1,1,4,TRUE
+Guizhou,Mainland China,2020-01-23,3,2,4,TRUE
+Guizhou,Mainland China,2020-01-24,3,0,4,TRUE
+Guizhou,Mainland China,2020-01-25,5,2,4,TRUE
+Guizhou,Mainland China,2020-01-26,7,2,5,TRUE
+Guizhou,Mainland China,2020-01-27,9,2,5,TRUE
+Guizhou,Mainland China,2020-01-28,9,0,5,TRUE
+Guizhou,Mainland China,2020-01-29,12,3,5,TRUE
+Guizhou,Mainland China,2020-01-30,12,0,5,TRUE
+Guizhou,Mainland China,2020-01-31,29,17,5,TRUE
+Guizhou,Mainland China,2020-02-01,29,0,5,TRUE
+Guizhou,Mainland China,2020-02-02,46,17,6,TRUE
+Guizhou,Mainland China,2020-02-03,56,10,6,TRUE
+Guizhou,Mainland China,2020-02-04,64,8,6,TRUE
+Guizhou,Mainland China,2020-02-05,64,0,6,TRUE
+Guizhou,Mainland China,2020-02-06,71,7,6,TRUE
+Hainan,Mainland China,2020-01-20,0,0,4,TRUE
+Hainan,Mainland China,2020-01-21,0,0,4,TRUE
+Hainan,Mainland China,2020-01-22,4,4,4,TRUE
+Hainan,Mainland China,2020-01-23,5,1,4,TRUE
+Hainan,Mainland China,2020-01-24,8,3,4,TRUE
+Hainan,Mainland China,2020-01-25,19,11,4,TRUE
+Hainan,Mainland China,2020-01-26,22,3,5,TRUE
+Hainan,Mainland China,2020-01-27,33,11,5,TRUE
+Hainan,Mainland China,2020-01-28,43,10,5,TRUE
+Hainan,Mainland China,2020-01-29,43,0,5,TRUE
+Hainan,Mainland China,2020-01-30,46,3,5,TRUE
+Hainan,Mainland China,2020-01-31,58,12,5,TRUE
+Hainan,Mainland China,2020-02-01,62,4,5,TRUE
+Hainan,Mainland China,2020-02-02,71,9,6,TRUE
+Hainan,Mainland China,2020-02-03,79,8,6,TRUE
+Hainan,Mainland China,2020-02-04,91,12,6,TRUE
+Hainan,Mainland China,2020-02-05,91,0,6,TRUE
+Hainan,Mainland China,2020-02-06,106,15,6,TRUE
+Hebei,Mainland China,2020-01-20,0,0,4,TRUE
+Hebei,Mainland China,2020-01-21,0,0,4,TRUE
+Hebei,Mainland China,2020-01-22,1,1,4,TRUE
+Hebei,Mainland China,2020-01-23,1,0,4,TRUE
+Hebei,Mainland China,2020-01-24,2,1,4,TRUE
+Hebei,Mainland China,2020-01-25,13,11,4,TRUE
+Hebei,Mainland China,2020-01-26,18,5,5,TRUE
+Hebei,Mainland China,2020-01-27,33,15,5,TRUE
+Hebei,Mainland China,2020-01-28,48,15,5,TRUE
+Hebei,Mainland China,2020-01-29,65,17,5,TRUE
+Hebei,Mainland China,2020-01-30,65,0,5,TRUE
+Hebei,Mainland China,2020-01-31,96,31,5,TRUE
+Hebei,Mainland China,2020-02-01,96,0,5,TRUE
+Hebei,Mainland China,2020-02-02,113,17,6,TRUE
+Hebei,Mainland China,2020-02-03,126,13,6,TRUE
+Hebei,Mainland China,2020-02-04,135,9,6,TRUE
+Hebei,Mainland China,2020-02-05,135,0,6,TRUE
+Hebei,Mainland China,2020-02-06,157,22,6,TRUE
+Heilongjiang,Mainland China,2020-01-20,0,0,4,TRUE
+Heilongjiang,Mainland China,2020-01-21,0,0,4,TRUE
+Heilongjiang,Mainland China,2020-01-22,0,0,4,TRUE
+Heilongjiang,Mainland China,2020-01-23,2,2,4,TRUE
+Heilongjiang,Mainland China,2020-01-24,4,2,4,TRUE
+Heilongjiang,Mainland China,2020-01-25,15,11,4,TRUE
+Heilongjiang,Mainland China,2020-01-26,21,6,5,TRUE
+Heilongjiang,Mainland China,2020-01-27,30,9,5,TRUE
+Heilongjiang,Mainland China,2020-01-28,37,7,5,TRUE
+Heilongjiang,Mainland China,2020-01-29,43,6,5,TRUE
+Heilongjiang,Mainland China,2020-01-30,44,1,5,TRUE
+Heilongjiang,Mainland China,2020-01-31,59,15,5,TRUE
+Heilongjiang,Mainland China,2020-02-01,80,21,5,TRUE
+Heilongjiang,Mainland China,2020-02-02,95,15,6,TRUE
+Heilongjiang,Mainland China,2020-02-03,155,60,6,TRUE
+Heilongjiang,Mainland China,2020-02-04,190,35,6,TRUE
+Heilongjiang,Mainland China,2020-02-05,190,0,6,TRUE
+Heilongjiang,Mainland China,2020-02-06,227,37,6,TRUE
+Henan,Mainland China,2020-01-20,0,0,4,TRUE
+Henan,Mainland China,2020-01-21,0,0,4,TRUE
+Henan,Mainland China,2020-01-22,5,5,4,TRUE
+Henan,Mainland China,2020-01-23,5,0,4,TRUE
+Henan,Mainland China,2020-01-24,9,4,4,TRUE
+Henan,Mainland China,2020-01-25,83,74,4,TRUE
+Henan,Mainland China,2020-01-26,128,45,5,TRUE
+Henan,Mainland China,2020-01-27,168,40,5,TRUE
+Henan,Mainland China,2020-01-28,206,38,5,TRUE
+Henan,Mainland China,2020-01-29,278,72,5,TRUE
+Henan,Mainland China,2020-01-30,278,0,5,TRUE
+Henan,Mainland China,2020-01-31,352,74,5,TRUE
+Henan,Mainland China,2020-02-01,422,70,5,TRUE
+Henan,Mainland China,2020-02-02,566,144,6,TRUE
+Henan,Mainland China,2020-02-03,675,109,6,TRUE
+Henan,Mainland China,2020-02-04,764,89,6,TRUE
+Henan,Mainland China,2020-02-05,764,0,6,TRUE
+Henan,Mainland China,2020-02-06,851,87,6,TRUE
+Hong Kong,Hong Kong,2020-01-20,0,0,4,TRUE
+Hong Kong,Hong Kong,2020-01-21,0,0,4,TRUE
+Hong Kong,Hong Kong,2020-01-22,0,0,4,TRUE
+Hong Kong,Hong Kong,2020-01-23,2,2,4,TRUE
+Hong Kong,Hong Kong,2020-01-24,2,0,4,TRUE
+Hong Kong,Hong Kong,2020-01-25,5,3,4,TRUE
+Hong Kong,Hong Kong,2020-01-26,8,3,5,TRUE
+Hong Kong,Hong Kong,2020-01-27,8,0,5,TRUE
+Hong Kong,Hong Kong,2020-01-28,8,0,5,TRUE
+Hong Kong,Hong Kong,2020-01-29,10,2,5,TRUE
+Hong Kong,Hong Kong,2020-01-30,10,0,5,TRUE
+Hong Kong,Hong Kong,2020-01-31,13,3,5,TRUE
+Hong Kong,Hong Kong,2020-02-01,13,0,5,TRUE
+Hong Kong,Hong Kong,2020-02-02,15,2,6,TRUE
+Hong Kong,Hong Kong,2020-02-03,15,0,6,TRUE
+Hong Kong,Hong Kong,2020-02-04,18,3,6,TRUE
+Hong Kong,Hong Kong,2020-02-05,21,3,6,TRUE
+Hong Kong,Hong Kong,2020-02-06,24,3,6,TRUE
+Hubei,Mainland China,2020-01-20,0,0,4,TRUE
+Hubei,Mainland China,2020-01-21,270,270,4,TRUE
+Hubei,Mainland China,2020-01-22,444,174,4,TRUE
+Hubei,Mainland China,2020-01-23,444,0,4,TRUE
+Hubei,Mainland China,2020-01-24,549,105,4,TRUE
+Hubei,Mainland China,2020-01-25,1052,503,4,TRUE
+Hubei,Mainland China,2020-01-26,1423,371,5,TRUE
+Hubei,Mainland China,2020-01-27,2714,1291,5,TRUE
+Hubei,Mainland China,2020-01-28,3554,840,5,TRUE
+Hubei,Mainland China,2020-01-29,4586,1032,5,TRUE
+Hubei,Mainland China,2020-01-30,4903,317,5,TRUE
+Hubei,Mainland China,2020-01-31,7153,2250,5,TRUE
+Hubei,Mainland China,2020-02-01,7153,0,5,TRUE
+Hubei,Mainland China,2020-02-02,11177,4024,6,TRUE
+Hubei,Mainland China,2020-02-03,13522,2345,6,TRUE
+Hubei,Mainland China,2020-02-04,16678,3156,6,TRUE
+Hubei,Mainland China,2020-02-05,16678,0,6,TRUE
+Hubei,Mainland China,2020-02-06,19665,2987,6,TRUE
+Hunan,Mainland China,2020-01-20,0,0,4,TRUE
+Hunan,Mainland China,2020-01-21,1,1,4,TRUE
+Hunan,Mainland China,2020-01-22,4,3,4,TRUE
+Hunan,Mainland China,2020-01-23,9,5,4,TRUE
+Hunan,Mainland China,2020-01-24,24,15,4,TRUE
+Hunan,Mainland China,2020-01-25,69,45,4,TRUE
+Hunan,Mainland China,2020-01-26,100,31,5,TRUE
+Hunan,Mainland China,2020-01-27,100,0,5,TRUE
+Hunan,Mainland China,2020-01-28,221,121,5,TRUE
+Hunan,Mainland China,2020-01-29,277,56,5,TRUE
+Hunan,Mainland China,2020-01-30,277,0,5,TRUE
+Hunan,Mainland China,2020-01-31,332,55,5,TRUE
+Hunan,Mainland China,2020-02-01,389,57,5,TRUE
+Hunan,Mainland China,2020-02-02,521,132,6,TRUE
+Hunan,Mainland China,2020-02-03,521,0,6,TRUE
+Hunan,Mainland China,2020-02-04,661,140,6,TRUE
+Hunan,Mainland China,2020-02-05,661,0,6,TRUE
+Hunan,Mainland China,2020-02-06,711,50,6,TRUE
+Illinois,US,2020-01-20,0,0,4,FALSE
+Illinois,US,2020-01-21,0,0,4,FALSE
+Illinois,US,2020-01-22,0,0,4,FALSE
+Illinois,US,2020-01-23,0,0,4,FALSE
+Illinois,US,2020-01-24,1,1,4,FALSE
+Illinois,US,2020-01-25,1,0,4,FALSE
+Illinois,US,2020-01-26,1,0,5,FALSE
+Illinois,US,2020-01-27,1,0,5,FALSE
+Illinois,US,2020-01-28,1,0,5,FALSE
+Illinois,US,2020-01-29,1,0,5,FALSE
+Illinois,US,2020-01-30,1,0,5,FALSE
+Illinois,US,2020-01-31,2,1,5,FALSE
+Illinois,US,2020-02-01,2,0,5,FALSE
+Illinois,US,2020-02-02,2,0,6,FALSE
+Illinois,US,2020-02-03,2,0,6,FALSE
+Illinois,US,2020-02-04,2,0,6,FALSE
+Illinois,US,2020-02-05,2,0,6,FALSE
+Illinois,US,2020-02-06,2,0,6,FALSE
+Inner Mongolia,Mainland China,2020-01-20,0,0,4,TRUE
+Inner Mongolia,Mainland China,2020-01-21,0,0,4,TRUE
+Inner Mongolia,Mainland China,2020-01-22,0,0,4,TRUE
+Inner Mongolia,Mainland China,2020-01-23,0,0,4,TRUE
+Inner Mongolia,Mainland China,2020-01-24,1,1,4,TRUE
+Inner Mongolia,Mainland China,2020-01-25,7,6,4,TRUE
+Inner Mongolia,Mainland China,2020-01-26,11,4,5,TRUE
+Inner Mongolia,Mainland China,2020-01-27,11,0,5,TRUE
+Inner Mongolia,Mainland China,2020-01-28,16,5,5,TRUE
+Inner Mongolia,Mainland China,2020-01-29,16,0,5,TRUE
+Inner Mongolia,Mainland China,2020-01-30,19,3,5,TRUE
+Inner Mongolia,Mainland China,2020-01-31,20,1,5,TRUE
+Inner Mongolia,Mainland China,2020-02-01,23,3,5,TRUE
+Inner Mongolia,Mainland China,2020-02-02,27,4,6,TRUE
+Inner Mongolia,Mainland China,2020-02-03,34,7,6,TRUE
+Inner Mongolia,Mainland China,2020-02-04,42,8,6,TRUE
+Inner Mongolia,Mainland China,2020-02-05,42,0,6,TRUE
+Inner Mongolia,Mainland China,2020-02-06,46,4,6,TRUE
+Jiangsu,Mainland China,2020-01-20,0,0,4,TRUE
+Jiangsu,Mainland China,2020-01-21,0,0,4,TRUE
+Jiangsu,Mainland China,2020-01-22,1,1,4,TRUE
+Jiangsu,Mainland China,2020-01-23,5,4,4,TRUE
+Jiangsu,Mainland China,2020-01-24,9,4,4,TRUE
+Jiangsu,Mainland China,2020-01-25,31,22,4,TRUE
+Jiangsu,Mainland China,2020-01-26,47,16,5,TRUE
+Jiangsu,Mainland China,2020-01-27,70,23,5,TRUE
+Jiangsu,Mainland China,2020-01-28,99,29,5,TRUE
+Jiangsu,Mainland China,2020-01-29,129,30,5,TRUE
+Jiangsu,Mainland China,2020-01-30,129,0,5,TRUE
+Jiangsu,Mainland China,2020-01-31,168,39,5,TRUE
+Jiangsu,Mainland China,2020-02-01,202,34,5,TRUE
+Jiangsu,Mainland China,2020-02-02,271,69,6,TRUE
+Jiangsu,Mainland China,2020-02-03,308,37,6,TRUE
+Jiangsu,Mainland China,2020-02-04,341,33,6,TRUE
+Jiangsu,Mainland China,2020-02-05,341,0,6,TRUE
+Jiangsu,Mainland China,2020-02-06,373,32,6,TRUE
+Jiangxi,Mainland China,2020-01-20,0,0,4,TRUE
+Jiangxi,Mainland China,2020-01-21,2,2,4,TRUE
+Jiangxi,Mainland China,2020-01-22,2,0,4,TRUE
+Jiangxi,Mainland China,2020-01-23,7,5,4,TRUE
+Jiangxi,Mainland China,2020-01-24,18,11,4,TRUE
+Jiangxi,Mainland China,2020-01-25,36,18,4,TRUE
+Jiangxi,Mainland China,2020-01-26,48,12,5,TRUE
+Jiangxi,Mainland China,2020-01-27,72,24,5,TRUE
+Jiangxi,Mainland China,2020-01-28,109,37,5,TRUE
+Jiangxi,Mainland China,2020-01-29,162,53,5,TRUE
+Jiangxi,Mainland China,2020-01-30,162,0,5,TRUE
+Jiangxi,Mainland China,2020-01-31,240,78,5,TRUE
+Jiangxi,Mainland China,2020-02-01,286,46,5,TRUE
+Jiangxi,Mainland China,2020-02-02,391,105,6,TRUE
+Jiangxi,Mainland China,2020-02-03,391,0,6,TRUE
+Jiangxi,Mainland China,2020-02-04,548,157,6,TRUE
+Jiangxi,Mainland China,2020-02-05,548,0,6,TRUE
+Jiangxi,Mainland China,2020-02-06,600,52,6,TRUE
+Jilin,Mainland China,2020-01-20,0,0,4,TRUE
+Jilin,Mainland China,2020-01-21,0,0,4,TRUE
+Jilin,Mainland China,2020-01-22,0,0,4,TRUE
+Jilin,Mainland China,2020-01-23,1,1,4,TRUE
+Jilin,Mainland China,2020-01-24,3,2,4,TRUE
+Jilin,Mainland China,2020-01-25,4,1,4,TRUE
+Jilin,Mainland China,2020-01-26,6,2,5,TRUE
+Jilin,Mainland China,2020-01-27,6,0,5,TRUE
+Jilin,Mainland China,2020-01-28,9,3,5,TRUE
+Jilin,Mainland China,2020-01-29,14,5,5,TRUE
+Jilin,Mainland China,2020-01-30,14,0,5,TRUE
+Jilin,Mainland China,2020-01-31,14,0,5,TRUE
+Jilin,Mainland China,2020-02-01,17,3,5,TRUE
+Jilin,Mainland China,2020-02-02,31,14,6,TRUE
+Jilin,Mainland China,2020-02-03,42,11,6,TRUE
+Jilin,Mainland China,2020-02-04,54,12,6,TRUE
+Jilin,Mainland China,2020-02-05,54,0,6,TRUE
+Jilin,Mainland China,2020-02-06,59,5,6,TRUE
+Liaoning,Mainland China,2020-01-20,0,0,4,TRUE
+Liaoning,Mainland China,2020-01-21,0,0,4,TRUE
+Liaoning,Mainland China,2020-01-22,2,2,4,TRUE
+Liaoning,Mainland China,2020-01-23,3,1,4,TRUE
+Liaoning,Mainland China,2020-01-24,4,1,4,TRUE
+Liaoning,Mainland China,2020-01-25,19,15,4,TRUE
+Liaoning,Mainland China,2020-01-26,23,4,5,TRUE
+Liaoning,Mainland China,2020-01-27,27,4,5,TRUE
+Liaoning,Mainland China,2020-01-28,36,9,5,TRUE
+Liaoning,Mainland China,2020-01-29,39,3,5,TRUE
+Liaoning,Mainland China,2020-01-30,41,2,5,TRUE
+Liaoning,Mainland China,2020-01-31,60,19,5,TRUE
+Liaoning,Mainland China,2020-02-01,63,3,5,TRUE
+Liaoning,Mainland China,2020-02-02,70,7,6,TRUE
+Liaoning,Mainland China,2020-02-03,74,4,6,TRUE
+Liaoning,Mainland China,2020-02-04,81,7,6,TRUE
+Liaoning,Mainland China,2020-02-05,88,7,6,TRUE
+Liaoning,Mainland China,2020-02-06,94,6,6,TRUE
+Macau,Macau,2020-01-20,0,0,4,TRUE
+Macau,Macau,2020-01-21,0,0,4,TRUE
+Macau,Macau,2020-01-22,1,1,4,TRUE
+Macau,Macau,2020-01-23,2,1,4,TRUE
+Macau,Macau,2020-01-24,2,0,4,TRUE
+Macau,Macau,2020-01-25,2,0,4,TRUE
+Macau,Macau,2020-01-26,6,4,5,TRUE
+Macau,Macau,2020-01-27,6,0,5,TRUE
+Macau,Macau,2020-01-28,7,1,5,TRUE
+Macau,Macau,2020-01-29,7,0,5,TRUE
+Macau,Macau,2020-01-30,7,0,5,TRUE
+Macau,Macau,2020-01-31,7,0,5,TRUE
+Macau,Macau,2020-02-01,7,0,5,TRUE
+Macau,Macau,2020-02-02,8,1,6,TRUE
+Macau,Macau,2020-02-03,8,0,6,TRUE
+Macau,Macau,2020-02-04,10,2,6,TRUE
+Macau,Macau,2020-02-05,10,0,6,TRUE
+Macau,Macau,2020-02-06,10,0,6,TRUE
+"Madison, WI",US,2020-01-20,0,0,4,FALSE
+"Madison, WI",US,2020-01-21,0,0,4,FALSE
+"Madison, WI",US,2020-01-22,0,0,4,FALSE
+"Madison, WI",US,2020-01-23,0,0,4,FALSE
+"Madison, WI",US,2020-01-24,0,0,4,FALSE
+"Madison, WI",US,2020-01-25,0,0,4,FALSE
+"Madison, WI",US,2020-01-26,0,0,5,FALSE
+"Madison, WI",US,2020-01-27,0,0,5,FALSE
+"Madison, WI",US,2020-01-28,0,0,5,FALSE
+"Madison, WI",US,2020-01-29,0,0,5,FALSE
+"Madison, WI",US,2020-01-30,0,0,5,FALSE
+"Madison, WI",US,2020-01-31,0,0,5,FALSE
+"Madison, WI",US,2020-02-01,0,0,5,FALSE
+"Madison, WI",US,2020-02-02,0,0,6,FALSE
+"Madison, WI",US,2020-02-03,0,0,6,FALSE
+"Madison, WI",US,2020-02-04,0,0,6,FALSE
+"Madison, WI",US,2020-02-05,0,0,6,FALSE
+"Madison, WI",US,2020-02-06,1,1,6,FALSE
+New South Wales,Australia,2020-01-20,0,0,4,FALSE
+New South Wales,Australia,2020-01-21,0,0,4,FALSE
+New South Wales,Australia,2020-01-22,0,0,4,FALSE
+New South Wales,Australia,2020-01-23,0,0,4,FALSE
+New South Wales,Australia,2020-01-24,0,0,4,FALSE
+New South Wales,Australia,2020-01-25,0,0,4,FALSE
+New South Wales,Australia,2020-01-26,3,3,5,FALSE
+New South Wales,Australia,2020-01-27,3,0,5,FALSE
+New South Wales,Australia,2020-01-28,3,0,5,FALSE
+New South Wales,Australia,2020-01-29,4,1,5,FALSE
+New South Wales,Australia,2020-01-30,4,0,5,FALSE
+New South Wales,Australia,2020-01-31,4,0,5,FALSE
+New South Wales,Australia,2020-02-01,4,0,5,FALSE
+New South Wales,Australia,2020-02-02,4,0,6,FALSE
+New South Wales,Australia,2020-02-03,4,0,6,FALSE
+New South Wales,Australia,2020-02-04,4,0,6,FALSE
+New South Wales,Australia,2020-02-05,4,0,6,FALSE
+New South Wales,Australia,2020-02-06,4,0,6,FALSE
+Ningxia,Mainland China,2020-01-20,0,0,4,TRUE
+Ningxia,Mainland China,2020-01-21,0,0,4,TRUE
+Ningxia,Mainland China,2020-01-22,1,1,4,TRUE
+Ningxia,Mainland China,2020-01-23,1,0,4,TRUE
+Ningxia,Mainland China,2020-01-24,2,1,4,TRUE
+Ningxia,Mainland China,2020-01-25,4,2,4,TRUE
+Ningxia,Mainland China,2020-01-26,4,0,5,TRUE
+Ningxia,Mainland China,2020-01-27,7,3,5,TRUE
+Ningxia,Mainland China,2020-01-28,12,5,5,TRUE
+Ningxia,Mainland China,2020-01-29,12,0,5,TRUE
+Ningxia,Mainland China,2020-01-30,17,5,5,TRUE
+Ningxia,Mainland China,2020-01-31,21,4,5,TRUE
+Ningxia,Mainland China,2020-02-01,26,5,5,TRUE
+Ningxia,Mainland China,2020-02-02,28,2,6,TRUE
+Ningxia,Mainland China,2020-02-03,31,3,6,TRUE
+Ningxia,Mainland China,2020-02-04,34,3,6,TRUE
+Ningxia,Mainland China,2020-02-05,34,0,6,TRUE
+Ningxia,Mainland China,2020-02-06,40,6,6,TRUE
+Ontario,Canada,2020-01-20,0,0,4,FALSE
+Ontario,Canada,2020-01-21,0,0,4,FALSE
+Ontario,Canada,2020-01-22,0,0,4,FALSE
+Ontario,Canada,2020-01-23,0,0,4,FALSE
+Ontario,Canada,2020-01-24,0,0,4,FALSE
+Ontario,Canada,2020-01-25,0,0,4,FALSE
+Ontario,Canada,2020-01-26,1,1,5,FALSE
+Ontario,Canada,2020-01-27,1,0,5,FALSE
+Ontario,Canada,2020-01-28,1,0,5,FALSE
+Ontario,Canada,2020-01-29,2,1,5,FALSE
+Ontario,Canada,2020-01-30,2,0,5,FALSE
+Ontario,Canada,2020-01-31,2,0,5,FALSE
+Ontario,Canada,2020-02-01,3,1,5,FALSE
+Ontario,Canada,2020-02-02,3,0,6,FALSE
+Ontario,Canada,2020-02-03,3,0,6,FALSE
+Ontario,Canada,2020-02-04,3,0,6,FALSE
+Ontario,Canada,2020-02-05,3,0,6,FALSE
+Ontario,Canada,2020-02-06,3,0,6,FALSE
+Qinghai,Mainland China,2020-01-20,0,0,4,TRUE
+Qinghai,Mainland China,2020-01-21,0,0,4,TRUE
+Qinghai,Mainland China,2020-01-22,0,0,4,TRUE
+Qinghai,Mainland China,2020-01-23,0,0,4,TRUE
+Qinghai,Mainland China,2020-01-24,0,0,4,TRUE
+Qinghai,Mainland China,2020-01-25,1,1,4,TRUE
+Qinghai,Mainland China,2020-01-26,4,3,5,TRUE
+Qinghai,Mainland China,2020-01-27,6,2,5,TRUE
+Qinghai,Mainland China,2020-01-28,6,0,5,TRUE
+Qinghai,Mainland China,2020-01-29,6,0,5,TRUE
+Qinghai,Mainland China,2020-01-30,8,2,5,TRUE
+Qinghai,Mainland China,2020-01-31,8,0,5,TRUE
+Qinghai,Mainland China,2020-02-01,9,1,5,TRUE
+Qinghai,Mainland China,2020-02-02,11,2,6,TRUE
+Qinghai,Mainland China,2020-02-03,13,2,6,TRUE
+Qinghai,Mainland China,2020-02-04,17,4,6,TRUE
+Qinghai,Mainland China,2020-02-05,17,0,6,TRUE
+Qinghai,Mainland China,2020-02-06,18,1,6,TRUE
+Queensland,Australia,2020-01-20,0,0,4,FALSE
+Queensland,Australia,2020-01-21,0,0,4,FALSE
+Queensland,Australia,2020-01-22,0,0,4,FALSE
+Queensland,Australia,2020-01-23,0,0,4,FALSE
+Queensland,Australia,2020-01-24,0,0,4,FALSE
+Queensland,Australia,2020-01-25,0,0,4,FALSE
+Queensland,Australia,2020-01-26,0,0,5,FALSE
+Queensland,Australia,2020-01-27,1,1,5,FALSE
+Queensland,Australia,2020-01-28,1,0,5,FALSE
+Queensland,Australia,2020-01-29,1,0,5,FALSE
+Queensland,Australia,2020-01-30,2,1,5,FALSE
+Queensland,Australia,2020-01-31,2,0,5,FALSE
+Queensland,Australia,2020-02-01,2,0,5,FALSE
+Queensland,Australia,2020-02-02,2,0,6,FALSE
+Queensland,Australia,2020-02-03,2,0,6,FALSE
+Queensland,Australia,2020-02-04,3,1,6,FALSE
+Queensland,Australia,2020-02-05,3,0,6,FALSE
+Queensland,Australia,2020-02-06,4,1,6,FALSE
+Shaanxi,Mainland China,2020-01-20,0,0,4,TRUE
+Shaanxi,Mainland China,2020-01-21,0,0,4,TRUE
+Shaanxi,Mainland China,2020-01-22,0,0,4,TRUE
+Shaanxi,Mainland China,2020-01-23,3,3,4,TRUE
+Shaanxi,Mainland China,2020-01-24,5,2,4,TRUE
+Shaanxi,Mainland China,2020-01-25,15,10,4,TRUE
+Shaanxi,Mainland China,2020-01-26,22,7,5,TRUE
+Shaanxi,Mainland China,2020-01-27,35,13,5,TRUE
+Shaanxi,Mainland China,2020-01-28,56,21,5,TRUE
+Shaanxi,Mainland China,2020-01-29,56,0,5,TRUE
+Shaanxi,Mainland China,2020-01-30,63,7,5,TRUE
+Shaanxi,Mainland China,2020-01-31,87,24,5,TRUE
+Shaanxi,Mainland China,2020-02-01,101,14,5,TRUE
+Shaanxi,Mainland China,2020-02-02,116,15,6,TRUE
+Shaanxi,Mainland China,2020-02-03,128,12,6,TRUE
+Shaanxi,Mainland China,2020-02-04,165,37,6,TRUE
+Shaanxi,Mainland China,2020-02-05,165,0,6,TRUE
+Shaanxi,Mainland China,2020-02-06,173,8,6,TRUE
+Shandong,Mainland China,2020-01-20,0,0,4,TRUE
+Shandong,Mainland China,2020-01-21,1,1,4,TRUE
+Shandong,Mainland China,2020-01-22,2,1,4,TRUE
+Shandong,Mainland China,2020-01-23,6,4,4,TRUE
+Shandong,Mainland China,2020-01-24,15,9,4,TRUE
+Shandong,Mainland China,2020-01-25,39,24,4,TRUE
+Shandong,Mainland China,2020-01-26,63,24,5,TRUE
+Shandong,Mainland China,2020-01-27,87,24,5,TRUE
+Shandong,Mainland China,2020-01-28,121,34,5,TRUE
+Shandong,Mainland China,2020-01-29,145,24,5,TRUE
+Shandong,Mainland China,2020-01-30,158,13,5,TRUE
+Shandong,Mainland China,2020-01-31,184,26,5,TRUE
+Shandong,Mainland China,2020-02-01,206,22,5,TRUE
+Shandong,Mainland China,2020-02-02,246,40,6,TRUE
+Shandong,Mainland China,2020-02-03,270,24,6,TRUE
+Shandong,Mainland China,2020-02-04,298,28,6,TRUE
+Shandong,Mainland China,2020-02-05,307,9,6,TRUE
+Shandong,Mainland China,2020-02-06,347,40,6,TRUE
+Shanghai,Mainland China,2020-01-20,0,0,4,TRUE
+Shanghai,Mainland China,2020-01-21,9,9,4,TRUE
+Shanghai,Mainland China,2020-01-22,9,0,4,TRUE
+Shanghai,Mainland China,2020-01-23,16,7,4,TRUE
+Shanghai,Mainland China,2020-01-24,20,4,4,TRUE
+Shanghai,Mainland China,2020-01-25,40,20,4,TRUE
+Shanghai,Mainland China,2020-01-26,53,13,5,TRUE
+Shanghai,Mainland China,2020-01-27,66,13,5,TRUE
+Shanghai,Mainland China,2020-01-28,80,14,5,TRUE
+Shanghai,Mainland China,2020-01-29,101,21,5,TRUE
+Shanghai,Mainland China,2020-01-30,112,11,5,TRUE
+Shanghai,Mainland China,2020-01-31,153,41,5,TRUE
+Shanghai,Mainland China,2020-02-01,169,16,5,TRUE
+Shanghai,Mainland China,2020-02-02,193,24,6,TRUE
+Shanghai,Mainland China,2020-02-03,208,15,6,TRUE
+Shanghai,Mainland China,2020-02-04,233,25,6,TRUE
+Shanghai,Mainland China,2020-02-05,243,10,6,TRUE
+Shanghai,Mainland China,2020-02-06,257,14,6,TRUE
+Shanxi,Mainland China,2020-01-20,0,0,4,TRUE
+Shanxi,Mainland China,2020-01-21,0,0,4,TRUE
+Shanxi,Mainland China,2020-01-22,1,1,4,TRUE
+Shanxi,Mainland China,2020-01-23,1,0,4,TRUE
+Shanxi,Mainland China,2020-01-24,1,0,4,TRUE
+Shanxi,Mainland China,2020-01-25,9,8,4,TRUE
+Shanxi,Mainland China,2020-01-26,13,4,5,TRUE
+Shanxi,Mainland China,2020-01-27,20,7,5,TRUE
+Shanxi,Mainland China,2020-01-28,27,7,5,TRUE
+Shanxi,Mainland China,2020-01-29,35,8,5,TRUE
+Shanxi,Mainland China,2020-01-30,35,0,5,TRUE
+Shanxi,Mainland China,2020-01-31,47,12,5,TRUE
+Shanxi,Mainland China,2020-02-01,47,0,5,TRUE
+Shanxi,Mainland China,2020-02-02,66,19,6,TRUE
+Shanxi,Mainland China,2020-02-03,74,8,6,TRUE
+Shanxi,Mainland China,2020-02-04,81,7,6,TRUE
+Shanxi,Mainland China,2020-02-05,81,0,6,TRUE
+Shanxi,Mainland China,2020-02-06,90,9,6,TRUE
+Sichuan,Mainland China,2020-01-20,0,0,4,TRUE
+Sichuan,Mainland China,2020-01-21,2,2,4,TRUE
+Sichuan,Mainland China,2020-01-22,5,3,4,TRUE
+Sichuan,Mainland China,2020-01-23,8,3,4,TRUE
+Sichuan,Mainland China,2020-01-24,15,7,4,TRUE
+Sichuan,Mainland China,2020-01-25,44,29,4,TRUE
+Sichuan,Mainland China,2020-01-26,69,25,5,TRUE
+Sichuan,Mainland China,2020-01-27,90,21,5,TRUE
+Sichuan,Mainland China,2020-01-28,108,18,5,TRUE
+Sichuan,Mainland China,2020-01-29,142,34,5,TRUE
+Sichuan,Mainland China,2020-01-30,142,0,5,TRUE
+Sichuan,Mainland China,2020-01-31,177,35,5,TRUE
+Sichuan,Mainland China,2020-02-01,207,30,5,TRUE
+Sichuan,Mainland China,2020-02-02,254,47,6,TRUE
+Sichuan,Mainland China,2020-02-03,254,0,6,TRUE
+Sichuan,Mainland China,2020-02-04,301,47,6,TRUE
+Sichuan,Mainland China,2020-02-05,301,0,6,TRUE
+Sichuan,Mainland China,2020-02-06,321,20,6,TRUE
+South Australia,Australia,2020-01-20,0,0,4,FALSE
+South Australia,Australia,2020-01-21,0,0,4,FALSE
+South Australia,Australia,2020-01-22,0,0,4,FALSE
+South Australia,Australia,2020-01-23,0,0,4,FALSE
+South Australia,Australia,2020-01-24,0,0,4,FALSE
+South Australia,Australia,2020-01-25,0,0,4,FALSE
+South Australia,Australia,2020-01-26,0,0,5,FALSE
+South Australia,Australia,2020-01-27,0,0,5,FALSE
+South Australia,Australia,2020-01-28,0,0,5,FALSE
+South Australia,Australia,2020-01-29,0,0,5,FALSE
+South Australia,Australia,2020-01-30,0,0,5,FALSE
+South Australia,Australia,2020-01-31,0,0,5,FALSE
+South Australia,Australia,2020-02-01,2,2,5,FALSE
+South Australia,Australia,2020-02-02,2,0,6,FALSE
+South Australia,Australia,2020-02-03,2,0,6,FALSE
+South Australia,Australia,2020-02-04,2,0,6,FALSE
+South Australia,Australia,2020-02-05,2,0,6,FALSE
+South Australia,Australia,2020-02-06,2,0,6,FALSE
+Taiwan,Taiwan,2020-01-20,0,0,4,TRUE
+Taiwan,Taiwan,2020-01-21,1,1,4,TRUE
+Taiwan,Taiwan,2020-01-22,1,0,4,TRUE
+Taiwan,Taiwan,2020-01-23,1,0,4,TRUE
+Taiwan,Taiwan,2020-01-24,3,2,4,TRUE
+Taiwan,Taiwan,2020-01-25,3,0,4,TRUE
+Taiwan,Taiwan,2020-01-26,4,1,5,TRUE
+Taiwan,Taiwan,2020-01-27,5,1,5,TRUE
+Taiwan,Taiwan,2020-01-28,8,3,5,TRUE
+Taiwan,Taiwan,2020-01-29,8,0,5,TRUE
+Taiwan,Taiwan,2020-01-30,9,1,5,TRUE
+Taiwan,Taiwan,2020-01-31,10,1,5,TRUE
+Taiwan,Taiwan,2020-02-01,10,0,5,TRUE
+Taiwan,Taiwan,2020-02-02,10,0,6,TRUE
+Taiwan,Taiwan,2020-02-03,10,0,6,TRUE
+Taiwan,Taiwan,2020-02-04,11,1,6,TRUE
+Taiwan,Taiwan,2020-02-05,11,0,6,TRUE
+Taiwan,Taiwan,2020-02-06,16,5,6,TRUE
+Tianjin,Mainland China,2020-01-20,0,0,4,TRUE
+Tianjin,Mainland China,2020-01-21,2,2,4,TRUE
+Tianjin,Mainland China,2020-01-22,4,2,4,TRUE
+Tianjin,Mainland China,2020-01-23,4,0,4,TRUE
+Tianjin,Mainland China,2020-01-24,8,4,4,TRUE
+Tianjin,Mainland China,2020-01-25,13,5,4,TRUE
+Tianjin,Mainland China,2020-01-26,14,1,5,TRUE
+Tianjin,Mainland China,2020-01-27,23,9,5,TRUE
+Tianjin,Mainland China,2020-01-28,25,2,5,TRUE
+Tianjin,Mainland China,2020-01-29,27,2,5,TRUE
+Tianjin,Mainland China,2020-01-30,31,4,5,TRUE
+Tianjin,Mainland China,2020-01-31,32,1,5,TRUE
+Tianjin,Mainland China,2020-02-01,38,6,5,TRUE
+Tianjin,Mainland China,2020-02-02,48,10,6,TRUE
+Tianjin,Mainland China,2020-02-03,60,12,6,TRUE
+Tianjin,Mainland China,2020-02-04,67,7,6,TRUE
+Tianjin,Mainland China,2020-02-05,69,2,6,TRUE
+Tianjin,Mainland China,2020-02-06,78,9,6,TRUE
+Tibet,Mainland China,2020-01-20,0,0,4,TRUE
+Tibet,Mainland China,2020-01-21,0,0,4,TRUE
+Tibet,Mainland China,2020-01-22,0,0,4,TRUE
+Tibet,Mainland China,2020-01-23,0,0,4,TRUE
+Tibet,Mainland China,2020-01-24,0,0,4,TRUE
+Tibet,Mainland China,2020-01-25,0,0,4,TRUE
+Tibet,Mainland China,2020-01-26,0,0,5,TRUE
+Tibet,Mainland China,2020-01-27,0,0,5,TRUE
+Tibet,Mainland China,2020-01-28,0,0,5,TRUE
+Tibet,Mainland China,2020-01-29,1,1,5,TRUE
+Tibet,Mainland China,2020-01-30,1,0,5,TRUE
+Tibet,Mainland China,2020-01-31,1,0,5,TRUE
+Tibet,Mainland China,2020-02-01,1,0,5,TRUE
+Tibet,Mainland China,2020-02-02,1,0,6,TRUE
+Tibet,Mainland China,2020-02-03,1,0,6,TRUE
+Tibet,Mainland China,2020-02-04,1,0,6,TRUE
+Tibet,Mainland China,2020-02-05,1,0,6,TRUE
+Tibet,Mainland China,2020-02-06,1,0,6,TRUE
+Victoria,Australia,2020-01-20,0,0,4,FALSE
+Victoria,Australia,2020-01-21,0,0,4,FALSE
+Victoria,Australia,2020-01-22,0,0,4,FALSE
+Victoria,Australia,2020-01-23,0,0,4,FALSE
+Victoria,Australia,2020-01-24,0,0,4,FALSE
+Victoria,Australia,2020-01-25,0,0,4,FALSE
+Victoria,Australia,2020-01-26,1,1,5,FALSE
+Victoria,Australia,2020-01-27,1,0,5,FALSE
+Victoria,Australia,2020-01-28,1,0,5,FALSE
+Victoria,Australia,2020-01-29,2,1,5,FALSE
+Victoria,Australia,2020-01-30,3,1,5,FALSE
+Victoria,Australia,2020-01-31,3,0,5,FALSE
+Victoria,Australia,2020-02-01,4,1,5,FALSE
+Victoria,Australia,2020-02-02,4,0,6,FALSE
+Victoria,Australia,2020-02-03,4,0,6,FALSE
+Victoria,Australia,2020-02-04,4,0,6,FALSE
+Victoria,Australia,2020-02-05,4,0,6,FALSE
+Victoria,Australia,2020-02-06,4,0,6,FALSE
+Washington,US,2020-01-20,0,0,4,FALSE
+Washington,US,2020-01-21,1,1,4,FALSE
+Washington,US,2020-01-22,1,0,4,FALSE
+Washington,US,2020-01-23,1,0,4,FALSE
+Washington,US,2020-01-24,1,0,4,FALSE
+Washington,US,2020-01-25,1,0,4,FALSE
+Washington,US,2020-01-26,1,0,5,FALSE
+Washington,US,2020-01-27,1,0,5,FALSE
+Washington,US,2020-01-28,1,0,5,FALSE
+Washington,US,2020-01-29,1,0,5,FALSE
+Washington,US,2020-01-30,1,0,5,FALSE
+Washington,US,2020-01-31,1,0,5,FALSE
+Washington,US,2020-02-01,1,0,5,FALSE
+Washington,US,2020-02-02,1,0,6,FALSE
+Washington,US,2020-02-03,1,0,6,FALSE
+Washington,US,2020-02-04,1,0,6,FALSE
+Washington,US,2020-02-05,1,0,6,FALSE
+Washington,US,2020-02-06,1,0,6,FALSE
+Xinjiang,Mainland China,2020-01-20,0,0,4,TRUE
+Xinjiang,Mainland China,2020-01-21,0,0,4,TRUE
+Xinjiang,Mainland China,2020-01-22,0,0,4,TRUE
+Xinjiang,Mainland China,2020-01-23,2,2,4,TRUE
+Xinjiang,Mainland China,2020-01-24,2,0,4,TRUE
+Xinjiang,Mainland China,2020-01-25,4,2,4,TRUE
+Xinjiang,Mainland China,2020-01-26,5,1,5,TRUE
+Xinjiang,Mainland China,2020-01-27,5,0,5,TRUE
+Xinjiang,Mainland China,2020-01-28,13,8,5,TRUE
+Xinjiang,Mainland China,2020-01-29,14,1,5,TRUE
+Xinjiang,Mainland China,2020-01-30,14,0,5,TRUE
+Xinjiang,Mainland China,2020-01-31,17,3,5,TRUE
+Xinjiang,Mainland China,2020-02-01,18,1,5,TRUE
+Xinjiang,Mainland China,2020-02-02,24,6,6,TRUE
+Xinjiang,Mainland China,2020-02-03,24,0,6,TRUE
+Xinjiang,Mainland China,2020-02-04,32,8,6,TRUE
+Xinjiang,Mainland China,2020-02-05,32,0,6,TRUE
+Xinjiang,Mainland China,2020-02-06,36,4,6,TRUE
+Yunnan,Mainland China,2020-01-20,0,0,4,TRUE
+Yunnan,Mainland China,2020-01-21,1,1,4,TRUE
+Yunnan,Mainland China,2020-01-22,1,0,4,TRUE
+Yunnan,Mainland China,2020-01-23,2,1,4,TRUE
+Yunnan,Mainland China,2020-01-24,5,3,4,TRUE
+Yunnan,Mainland China,2020-01-25,11,6,4,TRUE
+Yunnan,Mainland China,2020-01-26,19,8,5,TRUE
+Yunnan,Mainland China,2020-01-27,26,7,5,TRUE
+Yunnan,Mainland China,2020-01-28,44,18,5,TRUE
+Yunnan,Mainland China,2020-01-29,55,11,5,TRUE
+Yunnan,Mainland China,2020-01-30,70,15,5,TRUE
+Yunnan,Mainland China,2020-01-31,83,13,5,TRUE
+Yunnan,Mainland China,2020-02-01,91,8,5,TRUE
+Yunnan,Mainland China,2020-02-02,105,14,6,TRUE
+Yunnan,Mainland China,2020-02-03,117,12,6,TRUE
+Yunnan,Mainland China,2020-02-04,122,5,6,TRUE
+Yunnan,Mainland China,2020-02-05,124,2,6,TRUE
+Yunnan,Mainland China,2020-02-06,133,9,6,TRUE
+Zhejiang,Mainland China,2020-01-20,0,0,4,TRUE
+Zhejiang,Mainland China,2020-01-21,5,5,4,TRUE
+Zhejiang,Mainland China,2020-01-22,10,5,4,TRUE
+Zhejiang,Mainland China,2020-01-23,27,17,4,TRUE
+Zhejiang,Mainland China,2020-01-24,43,16,4,TRUE
+Zhejiang,Mainland China,2020-01-25,104,61,4,TRUE
+Zhejiang,Mainland China,2020-01-26,128,24,5,TRUE
+Zhejiang,Mainland China,2020-01-27,173,45,5,TRUE
+Zhejiang,Mainland China,2020-01-28,296,123,5,TRUE
+Zhejiang,Mainland China,2020-01-29,428,132,5,TRUE
+Zhejiang,Mainland China,2020-01-30,428,0,5,TRUE
+Zhejiang,Mainland China,2020-01-31,538,110,5,TRUE
+Zhejiang,Mainland China,2020-02-01,599,61,5,TRUE
+Zhejiang,Mainland China,2020-02-02,724,125,6,TRUE
+Zhejiang,Mainland China,2020-02-03,724,0,6,TRUE
+Zhejiang,Mainland China,2020-02-04,895,171,6,TRUE
+Zhejiang,Mainland China,2020-02-05,895,0,6,TRUE
+Zhejiang,Mainland China,2020-02-06,954,59,6,TRUE
+NA,Belgium,2020-01-20,0,0,4,FALSE
+NA,Belgium,2020-01-21,0,0,4,FALSE
+NA,Belgium,2020-01-22,0,0,4,FALSE
+NA,Belgium,2020-01-23,0,0,4,FALSE
+NA,Belgium,2020-01-24,0,0,4,FALSE
+NA,Belgium,2020-01-25,0,0,4,FALSE
+NA,Belgium,2020-01-26,0,0,5,FALSE
+NA,Belgium,2020-01-27,0,0,5,FALSE
+NA,Belgium,2020-01-28,0,0,5,FALSE
+NA,Belgium,2020-01-29,0,0,5,FALSE
+NA,Belgium,2020-01-30,0,0,5,FALSE
+NA,Belgium,2020-01-31,0,0,5,FALSE
+NA,Belgium,2020-02-01,0,0,5,FALSE
+NA,Belgium,2020-02-02,0,0,6,FALSE
+NA,Belgium,2020-02-03,0,0,6,FALSE
+NA,Belgium,2020-02-04,1,1,6,FALSE
+NA,Belgium,2020-02-05,1,0,6,FALSE
+NA,Belgium,2020-02-06,1,0,6,FALSE
+NA,Cambodia,2020-01-20,0,0,4,FALSE
+NA,Cambodia,2020-01-21,0,0,4,FALSE
+NA,Cambodia,2020-01-22,0,0,4,FALSE
+NA,Cambodia,2020-01-23,0,0,4,FALSE
+NA,Cambodia,2020-01-24,0,0,4,FALSE
+NA,Cambodia,2020-01-25,0,0,4,FALSE
+NA,Cambodia,2020-01-26,0,0,5,FALSE
+NA,Cambodia,2020-01-27,1,1,5,FALSE
+NA,Cambodia,2020-01-28,1,0,5,FALSE
+NA,Cambodia,2020-01-29,1,0,5,FALSE
+NA,Cambodia,2020-01-30,1,0,5,FALSE
+NA,Cambodia,2020-01-31,1,0,5,FALSE
+NA,Cambodia,2020-02-01,1,0,5,FALSE
+NA,Cambodia,2020-02-02,1,0,6,FALSE
+NA,Cambodia,2020-02-03,1,0,6,FALSE
+NA,Cambodia,2020-02-04,1,0,6,FALSE
+NA,Cambodia,2020-02-05,1,0,6,FALSE
+NA,Cambodia,2020-02-06,1,0,6,FALSE
+NA,Finland,2020-01-20,0,0,4,FALSE
+NA,Finland,2020-01-21,0,0,4,FALSE
+NA,Finland,2020-01-22,0,0,4,FALSE
+NA,Finland,2020-01-23,0,0,4,FALSE
+NA,Finland,2020-01-24,0,0,4,FALSE
+NA,Finland,2020-01-25,0,0,4,FALSE
+NA,Finland,2020-01-26,0,0,5,FALSE
+NA,Finland,2020-01-27,0,0,5,FALSE
+NA,Finland,2020-01-28,0,0,5,FALSE
+NA,Finland,2020-01-29,1,1,5,FALSE
+NA,Finland,2020-01-30,1,0,5,FALSE
+NA,Finland,2020-01-31,1,0,5,FALSE
+NA,Finland,2020-02-01,1,0,5,FALSE
+NA,Finland,2020-02-02,1,0,6,FALSE
+NA,Finland,2020-02-03,1,0,6,FALSE
+NA,Finland,2020-02-04,1,0,6,FALSE
+NA,Finland,2020-02-05,1,0,6,FALSE
+NA,Finland,2020-02-06,1,0,6,FALSE
+NA,France,2020-01-20,0,0,4,FALSE
+NA,France,2020-01-21,0,0,4,FALSE
+NA,France,2020-01-22,0,0,4,FALSE
+NA,France,2020-01-23,0,0,4,FALSE
+NA,France,2020-01-24,2,2,4,FALSE
+NA,France,2020-01-25,3,1,4,FALSE
+NA,France,2020-01-26,3,0,5,FALSE
+NA,France,2020-01-27,3,0,5,FALSE
+NA,France,2020-01-28,4,1,5,FALSE
+NA,France,2020-01-29,5,1,5,FALSE
+NA,France,2020-01-30,5,0,5,FALSE
+NA,France,2020-01-31,6,1,5,FALSE
+NA,France,2020-02-01,6,0,5,FALSE
+NA,France,2020-02-02,6,0,6,FALSE
+NA,France,2020-02-03,6,0,6,FALSE
+NA,France,2020-02-04,6,0,6,FALSE
+NA,France,2020-02-05,6,0,6,FALSE
+NA,France,2020-02-06,6,0,6,FALSE
+NA,Germany,2020-01-20,0,0,4,FALSE
+NA,Germany,2020-01-21,0,0,4,FALSE
+NA,Germany,2020-01-22,0,0,4,FALSE
+NA,Germany,2020-01-23,0,0,4,FALSE
+NA,Germany,2020-01-24,0,0,4,FALSE
+NA,Germany,2020-01-25,0,0,4,FALSE
+NA,Germany,2020-01-26,0,0,5,FALSE
+NA,Germany,2020-01-27,1,1,5,FALSE
+NA,Germany,2020-01-28,4,3,5,FALSE
+NA,Germany,2020-01-29,4,0,5,FALSE
+NA,Germany,2020-01-30,4,0,5,FALSE
+NA,Germany,2020-01-31,7,3,5,FALSE
+NA,Germany,2020-02-01,7,0,5,FALSE
+NA,Germany,2020-02-02,10,3,6,FALSE
+NA,Germany,2020-02-03,10,0,6,FALSE
+NA,Germany,2020-02-04,12,2,6,FALSE
+NA,Germany,2020-02-05,12,0,6,FALSE
+NA,Germany,2020-02-06,12,0,6,FALSE
+NA,India,2020-01-20,0,0,4,FALSE
+NA,India,2020-01-21,0,0,4,FALSE
+NA,India,2020-01-22,0,0,4,FALSE
+NA,India,2020-01-23,0,0,4,FALSE
+NA,India,2020-01-24,0,0,4,FALSE
+NA,India,2020-01-25,0,0,4,FALSE
+NA,India,2020-01-26,0,0,5,FALSE
+NA,India,2020-01-27,0,0,5,FALSE
+NA,India,2020-01-28,0,0,5,FALSE
+NA,India,2020-01-29,1,1,5,FALSE
+NA,India,2020-01-30,1,0,5,FALSE
+NA,India,2020-01-31,1,0,5,FALSE
+NA,India,2020-02-01,1,0,5,FALSE
+NA,India,2020-02-02,2,1,6,FALSE
+NA,India,2020-02-03,2,0,6,FALSE
+NA,India,2020-02-04,3,1,6,FALSE
+NA,India,2020-02-05,3,0,6,FALSE
+NA,India,2020-02-06,3,0,6,FALSE
+NA,Italy,2020-01-20,0,0,4,FALSE
+NA,Italy,2020-01-21,0,0,4,FALSE
+NA,Italy,2020-01-22,0,0,4,FALSE
+NA,Italy,2020-01-23,0,0,4,FALSE
+NA,Italy,2020-01-24,0,0,4,FALSE
+NA,Italy,2020-01-25,0,0,4,FALSE
+NA,Italy,2020-01-26,0,0,5,FALSE
+NA,Italy,2020-01-27,0,0,5,FALSE
+NA,Italy,2020-01-28,0,0,5,FALSE
+NA,Italy,2020-01-29,0,0,5,FALSE
+NA,Italy,2020-01-30,0,0,5,FALSE
+NA,Italy,2020-01-31,2,2,5,FALSE
+NA,Italy,2020-02-01,2,0,5,FALSE
+NA,Italy,2020-02-02,2,0,6,FALSE
+NA,Italy,2020-02-03,2,0,6,FALSE
+NA,Italy,2020-02-04,2,0,6,FALSE
+NA,Italy,2020-02-05,2,0,6,FALSE
+NA,Italy,2020-02-06,2,0,6,FALSE
+NA,Japan,2020-01-20,0,0,4,FALSE
+NA,Japan,2020-01-21,1,1,4,FALSE
+NA,Japan,2020-01-22,2,1,4,FALSE
+NA,Japan,2020-01-23,2,0,4,FALSE
+NA,Japan,2020-01-24,2,0,4,FALSE
+NA,Japan,2020-01-25,2,0,4,FALSE
+NA,Japan,2020-01-26,4,2,5,FALSE
+NA,Japan,2020-01-27,4,0,5,FALSE
+NA,Japan,2020-01-28,7,3,5,FALSE
+NA,Japan,2020-01-29,11,4,5,FALSE
+NA,Japan,2020-01-30,11,0,5,FALSE
+NA,Japan,2020-01-31,17,6,5,FALSE
+NA,Japan,2020-02-01,17,0,5,FALSE
+NA,Japan,2020-02-02,20,3,6,FALSE
+NA,Japan,2020-02-03,20,0,6,FALSE
+NA,Japan,2020-02-04,22,2,6,FALSE
+NA,Japan,2020-02-05,22,0,6,FALSE
+NA,Japan,2020-02-06,45,23,6,FALSE
+NA,Malaysia,2020-01-20,0,0,4,FALSE
+NA,Malaysia,2020-01-21,0,0,4,FALSE
+NA,Malaysia,2020-01-22,0,0,4,FALSE
+NA,Malaysia,2020-01-23,0,0,4,FALSE
+NA,Malaysia,2020-01-24,0,0,4,FALSE
+NA,Malaysia,2020-01-25,3,3,4,FALSE
+NA,Malaysia,2020-01-26,4,1,5,FALSE
+NA,Malaysia,2020-01-27,4,0,5,FALSE
+NA,Malaysia,2020-01-28,7,3,5,FALSE
+NA,Malaysia,2020-01-29,7,0,5,FALSE
+NA,Malaysia,2020-01-30,8,1,5,FALSE
+NA,Malaysia,2020-01-31,8,0,5,FALSE
+NA,Malaysia,2020-02-01,8,0,5,FALSE
+NA,Malaysia,2020-02-02,8,0,6,FALSE
+NA,Malaysia,2020-02-03,8,0,6,FALSE
+NA,Malaysia,2020-02-04,10,2,6,FALSE
+NA,Malaysia,2020-02-05,10,0,6,FALSE
+NA,Malaysia,2020-02-06,12,2,6,FALSE
+NA,Nepal,2020-01-20,0,0,4,FALSE
+NA,Nepal,2020-01-21,0,0,4,FALSE
+NA,Nepal,2020-01-22,0,0,4,FALSE
+NA,Nepal,2020-01-23,0,0,4,FALSE
+NA,Nepal,2020-01-24,0,0,4,FALSE
+NA,Nepal,2020-01-25,1,1,4,FALSE
+NA,Nepal,2020-01-26,1,0,5,FALSE
+NA,Nepal,2020-01-27,1,0,5,FALSE
+NA,Nepal,2020-01-28,1,0,5,FALSE
+NA,Nepal,2020-01-29,1,0,5,FALSE
+NA,Nepal,2020-01-30,1,0,5,FALSE
+NA,Nepal,2020-01-31,1,0,5,FALSE
+NA,Nepal,2020-02-01,1,0,5,FALSE
+NA,Nepal,2020-02-02,1,0,6,FALSE
+NA,Nepal,2020-02-03,1,0,6,FALSE
+NA,Nepal,2020-02-04,1,0,6,FALSE
+NA,Nepal,2020-02-05,1,0,6,FALSE
+NA,Nepal,2020-02-06,1,0,6,FALSE
+NA,Philippines,2020-01-20,0,0,4,FALSE
+NA,Philippines,2020-01-21,0,0,4,FALSE
+NA,Philippines,2020-01-22,0,0,4,FALSE
+NA,Philippines,2020-01-23,0,0,4,FALSE
+NA,Philippines,2020-01-24,0,0,4,FALSE
+NA,Philippines,2020-01-25,0,0,4,FALSE
+NA,Philippines,2020-01-26,0,0,5,FALSE
+NA,Philippines,2020-01-27,0,0,5,FALSE
+NA,Philippines,2020-01-28,0,0,5,FALSE
+NA,Philippines,2020-01-29,1,1,5,FALSE
+NA,Philippines,2020-01-30,1,0,5,FALSE
+NA,Philippines,2020-01-31,1,0,5,FALSE
+NA,Philippines,2020-02-01,1,0,5,FALSE
+NA,Philippines,2020-02-02,2,1,6,FALSE
+NA,Philippines,2020-02-03,2,0,6,FALSE
+NA,Philippines,2020-02-04,2,0,6,FALSE
+NA,Philippines,2020-02-05,2,0,6,FALSE
+NA,Philippines,2020-02-06,2,0,6,FALSE
+NA,Russia,2020-01-20,0,0,4,FALSE
+NA,Russia,2020-01-21,0,0,4,FALSE
+NA,Russia,2020-01-22,0,0,4,FALSE
+NA,Russia,2020-01-23,0,0,4,FALSE
+NA,Russia,2020-01-24,0,0,4,FALSE
+NA,Russia,2020-01-25,0,0,4,FALSE
+NA,Russia,2020-01-26,0,0,5,FALSE
+NA,Russia,2020-01-27,0,0,5,FALSE
+NA,Russia,2020-01-28,0,0,5,FALSE
+NA,Russia,2020-01-29,0,0,5,FALSE
+NA,Russia,2020-01-30,0,0,5,FALSE
+NA,Russia,2020-01-31,2,2,5,FALSE
+NA,Russia,2020-02-01,2,0,5,FALSE
+NA,Russia,2020-02-02,2,0,6,FALSE
+NA,Russia,2020-02-03,2,0,6,FALSE
+NA,Russia,2020-02-04,2,0,6,FALSE
+NA,Russia,2020-02-05,2,0,6,FALSE
+NA,Russia,2020-02-06,2,0,6,FALSE
+NA,Singapore,2020-01-20,0,0,4,FALSE
+NA,Singapore,2020-01-21,0,0,4,FALSE
+NA,Singapore,2020-01-22,0,0,4,FALSE
+NA,Singapore,2020-01-23,1,1,4,FALSE
+NA,Singapore,2020-01-24,3,2,4,FALSE
+NA,Singapore,2020-01-25,3,0,4,FALSE
+NA,Singapore,2020-01-26,4,1,5,FALSE
+NA,Singapore,2020-01-27,5,1,5,FALSE
+NA,Singapore,2020-01-28,7,2,5,FALSE
+NA,Singapore,2020-01-29,10,3,5,FALSE
+NA,Singapore,2020-01-30,10,0,5,FALSE
+NA,Singapore,2020-01-31,16,6,5,FALSE
+NA,Singapore,2020-02-01,18,2,5,FALSE
+NA,Singapore,2020-02-02,18,0,6,FALSE
+NA,Singapore,2020-02-03,18,0,6,FALSE
+NA,Singapore,2020-02-04,24,6,6,FALSE
+NA,Singapore,2020-02-05,24,0,6,FALSE
+NA,Singapore,2020-02-06,28,4,6,FALSE
+NA,South Korea,2020-01-20,0,0,4,FALSE
+NA,South Korea,2020-01-21,0,0,4,FALSE
+NA,South Korea,2020-01-22,1,1,4,FALSE
+NA,South Korea,2020-01-23,1,0,4,FALSE
+NA,South Korea,2020-01-24,2,1,4,FALSE
+NA,South Korea,2020-01-25,2,0,4,FALSE
+NA,South Korea,2020-01-26,3,1,5,FALSE
+NA,South Korea,2020-01-27,4,1,5,FALSE
+NA,South Korea,2020-01-28,4,0,5,FALSE
+NA,South Korea,2020-01-29,4,0,5,FALSE
+NA,South Korea,2020-01-30,4,0,5,FALSE
+NA,South Korea,2020-01-31,11,7,5,FALSE
+NA,South Korea,2020-02-01,12,1,5,FALSE
+NA,South Korea,2020-02-02,15,3,6,FALSE
+NA,South Korea,2020-02-03,15,0,6,FALSE
+NA,South Korea,2020-02-04,16,1,6,FALSE
+NA,South Korea,2020-02-05,16,0,6,FALSE
+NA,South Korea,2020-02-06,23,7,6,FALSE
+NA,Spain,2020-01-20,0,0,4,FALSE
+NA,Spain,2020-01-21,0,0,4,FALSE
+NA,Spain,2020-01-22,0,0,4,FALSE
+NA,Spain,2020-01-23,0,0,4,FALSE
+NA,Spain,2020-01-24,0,0,4,FALSE
+NA,Spain,2020-01-25,0,0,4,FALSE
+NA,Spain,2020-01-26,0,0,5,FALSE
+NA,Spain,2020-01-27,0,0,5,FALSE
+NA,Spain,2020-01-28,0,0,5,FALSE
+NA,Spain,2020-01-29,0,0,5,FALSE
+NA,Spain,2020-01-30,0,0,5,FALSE
+NA,Spain,2020-01-31,0,0,5,FALSE
+NA,Spain,2020-02-01,1,1,5,FALSE
+NA,Spain,2020-02-02,1,0,6,FALSE
+NA,Spain,2020-02-03,1,0,6,FALSE
+NA,Spain,2020-02-04,1,0,6,FALSE
+NA,Spain,2020-02-05,1,0,6,FALSE
+NA,Spain,2020-02-06,1,0,6,FALSE
+NA,Sri Lanka,2020-01-20,0,0,4,FALSE
+NA,Sri Lanka,2020-01-21,0,0,4,FALSE
+NA,Sri Lanka,2020-01-22,0,0,4,FALSE
+NA,Sri Lanka,2020-01-23,0,0,4,FALSE
+NA,Sri Lanka,2020-01-24,0,0,4,FALSE
+NA,Sri Lanka,2020-01-25,0,0,4,FALSE
+NA,Sri Lanka,2020-01-26,0,0,5,FALSE
+NA,Sri Lanka,2020-01-27,1,1,5,FALSE
+NA,Sri Lanka,2020-01-28,1,0,5,FALSE
+NA,Sri Lanka,2020-01-29,1,0,5,FALSE
+NA,Sri Lanka,2020-01-30,1,0,5,FALSE
+NA,Sri Lanka,2020-01-31,1,0,5,FALSE
+NA,Sri Lanka,2020-02-01,1,0,5,FALSE
+NA,Sri Lanka,2020-02-02,1,0,6,FALSE
+NA,Sri Lanka,2020-02-03,1,0,6,FALSE
+NA,Sri Lanka,2020-02-04,1,0,6,FALSE
+NA,Sri Lanka,2020-02-05,1,0,6,FALSE
+NA,Sri Lanka,2020-02-06,1,0,6,FALSE
+NA,Sweden,2020-01-20,0,0,4,FALSE
+NA,Sweden,2020-01-21,0,0,4,FALSE
+NA,Sweden,2020-01-22,0,0,4,FALSE
+NA,Sweden,2020-01-23,0,0,4,FALSE
+NA,Sweden,2020-01-24,0,0,4,FALSE
+NA,Sweden,2020-01-25,0,0,4,FALSE
+NA,Sweden,2020-01-26,0,0,5,FALSE
+NA,Sweden,2020-01-27,0,0,5,FALSE
+NA,Sweden,2020-01-28,0,0,5,FALSE
+NA,Sweden,2020-01-29,0,0,5,FALSE
+NA,Sweden,2020-01-30,0,0,5,FALSE
+NA,Sweden,2020-01-31,1,1,5,FALSE
+NA,Sweden,2020-02-01,1,0,5,FALSE
+NA,Sweden,2020-02-02,1,0,6,FALSE
+NA,Sweden,2020-02-03,1,0,6,FALSE
+NA,Sweden,2020-02-04,1,0,6,FALSE
+NA,Sweden,2020-02-05,1,0,6,FALSE
+NA,Sweden,2020-02-06,1,0,6,FALSE
+NA,Thailand,2020-01-20,0,0,4,FALSE
+NA,Thailand,2020-01-21,2,2,4,FALSE
+NA,Thailand,2020-01-22,2,0,4,FALSE
+NA,Thailand,2020-01-23,3,1,4,FALSE
+NA,Thailand,2020-01-24,5,2,4,FALSE
+NA,Thailand,2020-01-25,7,2,4,FALSE
+NA,Thailand,2020-01-26,8,1,5,FALSE
+NA,Thailand,2020-01-27,8,0,5,FALSE
+NA,Thailand,2020-01-28,14,6,5,FALSE
+NA,Thailand,2020-01-29,14,0,5,FALSE
+NA,Thailand,2020-01-30,14,0,5,FALSE
+NA,Thailand,2020-01-31,19,5,5,FALSE
+NA,Thailand,2020-02-01,19,0,5,FALSE
+NA,Thailand,2020-02-02,19,0,6,FALSE
+NA,Thailand,2020-02-03,19,0,6,FALSE
+NA,Thailand,2020-02-04,25,6,6,FALSE
+NA,Thailand,2020-02-05,25,0,6,FALSE
+NA,Thailand,2020-02-06,25,0,6,FALSE
+NA,UK,2020-01-20,0,0,4,FALSE
+NA,UK,2020-01-21,0,0,4,FALSE
+NA,UK,2020-01-22,0,0,4,FALSE
+NA,UK,2020-01-23,0,0,4,FALSE
+NA,UK,2020-01-24,0,0,4,FALSE
+NA,UK,2020-01-25,0,0,4,FALSE
+NA,UK,2020-01-26,0,0,5,FALSE
+NA,UK,2020-01-27,0,0,5,FALSE
+NA,UK,2020-01-28,0,0,5,FALSE
+NA,UK,2020-01-29,0,0,5,FALSE
+NA,UK,2020-01-30,0,0,5,FALSE
+NA,UK,2020-01-31,2,2,5,FALSE
+NA,UK,2020-02-01,2,0,5,FALSE
+NA,UK,2020-02-02,2,0,6,FALSE
+NA,UK,2020-02-03,2,0,6,FALSE
+NA,UK,2020-02-04,2,0,6,FALSE
+NA,UK,2020-02-05,2,0,6,FALSE
+NA,UK,2020-02-06,2,0,6,FALSE
+NA,United Arab Emirates,2020-01-20,0,0,4,FALSE
+NA,United Arab Emirates,2020-01-21,0,0,4,FALSE
+NA,United Arab Emirates,2020-01-22,0,0,4,FALSE
+NA,United Arab Emirates,2020-01-23,0,0,4,FALSE
+NA,United Arab Emirates,2020-01-24,0,0,4,FALSE
+NA,United Arab Emirates,2020-01-25,0,0,4,FALSE
+NA,United Arab Emirates,2020-01-26,0,0,5,FALSE
+NA,United Arab Emirates,2020-01-27,0,0,5,FALSE
+NA,United Arab Emirates,2020-01-28,0,0,5,FALSE
+NA,United Arab Emirates,2020-01-29,4,4,5,FALSE
+NA,United Arab Emirates,2020-01-30,4,0,5,FALSE
+NA,United Arab Emirates,2020-01-31,4,0,5,FALSE
+NA,United Arab Emirates,2020-02-01,4,0,5,FALSE
+NA,United Arab Emirates,2020-02-02,5,1,6,FALSE
+NA,United Arab Emirates,2020-02-03,5,0,6,FALSE
+NA,United Arab Emirates,2020-02-04,5,0,6,FALSE
+NA,United Arab Emirates,2020-02-05,5,0,6,FALSE
+NA,United Arab Emirates,2020-02-06,5,0,6,FALSE
+NA,Vietnam,2020-01-20,0,0,4,FALSE
+NA,Vietnam,2020-01-21,0,0,4,FALSE
+NA,Vietnam,2020-01-22,0,0,4,FALSE
+NA,Vietnam,2020-01-23,2,2,4,FALSE
+NA,Vietnam,2020-01-24,2,0,4,FALSE
+NA,Vietnam,2020-01-25,2,0,4,FALSE
+NA,Vietnam,2020-01-26,2,0,5,FALSE
+NA,Vietnam,2020-01-27,2,0,5,FALSE
+NA,Vietnam,2020-01-28,2,0,5,FALSE
+NA,Vietnam,2020-01-29,2,0,5,FALSE
+NA,Vietnam,2020-01-30,2,0,5,FALSE
+NA,Vietnam,2020-01-31,2,0,5,FALSE
+NA,Vietnam,2020-02-01,6,4,5,FALSE
+NA,Vietnam,2020-02-02,6,0,6,FALSE
+NA,Vietnam,2020-02-03,8,2,6,FALSE
+NA,Vietnam,2020-02-04,8,0,6,FALSE
+NA,Vietnam,2020-02-05,8,0,6,FALSE
+NA,Vietnam,2020-02-06,10,2,6,FALSE

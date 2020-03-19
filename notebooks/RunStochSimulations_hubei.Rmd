@@ -1,0 +1,743 @@
+---
+title: "R Notebook"
+output:
+  html_document:
+    df_print: paged
+editor_options:
+  chunk_output_type: console
+---
+
+
+```{r setup, include=FALSE, message = F, warning = F, results = F}
+require(knitr)
+require(tidyverse)
+require(gridExtra)
+# require(rstan)
+library(RColorBrewer)
+library(RgoogleMaps)
+
+options(scipen = 999)
+knitr::opts_knit$set(root.dir = "..")
+knitr::opts_chunk$set(echo=TRUE)
+
+#knitr::opts_knit$set(root.dir = normalizePath("../"))
+
+source("../R/DataLoadUtils.r")
+source("../R/BasicEpiAnalyses.r")
+source("../R/DataUtils.r")
+# source("R/DataLoadUtils.r")
+# source("R/BasicEpiAnalyses.r")
+# source("R/DataUtils.r")
+
+```
+
+
+
+
+
+
+## AGE ADJUSTMENT
+Age distribution data source: https://population.un.org/wpp/Download/Standard/Population/
+
+```{r}
+
+china_agepop <- get_age_pop("China")
+bangladesh_agepop <- get_age_pop("Bangladesh")
+#kutupalong_agepop <- get_age_pop("Bangladesh")
+
+
+
+```
+
+
+
+
+## ESTIMATE R0    
+
+Now we can estimate the reproductive number ($R$), using a very simple method based on the rate of exponential growth of the epidemic. This requires that we know the generation time distribution for nCoV, which we don't know exactly. We account for this uncertainty in our calculations and come up with the following distribution of Rs consistent with our data: 
+
+```{r,warning=FALSE,message=FALSE,echo=FALSE, eval=FALSE}
+library(R0) # nice little package implementing a bunch of R estimation techniques
+## 1) assuming a 8.4 day mean generation time, sd of 3.8 (approx. exponential for now). Borrowed from SARS in Singapore.
+## source: https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2760158/#R8
+## 2) estimate below is based on dates of confirmed cases, but IDEALLY should be dates of onset or dates of hospital visits
+## we are essentially assuming time for hospital visits to case confirmation is the same across all cases
+## 3) MORE IMPORTANTLY, cases should be local transmission cases, not imported cases. MODIFY WHEN DATA IS AVAILABLE!!!!
+
+Rest_loc_confirmed <- vector("list", length=n_loc)
+mGT <- generation.time("gamma", c(mean=7.5,sd=3))
+for (i in 1:n_loc){
+    loc <- locations_full[i]
+    incid_ <- as.numeric((incid_data_ %>% filter(Province_State == loc))$Incidence)
+    #if (max(incid_)<7) next
+    begin_ <- as.integer(min(which(incid_>0), na.rm=TRUE))
+    end_ <- as.integer(max((begin_ + 7), which.max(incid_)[1]))
+    Rest_loc_confirmed[[i]] <- est.R0.EG(incid_, GT=mGT, begin=begin_, end=end_)
+}
+point.estimates <- sapply(Rest_loc_confirmed,function(x) x$R)
+names(point.estimates) <- locations_full
+
+```
+
+From this we get an estimated $R$ of r my.Rest.confirmed$R in the range of r my.Rest.confirmed$conf.int using the epi curve based on date of confirmed cases (IDEALLY SHOULD BE date of symptom onset, or date of hospital visit). This is a VERY simplistic (and imperfect) estimate and given the expansion of the epidemic to date, it probably isn't that high. Since we really don't know the generation time for nCoV, and we used the parameter estimated for SARS. We will now sample a bunch of different generation time distributions consistent with this to get a range of estimates for $R$.
+
+```{r, warning=FALSE, message=FALSE, echo=FALSE, eval=FALSE}
+set.seed(24514)
+
+n.sims <- 50
+mean.gen.times <- runif(n.sims,7,8) 
+sd.gen.times <- runif(n.sims,1,6) # this is fairly arbitrary at the moment
+
+R_locations <- data.frame(location = locations_full, R_mean=NA, R_lb=NA, R_ub=NA)
+
+for (n in 1:n_loc){
+     
+    loc <- locations_full[n]
+    incid_ <- as.numeric((incid_data_ %>% filter(Province_State == loc))$Incidence)
+    #if (max(incid_)<7) next
+    begin_ <- as.integer(min(which(incid_>0), na.rm=TRUE))
+    end_ <- as.integer(max((begin_ + 7), which.max(incid_)[1]))
+
+    Rests<- vector("list",length=n.sims)
+    for (i in 1:n.sims){
+      mGT <- generation.time("gamma", c(mean.gen.times[i], sd.gen.times[i]))
+      # could impute some of the onset dates here later rather than a single imputation
+      Rests[[i]] <- est.R0.EG(incid_, GT=mGT, begin=begin_, end=end_)
+    }
+    point.estimates <- sapply(Rests,function(x) x$R)
+    
+    R_locations[n, 2:4] <- round(c(mean(point.estimates), as.numeric(quantile(point.estimates,c(.025,.975)))),3)
+}
+
+
+Given these estimates of R what sort of progression may we expect in a 'homogeneous world' with a simple model starting from `r tail(incid_data_,1)[1]` moving forward a few weeks.
+
+```
+
+
+
+### Estimate Hospitalization Rate
+
+#### ~ Prob Hosp - Reported Case-adjusted
+
+```{r}
+
+# Prob hosp by age in Mainland China (soure: https://github.com/cmrivers/ncov/blob/master/COVID-19.pdf)
+ages_ <- c(0, 10, 20, 30, 40, 50, 60, 70, 80)
+ncases_age <- c(416, 549, 3619, 7600, 8571, 10008, 8583, 3918, 1408)
+cfr_age <- c(.002, .002, .002, .002, .004, .013, .036, .080, .148)
+ncases_age / sum(ncases_age)
+
+nage_china <- get_age_pop("China")
+nage_china
+nage_china / sum(nage_china)
+
+nage_china[9] <- sum(nage_china[9:11])
+nage_china <- nage_china[1:9]
+
+
+# Fatality OR - from justins estimates
+cfr_OR <- c(.10, .10, .10, .14, .16, 1, 5.88, 17.71) # will need updating
+names(cfr_OR) <- c("0-9", "10-19", "20-29", "30-39", "40-49", "50-59", "60-69", "70-100")
+
+
+p_hosp_age <- ncases_age / nage_china
+odds_hosp_age <- (p_hosp_age / (1-p_hosp_age))
+or_hosp_age <- odds_hosp_age / odds_hosp_age[6]
+
+
+# if assume 75% of those aged 70-80 are hospitalized, we can get the proportions ...
+#  x hosps age a = p_inf_hosp_age * p_infect * n_age
+p_inf_hosp_age_70 <- .75
+
+
+## Now we can get the probability of hospitalization by age
+p_infect  <- ncases_age[8]  / ( p_inf_hosp_age_70 * nage_china[8] )
+p_inf_hosp_age <- ncases_age / (p_infect * nage_china)
+p_inf_hosp_age
+
+
+## Now to check the overall hospitalization rate among infections estimate from this:
+n_infections <- ncases_age / p_inf_hosp_age
+n_infections
+sum(n_infections)
+sum(ncases_age)
+
+# overall prop hospitalized
+sum(ncases_age) / sum(n_infections)
+# This seems very high
+
+
+
+##-------------------------------------------------------------------
+## Try again with only Hubei
+pr_age <- c(.004, .004, .045, .131, .156, .22, .265, .126, .045, .005)
+names(pr_age) <- seq(0,90,10)
+
+nage_china <- get_age_pop("China")
+ncases_age <- round(pr_age*33367)
+nage_china_ <- nage_china
+nage_china_[8] <- sum(nage_china_[8:11])
+nage_china_ <- nage_china[-(9:11)]  
+
+ncases_age[8] <- sum(ncases_age[8:10])
+ncases_age <- ncases_age[-(9:10)]  
+
+p_hosp_age <- ncases_age / nage_china_
+odds_hosp_age <- (p_hosp_age / (1-p_hosp_age))
+or_hosp_age <- odds_hosp_age / odds_hosp_age[6]
+
+
+# if assume 75% of those aged 80+ are hospitalized, we can get the proportions ...
+#  x hosps age a = p_inf_hosp_age * p_infect * n_age
+p_inf_hosp_age_70 <- .75
+
+
+## Now we can get the probability of hospitalization by age
+p_infect  <- ncases_age[8]  / ( p_inf_hosp_age_70 * nage_china[8] )
+p_inf_hosp_age <- ncases_age / (p_infect * nage_china_)
+p_inf_hosp_age
+
+## Now to check the overall hospitalization rate among infections estimate from this:
+n_infections <- ncases_age / p_inf_hosp_age
+n_infections
+sum(n_infections)
+sum(ncases_age)
+
+# overall prop hospitalized
+sum(ncases_age) / sum(n_infections)
+# This seems a little high, but its a little more reasonable
+
+# We will use this as the high capture scenario
+p_inf_hosp_age_high <- p_inf_hosp_age
+p_hosp_china_high <- sum(p_inf_hosp_age_high * (nage_china_ / sum(nage_china_)))
+p_hosp_china_high
+```
+
+
+#### ~ Prob Hosp - CFR-adjusted
+Let's do it again but using CFR for age adjustment
+
+```{r}
+
+# assume prob hosp for 70+ is .75
+p_hosp_age70 <- .75 # if we wanted to get prob of death, this should be .15*.75
+odds_hosp_age70 <- (p_hosp_age70 / (1-p_hosp_age70))
+odds_hosp_age50 <- odds_hosp_age70 / cfr_OR[8]
+odds_hosp <- cfr_OR * odds_hosp_age50 
+p_inf_hosp_age <- odds_hosp / (1 + odds_hosp)
+
+# combine last X age groups
+nage_china <- get_age_pop("China")
+ncases_age <- round(pr_age*33367)
+ncases_age2 <- ncases_age
+ncases_age2[8] <- sum(ncases_age2[8:10])
+ncases_age2 <- ncases_age2[-(9:10)]
+
+nage_china2 <- nage_china
+nage_china2[8] <- sum(nage_china2[8:11])
+nage_china2 <- nage_china2[-(9:11)]
+
+## Now to check the overall hospitalization rate among infections estimate from this:
+n_infections <- ncases_age2 / p_inf_hosp_age
+n_infections
+sum(n_infections)
+sum(ncases_age2)
+
+# overall prop hospitalized
+sum(ncases_age2) / sum(n_infections)
+# age-adjusted hospitization rate is ~6%
+
+# double check with population structure
+sum(p_inf_hosp_age * (nage_china2 / sum(nage_china2)))
+# so about 14% of cases are being hospitalized in china, due to age structure
+
+# We will use this as the low capture scenario
+p_inf_hosp_age_low <- p_inf_hosp_age
+p_hosp_china_low <- sum(p_inf_hosp_age_low * (nage_china2 / sum(nage_china2)))
+p_hosp_china_low
+```
+
+This seems about right. we will use these estimates.
+
+
+#### ~ Prop hospitalized - Kutupalong
+Now we need to apply the population structure of Kutupalong to estimate proportion hospitalized there.
+
+```{r}
+
+pop_age <- read_csv("data/age_kutupalong.csv")
+age_smooth <- smooth.spline(pop_age$mid, pop_age$tot_per_year)
+pr_age <- predict(age_smooth, data.frame(mid=0:89)) %>% as.data.frame()
+pr_age <- pr_age %>% rename(age=mid, prop=mid.1) %>% mutate(prop = prop / sum(pr_age$mid.1))
+plot(pr_age$age, pr_age$prop)
+points(pop_age$mid, pop_age$tot_per_year, col="blue", pch=20)
+
+# Get age by 10yr groups
+pr_age <- pr_age %>% mutate(age10 = floor(age/10)*10)
+pr_age10 <- pr_age %>% group_by(age10) %>% summarise(pr10 = sum(prop)) %>%
+    mutate(age = paste0(age10, "-", age10+9))
+pr_age10_kutupalong <- as.numeric(pr_age10$pr10)
+pr_age10_kutupalong[8] <- sum(pr_age10_kutupalong[8:9])
+pr_age10_kutupalong <- pr_age10_kutupalong[-9]
+names(pr_age10_kutupalong) <- 0:(length(pr_age10_kutupalong)-1)
+
+# Apply to Kutupalong population structure - LOW capture
+p_hosp_kutupalong_low <- sum(p_inf_hosp_age_low * pr_age10_kutupalong)
+p_hosp_kutupalong_high <- sum(p_inf_hosp_age_high * pr_age10_kutupalong)
+print(p_hosp_kutupalong_low)
+print(p_hosp_kutupalong_high)
+
+p_hosp_kutupalong_low / p_hosp_china_low
+p_hosp_kutupalong_high / p_hosp_china_high
+
+
+
+```
+
+Based on this crude analysis, if we assume 75% of infections in those 70+ lead to hospitalization, and the odds of hospitalization given infection by age mirrors the odds of mortality by age, we find that the hospitalization rate in Kutupalong is likely to be between 4.9-9.2%, compared with 14.0-21.8% in China. From these estimates, it is reasonable to assume infections in Kutupalong are 35-43% as likely to result in a hositalization, as compared to China.
+
+
+## Set Up Model
+
+```{r}
+
+# Simulation specifics
+n.sims <- 50 # simulations per R
+run_time <- 200
+
+
+# bringing in simple model code for a stochastic model  
+source("R/StochasticSEIR_wHosp.R") 
+
+# Population Size - Kutupalong camp
+N <- 8000000
+
+
+# Transmission Characteristics ---------------------------------
+# we are going to assume recovery has mean of 7 days from infection
+# then we will use a beta consistent with our estimates from above
+# https://github.com/midas-network/COVID-19/tree/master/parameter_estimates/2019_novel_coronavirus
+
+# incubation period 5.2 days based on an estimate from Lauer et al. 2020
+sigma <- 1/5.2 
+# Time to hospitalization # Source: Hokkaido University
+rho   <- 1/2.7 
+# time from symptom onset to recovery  # Source: imperial college london
+#gamma <-  1/((7.5-1/sigma)*2) 
+#gamma <-  1/22.2
+gamma <-  1/11.1  # use half of the recovery interval
+# Time from hospitalization to discharge  # Source: Los Alamos Lab
+# We are assuming no hospital transmission for simplicity
+gamma2 <- 1/11.5
+
+# Proportion hospitalized, adjusted for age distribution. This assumes the low capture scenario for China
+# This assumes about half of cases reported in China may not actually require hospitalization
+prop_hosp <- p_hosp_china_high
+
+
+# R0 Values  ----------------------------------------------
+
+# Controlled transmission (resembling Hubei right now)
+R0_low <- runif(15, 1.25,1.6)
+
+# Moderate transmission
+R0_mid <- runif(15, 2.2,2.8)
+
+# Inflated transmission
+R0_high <- runif(15, 2.2*1.65, 2.8*1.65)
+
+
+# sample point estimates of our betas from above
+betas_low <- R0_low[sample(length(R0_low),n.sims,replace=T)] * gamma
+betas_mid <- R0_mid[sample(length(R0_mid),n.sims,replace=T)] * gamma
+betas_high <- R0_high[sample(length(R0_high),n.sims,replace=T)] * gamma
+
+
+```
+
+
+
+
+## MODEL - with Hospitalizations
+
+```{r,echo=FALSE}
+
+betas <- betas_low
+sim_res <- NULL
+for (b in seq_along(betas)){
+  for (i in 1:n.sims){
+    seeds <- 1#sample(10,1)
+    tmp = runStochasticSEIR(beta = betas[b], sigma = sigma, gamma = gamma, gamma2 = gamma2, rho = rho,
+                            prop_hosp = prop_hosp,
+                            initial.state = c(S=N-seeds*2,E=seeds,I=seeds,H=0,R=0,I_trk=0, H_trk=0),
+                            step.size = 1/8,
+                            freq.dependent = TRUE, 
+                            final.only = FALSE,
+                            max.time = run_time,
+                            import = NULL,
+                            import.step.size = 1)
+    
+    # get epi curve by aggregtating 
+    new.cases <- diff(tmp[,"I_trk"])
+    new.hosps <- diff(tmp[,"H_trk"])
+
+    days <- floor(tmp[,"time"])
+    days_m1 <- days[-1]
+    epi.curve <- tapply(new.cases,days_m1,sum) # sum up time steps by day
+    hosp.incid.curve <- tapply(new.hosps,days_m1,sum) # sum up time steps by day
+    hosp_daily_capac <- tapply(tmp[,"H"], days, max) # sum up time steps by day to get daily hospitalization capacities
+
+    sim_res <- bind_rows(sim_res, data.frame(sim=i, beta_ind=b, beta=betas[b], day=unique(days), seeds=seeds,
+                                             incid=epi.curve, incid_hosp = hosp.incid.curve, cum_cases=cumsum(epi.curve), 
+                                             cum_hosp=cumsum(hosp.incid.curve), curr_hosp = hosp_daily_capac))
+  }
+}
+
+start_date_ <- as.Date("2020-03-01")
+dates <- seq.Date(as.Date(start_date_), as.Date(start_date_)+run_time-1, by=1)
+
+sim_res$date <- start_date_ + sim_res$day
+sim_res <- sim_res %>% arrange(sim, beta) %>% 
+    mutate(sim_beta = paste0(sim, "-", beta_ind)) %>% 
+    mutate(sim_id = as.integer(as.factor(sim_beta)))
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=incid, group=sim_id, color=beta)) + 
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=cum_cases, group=sim_id, color=beta)) + 
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=curr_hosp, group=sim_id, color=beta)) + 
+    scale_colour_gradient(low="yellow", high="red") +
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=cum_hosp, group=sim_id, color=beta)) + 
+    scale_colour_gradient(low="yellow", high="red") +
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+
+# SUMMARIZE IT
+
+sim_res_low <- sim_res
+
+
+```
+
+
+
+#### Estimate for Mid R0   
+
+```{r}
+
+betas <- betas_mid
+sim_res <- NULL
+for (b in seq_along(betas)){
+  for (i in 1:n.sims){
+    seeds <- 1#sample(10,1)
+    tmp = runStochasticSEIR(beta = betas[b],
+                            sigma = sigma,
+                            gamma = gamma,
+                            gamma2 = gamma2,
+                            rho = rho,
+                            prop_hosp = prop_hosp,
+                            initial.state = c(S=N-seeds*2,E=seeds,I=seeds,H=0,R=0,I_trk=0, H_trk=0),
+                            step.size = 1/8,
+                            freq.dependent = TRUE,
+                            final.only = FALSE,
+                            max.time = run_time,
+                            import = NULL,
+                            import.step.size = 1)
+    
+    # get epi curve by aggregtating 
+    new.cases <- diff(tmp[,"I_trk"])
+    new.hosps <- diff(tmp[,"H_trk"])
+
+    days <- floor(tmp[,"time"])
+    days_m1 <- days[-1]
+    epi.curve <- tapply(new.cases,days_m1,sum) # sum up time steps by day
+    hosp.incid.curve <- tapply(new.hosps,days_m1,sum) # sum up time steps by day
+    hosp_daily_capac <- tapply(tmp[,"H"], days, max) # sum up time steps by day to get daily hospitalization capacities
+
+    sim_res <- bind_rows(sim_res, data.frame(sim=i, beta_ind=b, beta=betas[b], day=unique(days), seeds=seeds,
+                                             incid=epi.curve, incid_hosp = hosp.incid.curve, cum_cases=cumsum(epi.curve), 
+                                             cum_hosp=cumsum(hosp.incid.curve), curr_hosp = hosp_daily_capac))
+}}
+
+start_date_ <- as.Date("2020-03-01")
+dates <- seq.Date(as.Date(start_date_), as.Date(start_date_)+run_time-1, by=1)
+
+sim_res$date <- start_date_ + sim_res$day
+sim_res <- sim_res %>% arrange(sim, beta) %>% 
+    mutate(sim_beta = paste0(sim, "-", beta_ind)) %>% 
+    mutate(sim_id = as.integer(as.factor(sim_beta)))
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=incid, group=sim_id, color=beta)) + 
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=curr_hosp, group=sim_id, color=beta)) + 
+    scale_colour_gradient(low="yellow", high="red") +
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+
+# Summarize it 
+sim_res_mid <- sim_res
+
+
+```
+
+
+
+
+#### Estimate for High R0   
+
+```{r}
+
+betas <- betas_high
+sim_res <- NULL
+for (b in seq_along(betas)){
+  for (i in 1:n.sims){
+    seeds <- 1#sample(10,1)
+    tmp = runStochasticSEIR(beta = betas[b],
+                            sigma = sigma,
+                            gamma = gamma,
+                            gamma2 = gamma2,
+                            rho = rho,
+                            prop_hosp = prop_hosp,
+                            initial.state = c(S=N-seeds*2,E=seeds,I=seeds,H=0,R=0,I_trk=0, H_trk=0),
+                            step.size = 1/8,
+                            freq.dependent = TRUE,
+                            final.only = FALSE,
+                            max.time = run_time,
+                            import = NULL,
+                            import.step.size = 1)
+    
+    # get epi curve by aggregtating 
+    new.cases <- diff(tmp[,"I_trk"])
+    new.hosps <- diff(tmp[,"H_trk"])
+
+    days <- floor(tmp[,"time"])
+    days_m1 <- days[-1]
+    epi.curve <- tapply(new.cases,days_m1,sum) # sum up time steps by day
+    hosp.incid.curve <- tapply(new.hosps,days_m1,sum) # sum up time steps by day
+    hosp_daily_capac <- tapply(tmp[,"H"], days, max) # sum up time steps by day to get daily hospitalization capacities
+
+    sim_res <- bind_rows(sim_res, data.frame(sim=i, beta_ind=b, beta=betas[b], day=unique(days), seeds=seeds,
+                                             incid=epi.curve, incid_hosp = hosp.incid.curve, cum_cases=cumsum(epi.curve), 
+                                             cum_hosp=cumsum(hosp.incid.curve), curr_hosp = hosp_daily_capac))
+}}
+
+start_date_ <- as.Date("2020-03-01")
+dates <- seq.Date(as.Date(start_date_), as.Date(start_date_)+run_time-1, by=1)
+
+sim_res$date <- start_date_ + sim_res$day
+sim_res <- sim_res %>% arrange(sim, beta) %>% 
+    mutate(sim_beta = paste0(sim, "-", beta_ind)) %>% 
+    mutate(sim_id = as.integer(as.factor(sim_beta)))
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=incid, group=sim_id, color=beta)) + 
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+ggplot() +
+    geom_line(data=sim_res, aes(x=date, y=curr_hosp, group=sim_id, color=beta)) + 
+    scale_colour_gradient(low="yellow", high="red") +
+    #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+    theme_classic()
+
+sim_res_high <- sim_res
+
+
+```
+
+## SUMMARIZE RESULTS
+
+### ~ Combine results
+
+```{r}
+
+sim_res <- full_join(full_join(sim_res_low %>% mutate(scenario="Low Transmission"),
+                               sim_res_mid %>% mutate(scenario="Moderate Transmission")),
+                     sim_res_high %>% mutate(scenario="High Transmission"))
+sim_res$R <- sim_res$beta / gamma
+
+sim_res <- sim_res %>% mutate(scenario = factor(scenario, levels=c("Low Transmission", "Moderate Transmission", "High Transmission"), ordered = TRUE))
+
+write_csv(sim_res, "results/sim_res_Feb25.csv")
+sim_res <- read_csv("results/sim_res_Feb25.csv")
+
+```
+
+
+### 
+
+```{r}
+
+# Final Size - IN first 360 days
+summ_ <- sim_res %>% group_by(sim_beta, scenario) %>% summarise(final_size = max(cum_cases),
+                                                        max_daily_incid = max(incid),
+                                                        max_daily_hosp  = max(incid_hosp))
+final_size_low <- data.frame(mean = mean(summ_$final_size), 
+                             median = median(summ_$final_size),
+                             ll = quantile(summ_$final_size, prob=c(.0275)),
+                             ul = quantile(summ_$final_size, prob=c(.975)),
+                             finalsize10 = mean(summ_$final_size<=10),
+                             finalsize100 = mean(summ_$final_size<=100))
+hist(summ_$final_size, breaks=100)
+
+
+
+# First Date >10 cases
+day10case <- sim_res %>% filter(cum_cases>=10) %>% group_by(sim_beta, scenario) %>% summarize(minday = min(day)) 
+day10case_sum <- day10case %>% group_by(scenario) %>% 
+  summarize(mean = mean(minday), 
+            median = median(minday),
+            ll = quantile(minday, prob=c(.0275)),
+            ul = quantile(minday, prob=c(.975)))
+
+p_day10 <- ggplot(day10case, aes(x=minday, group=scenario, fill=scenario)) + 
+  geom_density(alpha=0.5) +
+  theme_classic() + 
+  coord_cartesian(xlim=c(0,50)) +
+  xlab("Day") +
+  ggtitle("Day on which cumulative cases reaches 10")
+p_day10
+
+
+# First Date >20 cases
+day20case <- sim_res %>% filter(cum_cases>=20) %>% group_by(sim_beta, scenario) %>% summarize(minday = min(day)) 
+day20case_sum <- day20case %>% group_by(scenario) %>% 
+  summarize(mean = mean(minday), 
+            median = median(minday),
+            ll = quantile(minday, prob=c(.0275)),
+            ul = quantile(minday, prob=c(.975)))
+
+p_day20 <- ggplot(day20case, aes(x=minday, group=scenario, fill=scenario)) + 
+  geom_density(alpha=0.5) +
+  theme_classic() + 
+  coord_cartesian(xlim=c(0,50)) +
+  xlab("Day") + 
+  theme(legend.position = c(0.8, 0.8)) +
+  ggtitle("Day on which cumulative cases reaches 20")
+p_day20
+
+```
+
+
+
+### ~ Plot Incidence Curve
+
+```{r}
+case_data <- read_csv("data/case_data.csv")
+hubei_cases <- case_data %>% filter(Province_State=="Hubei") %>% arrange(t)
+hubei_cases$est_infections <- hubei_cases$est_incid / .2
+
+# ggplot() +
+#     geom_line(data=sim_res, aes(x=date, y=incid, group=sim_id, color=beta)) + 
+#     #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+#     theme_classic()
+# 
+# ggplot() +
+#     geom_line(data=sim_res, aes(x=date, y=curr_hosp, group=sim_id, color=beta)) + 
+#     scale_colour_gradient(low="yellow", high="red") +
+#     #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
+#     theme_classic()
+
+
+sim_res_summ <- sim_res %>% group_by(scenario, day) %>% 
+  summarise(incid_mean = mean(incid),
+            cum_mean   = mean(cum_cases),
+            hosp_incid_mean = mean(incid_hosp),
+            hosp_cum_mean = mean(cum_hosp),
+            hosp_curr_mean = mean(curr_hosp),
+            
+            incid_ll = quantile(incid, prob=.0275),
+            cum_ll   = quantile(cum_cases, prob=.0275),
+            hosp_incid_ll = quantile(incid_hosp, prob=.0275),
+            hosp_cum_ll = quantile(cum_hosp, prob=.0275),
+            hosp_curr_ll = quantile(curr_hosp, prob=.0275),
+            
+            incid_ul = quantile(incid, prob=.975),
+            cum_ul   = quantile(cum_cases, prob=.975),
+            hosp_incid_ul = quantile(incid_hosp, prob=.975),
+            hosp_cum_ul = quantile(cum_hosp, prob=.975),
+            hosp_curr_ul = quantile(curr_hosp, prob=.975))
+
+
+ggplot(data=sim_res_summ, aes(x=day)) +
+    geom_line(aes(y=incid_mean, group=scenario, color=scenario)) + 
+    geom_ribbon(aes(ymin=incid_ll, ymax=incid_ul, group=scenario, fill=scenario), alpha=.3) + 
+    geom_line(data=hubei_cases, aes(x=0:(nrow(hubei_cases)-1), y=est_infections), color="grey50", alpha=.3, size=2) +
+    #scale_y_continuous(trans="log") +
+    theme_classic() + 
+    theme(legend.position = c(0.8, 0.7)) +
+    ylab("Daily cases") + xlab("Day") +
+  ggtitle("Daily case counts for simulated outbreaks, Kutupalong Camp")
+
+
+ggplot(data=sim_res_summ, aes(x=day)) +
+    geom_line(aes(y=hosp_incid_mean, group=scenario, color=scenario)) + 
+    geom_ribbon(aes(ymin=hosp_incid_ll, ymax=hosp_incid_ul, group=scenario, fill=scenario), alpha=.3) + 
+    geom_point(data=hubei_cases, aes(x=0:(nrow(hubei_cases)-1), y=est_incid), color="red", alpha=.25) +
+    #scale_y_continuous(trans="log") +
+    theme_classic() + 
+    theme(legend.position = c(0.8, 0.7)) +
+    ylab("Daily hospitalizations") + xlab("Day") +
+  ggtitle("Daily hospitizations for simulated outbreaks, Kutupalong Camp")
+
+
+
+ggplot(data=sim_res_summ, aes(x=day)) +
+    geom_line(aes(y=cum_mean, group=scenario, color=scenario)) + 
+    geom_ribbon(aes(ymin=cum_ll, ymax=cum_ul, group=scenario, fill=scenario), alpha=.3) + 
+    #scale_y_continuous(trans="log") +
+    theme_classic() + 
+    theme(legend.position = c(0.8, 0.7)) +
+    ylab("Cumulative daily cases") + xlab("Day") +
+  ggtitle("Cumulative case counts for simulated outbreaks, Kutupalong Camp")
+
+
+ggplot(data=sim_res_summ, aes(x=day)) +
+    geom_line(aes(y=hosp_incid_mean, group=scenario, color=scenario)) + 
+    geom_ribbon(aes(ymin=hosp_incid_ll, ymax=hosp_incid_ul, group=scenario, fill=scenario), alpha=.3) + 
+    #scale_y_continuous(trans="log") +
+    theme_classic() + 
+    theme(legend.position = c(0.8, 0.7)) +
+    ylab("Daily cases") + xlab("Day") +
+  ggtitle("Daily case counts for simulated outbreaks, Kutupalong Camp")
+
+
+ggplot(data=sim_res_summ, aes(x=day)) +
+    geom_line(aes(y=hosp_curr_mean, group=scenario, color=scenario)) + 
+    geom_ribbon(aes(ymin=hosp_curr_ll, ymax=hosp_curr_ul, group=scenario, fill=scenario), alpha=.3) + 
+    geom_hline(yintercept = 304, col="red", linetype="dashed") +
+    #scale_y_continuous(trans="log") +
+    theme_classic() + 
+    theme(legend.position = c(0.8, 0.7)) +
+    ylab("Current hospitalized") + xlab("Day") +
+    scale_color_brewer(palette = "Dark2") +
+    scale_fill_brewer(palette = "Dark2") +
+  ggtitle("Daily hospitalization counts for simulated outbreaks, Kutupalong Camp")
+
+
+
+
+```
+
+
+
+
+

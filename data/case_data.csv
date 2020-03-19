@@ -1,0 +1,1160 @@
+Country_Region,Province_State,t,Incidence,est_incid
+Hong Kong,Hong Kong,2020-01-22,0,NA
+Hong Kong,Hong Kong,2020-01-23,0,NA
+Hong Kong,Hong Kong,2020-01-24,0,NA
+Hong Kong,Hong Kong,2020-01-25,3,NA
+Hong Kong,Hong Kong,2020-01-26,3,NA
+Hong Kong,Hong Kong,2020-01-27,0,NA
+Hong Kong,Hong Kong,2020-01-28,0,NA
+Hong Kong,Hong Kong,2020-01-29,2,NA
+Hong Kong,Hong Kong,2020-01-30,0,NA
+Hong Kong,Hong Kong,2020-01-31,2,NA
+Hong Kong,Hong Kong,2020-02-01,1,NA
+Hong Kong,Hong Kong,2020-02-02,2,NA
+Hong Kong,Hong Kong,2020-02-04,2,NA
+Hong Kong,Hong Kong,2020-02-05,4,NA
+Hong Kong,Hong Kong,2020-02-06,3,NA
+Hong Kong,Hong Kong,2020-02-07,1,NA
+Hong Kong,Hong Kong,2020-02-08,1,NA
+Hong Kong,Hong Kong,2020-02-09,3,NA
+Hong Kong,Hong Kong,2020-02-10,9,NA
+Hong Kong,Hong Kong,2020-02-11,11,NA
+Hong Kong,Hong Kong,2020-02-12,1,NA
+Hong Kong,Hong Kong,2020-02-13,3,NA
+Hong Kong,Hong Kong,2020-02-14,3,NA
+Hong Kong,Hong Kong,2020-02-16,1,NA
+Hong Kong,Hong Kong,2020-02-17,3,NA
+Hong Kong,Hong Kong,2020-02-18,2,NA
+Hong Kong,Hong Kong,2020-02-19,1,NA
+Hong Kong,Hong Kong,2020-02-20,5,NA
+Hong Kong,Hong Kong,2020-02-21,0,NA
+Hong Kong,Hong Kong,2020-02-22,1,NA
+Hong Kong,Hong Kong,2020-02-23,5,NA
+Hong Kong,Hong Kong,2020-02-24,5,NA
+Hong Kong,Hong Kong,2020-02-25,5,NA
+Macau,Macau,2020-01-22,1,NA
+Macau,Macau,2020-01-23,1,NA
+Macau,Macau,2020-01-24,0,NA
+Macau,Macau,2020-01-25,0,NA
+Macau,Macau,2020-01-26,3,NA
+Macau,Macau,2020-01-27,1,NA
+Macau,Macau,2020-01-28,1,NA
+Macau,Macau,2020-01-29,0,NA
+Macau,Macau,2020-01-30,0,NA
+Macau,Macau,2020-01-31,0,NA
+Macau,Macau,2020-02-02,1,NA
+Macau,Macau,2020-02-04,2,NA
+Macau,Macau,2020-02-06,0,NA
+Macau,Macau,2020-02-12,0,NA
+Macau,Macau,2020-02-13,0,NA
+Macau,Macau,2020-02-16,0,NA
+Macau,Macau,2020-02-20,0,NA
+Macau,Macau,2020-02-25,0,NA
+Mainland China,Anhui,2020-01-22,1,NA
+Mainland China,Anhui,2020-01-23,8,NA
+Mainland China,Anhui,2020-01-24,6,NA
+Mainland China,Anhui,2020-01-25,24,NA
+Mainland China,Anhui,2020-01-26,21,NA
+Mainland China,Anhui,2020-01-27,10,NA
+Mainland China,Anhui,2020-01-28,36,NA
+Mainland China,Anhui,2020-01-29,46,NA
+Mainland China,Anhui,2020-01-30,48,NA
+Mainland China,Anhui,2020-01-31,37,NA
+Mainland China,Anhui,2020-02-01,60,NA
+Mainland China,Anhui,2020-02-02,43,NA
+Mainland China,Anhui,2020-02-03,68,NA
+Mainland China,Anhui,2020-02-04,72,NA
+Mainland China,Anhui,2020-02-05,50,NA
+Mainland China,Anhui,2020-02-06,61,NA
+Mainland China,Anhui,2020-02-07,74,NA
+Mainland China,Anhui,2020-02-08,68,NA
+Mainland China,Anhui,2020-02-09,46,NA
+Mainland China,Anhui,2020-02-10,51,NA
+Mainland China,Anhui,2020-02-11,30,NA
+Mainland China,Anhui,2020-02-12,29,NA
+Mainland China,Anhui,2020-02-13,21,NA
+Mainland China,Anhui,2020-02-14,24,NA
+Mainland China,Anhui,2020-02-15,16,NA
+Mainland China,Anhui,2020-02-16,12,NA
+Mainland China,Anhui,2020-02-17,11,NA
+Mainland China,Anhui,2020-02-18,9,NA
+Mainland China,Anhui,2020-02-19,4,NA
+Mainland China,Anhui,2020-02-20,1,NA
+Mainland China,Anhui,2020-02-21,1,NA
+Mainland China,Anhui,2020-02-22,1,NA
+Mainland China,Anhui,2020-02-23,0,NA
+Mainland China,Anhui,2020-02-24,0,NA
+Mainland China,Anhui,2020-02-25,0,NA
+Mainland China,Beijing,2020-01-22,14,NA
+Mainland China,Beijing,2020-01-23,8,NA
+Mainland China,Beijing,2020-01-24,14,NA
+Mainland China,Beijing,2020-01-25,5,NA
+Mainland China,Beijing,2020-01-26,27,NA
+Mainland China,Beijing,2020-01-27,12,NA
+Mainland China,Beijing,2020-01-28,11,NA
+Mainland China,Beijing,2020-01-29,20,NA
+Mainland China,Beijing,2020-01-30,3,NA
+Mainland China,Beijing,2020-01-31,25,NA
+Mainland China,Beijing,2020-02-01,29,NA
+Mainland China,Beijing,2020-02-02,23,NA
+Mainland China,Beijing,2020-02-03,21,NA
+Mainland China,Beijing,2020-02-04,16,NA
+Mainland China,Beijing,2020-02-05,25,NA
+Mainland China,Beijing,2020-02-06,21,NA
+Mainland China,Beijing,2020-02-07,23,NA
+Mainland China,Beijing,2020-02-08,18,NA
+Mainland China,Beijing,2020-02-09,11,NA
+Mainland China,Beijing,2020-02-10,11,NA
+Mainland China,Beijing,2020-02-11,5,NA
+Mainland China,Beijing,2020-02-12,10,NA
+Mainland China,Beijing,2020-02-13,14,NA
+Mainland China,Beijing,2020-02-14,6,NA
+Mainland China,Beijing,2020-02-15,3,NA
+Mainland China,Beijing,2020-02-16,5,NA
+Mainland China,Beijing,2020-02-17,1,NA
+Mainland China,Beijing,2020-02-18,6,NA
+Mainland China,Beijing,2020-02-19,6,NA
+Mainland China,Beijing,2020-02-20,2,NA
+Mainland China,Beijing,2020-02-21,1,NA
+Mainland China,Beijing,2020-02-22,3,NA
+Mainland China,Beijing,2020-02-23,0,NA
+Mainland China,Beijing,2020-02-24,0,NA
+Mainland China,Beijing,2020-02-25,1,NA
+Mainland China,Chongqing,2020-01-22,6,NA
+Mainland China,Chongqing,2020-01-23,3,NA
+Mainland China,Chongqing,2020-01-24,18,NA
+Mainland China,Chongqing,2020-01-25,30,NA
+Mainland China,Chongqing,2020-01-26,18,NA
+Mainland China,Chongqing,2020-01-27,35,NA
+Mainland China,Chongqing,2020-01-28,22,NA
+Mainland China,Chongqing,2020-01-29,15,NA
+Mainland China,Chongqing,2020-01-30,35,NA
+Mainland China,Chongqing,2020-01-31,29,NA
+Mainland China,Chongqing,2020-02-01,36,NA
+Mainland China,Chongqing,2020-02-02,53,NA
+Mainland China,Chongqing,2020-02-03,37,NA
+Mainland China,Chongqing,2020-02-04,29,NA
+Mainland China,Chongqing,2020-02-05,23,NA
+Mainland China,Chongqing,2020-02-06,22,NA
+Mainland China,Chongqing,2020-02-07,15,NA
+Mainland China,Chongqing,2020-02-08,2,NA
+Mainland China,Chongqing,2020-02-09,40,NA
+Mainland China,Chongqing,2020-02-10,18,NA
+Mainland China,Chongqing,2020-02-11,19,NA
+Mainland China,Chongqing,2020-02-12,13,NA
+Mainland China,Chongqing,2020-02-13,11,NA
+Mainland China,Chongqing,2020-02-14,8,NA
+Mainland China,Chongqing,2020-02-15,7,NA
+Mainland China,Chongqing,2020-02-16,7,NA
+Mainland China,Chongqing,2020-02-17,2,NA
+Mainland China,Chongqing,2020-02-18,2,NA
+Mainland China,Chongqing,2020-02-19,5,NA
+Mainland China,Chongqing,2020-02-20,7,NA
+Mainland China,Chongqing,2020-02-21,5,NA
+Mainland China,Chongqing,2020-02-22,1,NA
+Mainland China,Chongqing,2020-02-23,2,NA
+Mainland China,Chongqing,2020-02-24,1,NA
+Mainland China,Chongqing,2020-02-25,0,NA
+Mainland China,Fujian,2020-01-22,1,NA
+Mainland China,Fujian,2020-01-23,4,NA
+Mainland China,Fujian,2020-01-24,5,NA
+Mainland China,Fujian,2020-01-25,8,NA
+Mainland China,Fujian,2020-01-26,17,NA
+Mainland China,Fujian,2020-01-27,24,NA
+Mainland China,Fujian,2020-01-28,21,NA
+Mainland China,Fujian,2020-01-29,4,NA
+Mainland China,Fujian,2020-01-30,17,NA
+Mainland China,Fujian,2020-01-31,19,NA
+Mainland China,Fujian,2020-02-01,24,NA
+Mainland China,Fujian,2020-02-02,15,NA
+Mainland China,Fujian,2020-02-03,20,NA
+Mainland China,Fujian,2020-02-04,15,NA
+Mainland China,Fujian,2020-02-05,11,NA
+Mainland China,Fujian,2020-02-06,10,NA
+Mainland China,Fujian,2020-02-07,9,NA
+Mainland China,Fujian,2020-02-08,15,NA
+Mainland China,Fujian,2020-02-09,11,NA
+Mainland China,Fujian,2020-02-10,11,NA
+Mainland China,Fujian,2020-02-11,6,NA
+Mainland China,Fujian,2020-02-12,5,NA
+Mainland China,Fujian,2020-02-13,7,NA
+Mainland China,Fujian,2020-02-14,2,NA
+Mainland China,Fujian,2020-02-15,4,NA
+Mainland China,Fujian,2020-02-16,2,NA
+Mainland China,Fujian,2020-02-17,3,NA
+Mainland China,Fujian,2020-02-18,2,NA
+Mainland China,Fujian,2020-02-19,1,NA
+Mainland China,Fujian,2020-02-20,0,NA
+Mainland China,Fujian,2020-02-21,0,NA
+Mainland China,Fujian,2020-02-22,0,NA
+Mainland China,Fujian,2020-02-23,0,NA
+Mainland China,Fujian,2020-02-24,0,NA
+Mainland China,Fujian,2020-02-25,1,NA
+Mainland China,Gansu,2020-01-22,0,NA
+Mainland China,Gansu,2020-01-23,0,NA
+Mainland China,Gansu,2020-01-24,0,NA
+Mainland China,Gansu,2020-01-25,2,NA
+Mainland China,Gansu,2020-01-26,3,NA
+Mainland China,Gansu,2020-01-27,7,NA
+Mainland China,Gansu,2020-01-28,5,NA
+Mainland China,Gansu,2020-01-29,5,NA
+Mainland China,Gansu,2020-01-30,2,NA
+Mainland China,Gansu,2020-01-31,3,NA
+Mainland China,Gansu,2020-02-01,11,NA
+Mainland China,Gansu,2020-02-02,11,NA
+Mainland China,Gansu,2020-02-03,4,NA
+Mainland China,Gansu,2020-02-04,2,NA
+Mainland China,Gansu,2020-02-05,5,NA
+Mainland China,Gansu,2020-02-07,5,NA
+Mainland China,Gansu,2020-02-08,12,NA
+Mainland China,Gansu,2020-02-09,4,NA
+Mainland China,Gansu,2020-02-10,0,NA
+Mainland China,Gansu,2020-02-11,3,NA
+Mainland China,Gansu,2020-02-12,1,NA
+Mainland China,Gansu,2020-02-13,3,NA
+Mainland China,Gansu,2020-02-15,0,NA
+Mainland China,Gansu,2020-02-16,0,NA
+Mainland China,Gansu,2020-02-17,1,NA
+Mainland China,Gansu,2020-02-18,0,NA
+Mainland China,Gansu,2020-02-19,0,NA
+Mainland China,Gansu,2020-02-20,0,NA
+Mainland China,Gansu,2020-02-21,0,NA
+Mainland China,Gansu,2020-02-23,0,NA
+Mainland China,Gansu,2020-02-24,0,NA
+Mainland China,Guangdong,2020-01-22,26,NA
+Mainland China,Guangdong,2020-01-23,6,NA
+Mainland China,Guangdong,2020-01-24,21,NA
+Mainland China,Guangdong,2020-01-25,25,NA
+Mainland China,Guangdong,2020-01-26,33,NA
+Mainland China,Guangdong,2020-01-27,40,NA
+Mainland China,Guangdong,2020-01-28,56,NA
+Mainland China,Guangdong,2020-01-29,70,NA
+Mainland China,Guangdong,2020-01-30,77,NA
+Mainland China,Guangdong,2020-01-31,82,NA
+Mainland China,Guangdong,2020-02-01,99,NA
+Mainland China,Guangdong,2020-02-02,97,NA
+Mainland China,Guangdong,2020-02-03,93,NA
+Mainland China,Guangdong,2020-02-04,88,NA
+Mainland China,Guangdong,2020-02-05,82,NA
+Mainland China,Guangdong,2020-02-06,75,NA
+Mainland China,Guangdong,2020-02-07,64,NA
+Mainland China,Guangdong,2020-02-08,61,NA
+Mainland China,Guangdong,2020-02-09,36,NA
+Mainland China,Guangdong,2020-02-10,28,NA
+Mainland China,Guangdong,2020-02-11,18,NA
+Mainland China,Guangdong,2020-02-12,42,NA
+Mainland China,Guangdong,2020-02-13,22,NA
+Mainland China,Guangdong,2020-02-14,20,NA
+Mainland China,Guangdong,2020-02-15,33,NA
+Mainland China,Guangdong,2020-02-16,22,NA
+Mainland China,Guangdong,2020-02-17,6,NA
+Mainland China,Guangdong,2020-02-18,6,NA
+Mainland China,Guangdong,2020-02-19,3,NA
+Mainland China,Guangdong,2020-02-20,1,NA
+Mainland China,Guangdong,2020-02-21,1,NA
+Mainland China,Guangdong,2020-02-22,6,NA
+Mainland China,Guangdong,2020-02-23,3,NA
+Mainland China,Guangdong,2020-02-24,3,NA
+Mainland China,Guangdong,2020-02-25,2,NA
+Mainland China,Guangxi,2020-01-22,2,NA
+Mainland China,Guangxi,2020-01-23,3,NA
+Mainland China,Guangxi,2020-01-24,18,NA
+Mainland China,Guangxi,2020-01-25,0,NA
+Mainland China,Guangxi,2020-01-26,13,NA
+Mainland China,Guangxi,2020-01-27,10,NA
+Mainland China,Guangxi,2020-01-28,5,NA
+Mainland China,Guangxi,2020-01-29,7,NA
+Mainland China,Guangxi,2020-01-30,20,NA
+Mainland China,Guangxi,2020-01-31,9,NA
+Mainland China,Guangxi,2020-02-01,13,NA
+Mainland China,Guangxi,2020-02-02,11,NA
+Mainland China,Guangxi,2020-02-03,16,NA
+Mainland China,Guangxi,2020-02-04,12,NA
+Mainland China,Guangxi,2020-02-05,11,NA
+Mainland China,Guangxi,2020-02-06,18,NA
+Mainland China,Guangxi,2020-02-07,4,NA
+Mainland China,Guangxi,2020-02-08,11,NA
+Mainland China,Guangxi,2020-02-09,12,NA
+Mainland China,Guangxi,2020-02-10,15,NA
+Mainland China,Guangxi,2020-02-11,5,NA
+Mainland China,Guangxi,2020-02-12,7,NA
+Mainland China,Guangxi,2020-02-13,0,NA
+Mainland China,Guangxi,2020-02-14,4,NA
+Mainland China,Guangxi,2020-02-15,9,NA
+Mainland China,Guangxi,2020-02-16,2,NA
+Mainland China,Guangxi,2020-02-17,1,NA
+Mainland China,Guangxi,2020-02-18,4,NA
+Mainland China,Guangxi,2020-02-19,2,NA
+Mainland China,Guangxi,2020-02-20,1,NA
+Mainland China,Guangxi,2020-02-21,1,NA
+Mainland China,Guangxi,2020-02-22,3,NA
+Mainland China,Guangxi,2020-02-23,0,NA
+Mainland China,Guangxi,2020-02-24,2,NA
+Mainland China,Guangxi,2020-02-25,1,NA
+Mainland China,Guizhou,2020-01-22,1,NA
+Mainland China,Guizhou,2020-01-23,2,NA
+Mainland China,Guizhou,2020-01-24,0,NA
+Mainland China,Guizhou,2020-01-25,1,NA
+Mainland China,Guizhou,2020-01-26,1,NA
+Mainland China,Guizhou,2020-01-27,2,NA
+Mainland China,Guizhou,2020-01-28,2,NA
+Mainland China,Guizhou,2020-01-29,0,NA
+Mainland China,Guizhou,2020-01-30,3,NA
+Mainland China,Guizhou,2020-01-31,17,NA
+Mainland China,Guizhou,2020-02-02,9,NA
+Mainland China,Guizhou,2020-02-03,8,NA
+Mainland China,Guizhou,2020-02-04,12,NA
+Mainland China,Guizhou,2020-02-05,6,NA
+Mainland China,Guizhou,2020-02-06,7,NA
+Mainland China,Guizhou,2020-02-07,10,NA
+Mainland China,Guizhou,2020-02-08,8,NA
+Mainland China,Guizhou,2020-02-09,10,NA
+Mainland China,Guizhou,2020-02-10,10,NA
+Mainland China,Guizhou,2020-02-11,18,NA
+Mainland China,Guizhou,2020-02-12,6,NA
+Mainland China,Guizhou,2020-02-13,2,NA
+Mainland China,Guizhou,2020-02-14,5,NA
+Mainland China,Guizhou,2020-02-15,3,NA
+Mainland China,Guizhou,2020-02-16,1,NA
+Mainland China,Guizhou,2020-02-17,2,NA
+Mainland China,Guizhou,2020-02-18,0,NA
+Mainland China,Guizhou,2020-02-19,0,NA
+Mainland China,Guizhou,2020-02-20,0,NA
+Mainland China,Guizhou,2020-02-21,0,NA
+Mainland China,Guizhou,2020-02-22,0,NA
+Mainland China,Guizhou,2020-02-23,0,NA
+Mainland China,Guizhou,2020-02-25,0,NA
+Mainland China,Hainan,2020-01-22,4,NA
+Mainland China,Hainan,2020-01-23,1,NA
+Mainland China,Hainan,2020-01-24,3,NA
+Mainland China,Hainan,2020-01-25,11,NA
+Mainland China,Hainan,2020-01-26,3,NA
+Mainland China,Hainan,2020-01-27,11,NA
+Mainland China,Hainan,2020-01-28,7,NA
+Mainland China,Hainan,2020-01-29,3,NA
+Mainland China,Hainan,2020-01-30,3,NA
+Mainland China,Hainan,2020-01-31,6,NA
+Mainland China,Hainan,2020-02-01,10,NA
+Mainland China,Hainan,2020-02-02,2,NA
+Mainland China,Hainan,2020-02-03,8,NA
+Mainland China,Hainan,2020-02-04,8,NA
+Mainland China,Hainan,2020-02-05,19,NA
+Mainland China,Hainan,2020-02-06,7,NA
+Mainland China,Hainan,2020-02-07,11,NA
+Mainland China,Hainan,2020-02-08,7,NA
+Mainland China,Hainan,2020-02-09,7,NA
+Mainland China,Hainan,2020-02-10,7,NA
+Mainland China,Hainan,2020-02-11,6,NA
+Mainland China,Hainan,2020-02-12,13,NA
+Mainland China,Hainan,2020-02-13,0,NA
+Mainland China,Hainan,2020-02-14,2,NA
+Mainland China,Hainan,2020-02-15,3,NA
+Mainland China,Hainan,2020-02-16,0,NA
+Mainland China,Hainan,2020-02-17,1,NA
+Mainland China,Hainan,2020-02-18,0,NA
+Mainland China,Hainan,2020-02-19,5,NA
+Mainland China,Hainan,2020-02-20,0,NA
+Mainland China,Hainan,2020-02-21,0,NA
+Mainland China,Hainan,2020-02-22,0,NA
+Mainland China,Hainan,2020-02-23,0,NA
+Mainland China,Hainan,2020-02-24,0,NA
+Mainland China,Hainan,2020-02-25,0,NA
+Mainland China,Hebei,2020-01-22,1,NA
+Mainland China,Hebei,2020-01-23,0,NA
+Mainland China,Hebei,2020-01-24,1,NA
+Mainland China,Hebei,2020-01-25,6,NA
+Mainland China,Hebei,2020-01-26,5,NA
+Mainland China,Hebei,2020-01-27,5,NA
+Mainland China,Hebei,2020-01-28,15,NA
+Mainland China,Hebei,2020-01-29,15,NA
+Mainland China,Hebei,2020-01-30,17,NA
+Mainland China,Hebei,2020-01-31,17,NA
+Mainland China,Hebei,2020-02-01,14,NA
+Mainland China,Hebei,2020-02-02,8,NA
+Mainland China,Hebei,2020-02-03,9,NA
+Mainland China,Hebei,2020-02-04,13,NA
+Mainland China,Hebei,2020-02-05,9,NA
+Mainland China,Hebei,2020-02-06,22,NA
+Mainland China,Hebei,2020-02-07,15,NA
+Mainland China,Hebei,2020-02-08,23,NA
+Mainland China,Hebei,2020-02-09,11,NA
+Mainland China,Hebei,2020-02-10,12,NA
+Mainland China,Hebei,2020-02-11,21,NA
+Mainland China,Hebei,2020-02-12,12,NA
+Mainland China,Hebei,2020-02-13,14,NA
+Mainland China,Hebei,2020-02-14,18,NA
+Mainland China,Hebei,2020-02-15,8,NA
+Mainland China,Hebei,2020-02-16,9,NA
+Mainland China,Hebei,2020-02-17,1,NA
+Mainland China,Hebei,2020-02-18,5,NA
+Mainland China,Hebei,2020-02-19,0,NA
+Mainland China,Hebei,2020-02-20,1,NA
+Mainland China,Hebei,2020-02-21,1,NA
+Mainland China,Hebei,2020-02-22,1,NA
+Mainland China,Hebei,2020-02-23,2,NA
+Mainland China,Hebei,2020-02-24,0,NA
+Mainland China,Hebei,2020-02-25,0,NA
+Mainland China,Heilongjiang,2020-01-22,0,NA
+Mainland China,Heilongjiang,2020-01-23,0,NA
+Mainland China,Heilongjiang,2020-01-24,2,NA
+Mainland China,Heilongjiang,2020-01-25,5,NA
+Mainland China,Heilongjiang,2020-01-26,6,NA
+Mainland China,Heilongjiang,2020-01-27,6,NA
+Mainland China,Heilongjiang,2020-01-28,12,NA
+Mainland China,Heilongjiang,2020-01-29,5,NA
+Mainland China,Heilongjiang,2020-01-30,6,NA
+Mainland China,Heilongjiang,2020-01-31,15,NA
+Mainland China,Heilongjiang,2020-02-01,21,NA
+Mainland China,Heilongjiang,2020-02-02,15,NA
+Mainland China,Heilongjiang,2020-02-03,26,NA
+Mainland China,Heilongjiang,2020-02-04,34,NA
+Mainland China,Heilongjiang,2020-02-05,35,NA
+Mainland China,Heilongjiang,2020-02-06,37,NA
+Mainland China,Heilongjiang,2020-02-07,50,NA
+Mainland China,Heilongjiang,2020-02-08,18,NA
+Mainland China,Heilongjiang,2020-02-09,12,NA
+Mainland China,Heilongjiang,2020-02-10,24,NA
+Mainland China,Heilongjiang,2020-02-11,29,NA
+Mainland China,Heilongjiang,2020-02-12,18,NA
+Mainland China,Heilongjiang,2020-02-13,17,NA
+Mainland China,Heilongjiang,2020-02-14,24,NA
+Mainland China,Heilongjiang,2020-02-15,6,NA
+Mainland China,Heilongjiang,2020-02-16,20,NA
+Mainland China,Heilongjiang,2020-02-17,12,NA
+Mainland China,Heilongjiang,2020-02-18,7,NA
+Mainland China,Heilongjiang,2020-02-19,6,NA
+Mainland China,Heilongjiang,2020-02-20,6,NA
+Mainland China,Heilongjiang,2020-02-21,3,NA
+Mainland China,Heilongjiang,2020-02-22,0,NA
+Mainland China,Heilongjiang,2020-02-23,1,NA
+Mainland China,Heilongjiang,2020-02-24,0,NA
+Mainland China,Heilongjiang,2020-02-25,0,NA
+Mainland China,Henan,2020-01-22,5,NA
+Mainland China,Henan,2020-01-23,0,NA
+Mainland China,Henan,2020-01-24,4,NA
+Mainland China,Henan,2020-01-25,23,NA
+Mainland China,Henan,2020-01-26,51,NA
+Mainland China,Henan,2020-01-27,45,NA
+Mainland China,Henan,2020-01-28,40,NA
+Mainland China,Henan,2020-01-29,38,NA
+Mainland China,Henan,2020-01-30,72,NA
+Mainland China,Henan,2020-01-31,74,NA
+Mainland China,Henan,2020-02-01,70,NA
+Mainland China,Henan,2020-02-02,71,NA
+Mainland China,Henan,2020-02-03,73,NA
+Mainland China,Henan,2020-02-04,109,NA
+Mainland China,Henan,2020-02-05,89,NA
+Mainland China,Henan,2020-02-06,87,NA
+Mainland China,Henan,2020-02-07,63,NA
+Mainland China,Henan,2020-02-08,67,NA
+Mainland China,Henan,2020-02-09,52,NA
+Mainland China,Henan,2020-02-10,40,NA
+Mainland China,Henan,2020-02-11,32,NA
+Mainland China,Henan,2020-02-12,30,NA
+Mainland China,Henan,2020-02-13,34,NA
+Mainland China,Henan,2020-02-14,15,NA
+Mainland China,Henan,2020-02-15,28,NA
+Mainland China,Henan,2020-02-16,19,NA
+Mainland China,Henan,2020-02-17,15,NA
+Mainland China,Henan,2020-02-18,11,NA
+Mainland China,Henan,2020-02-19,5,NA
+Mainland China,Henan,2020-02-20,3,NA
+Mainland China,Henan,2020-02-21,2,NA
+Mainland China,Henan,2020-02-22,3,NA
+Mainland China,Henan,2020-02-23,1,NA
+Mainland China,Henan,2020-02-24,0,NA
+Mainland China,Henan,2020-02-25,0,NA
+Mainland China,Hubei,2019-12-01,1,0
+Mainland China,Hubei,2020-01-10,40,16.06611535563593
+Mainland China,Hubei,2020-01-15,0,22.79530593910468
+Mainland China,Hubei,2020-01-16,0,25.539974026803122
+Mainland China,Hubei,2020-01-17,17,26.13122407309811
+Mainland China,Hubei,2020-01-18,59,24.714918831699606
+Mainland China,Hubei,2020-01-19,77,24.939255745444655
+Mainland China,Hubei,2020-01-22,246,78.53709634317761
+Mainland China,Hubei,2020-01-23,0,127.38974516963856
+Mainland China,Hubei,2020-01-24,105,198.4662482164208
+Mainland China,Hubei,2020-01-25,212,299.3418054150653
+Mainland China,Hubei,2020-01-26,297,440.46583337309994
+Mainland China,Hubei,2020-01-27,365,632.5361694340247
+Mainland China,Hubei,2020-01-28,2131,887.1864778423328
+Mainland China,Hubei,2020-01-29,0,1217.5993146731093
+Mainland China,Hubei,2020-01-30,1349,1637.0769415870736
+Mainland China,Hubei,2020-01-31,903,2145.0200739506454
+Mainland China,Hubei,2020-02-01,1347,2694.812276348428
+Mainland China,Hubei,2020-02-02,4024,3223.224477692358
+Mainland China,Hubei,2020-02-03,2345,3668.868658902462
+Mainland China,Hubei,2020-02-04,3156,3985.4597225125726
+Mainland China,Hubei,2020-02-05,2987,4137.509570552167
+Mainland China,Hubei,2020-02-06,2447,4093.025005626325
+Mainland China,Hubei,2020-02-07,2841,3870.9383864575466
+Mainland China,Hubei,2020-02-08,2147,3561.4171109559175
+Mainland China,Hubei,2020-02-09,2531,3264.057345142872
+Mainland China,Hubei,2020-02-10,2097,3046.032080248435
+Mainland China,Hubei,2020-02-11,1638,2884.6967039355513
+Mainland China,Hubei,2020-02-12,0,2730.2791968089587
+Mainland China,Hubei,2020-02-13,14840,2538.091742278695
+Mainland China,Hubei,2020-02-14,6200,2294.80037701346
+Mainland China,Hubei,2020-02-15,1843,2006.01486167244
+Mainland China,Hubei,2020-02-16,1933,1679.311178760494
+Mainland China,Hubei,2020-02-17,1807,1338.0684841258117
+Mainland China,Hubei,2020-02-18,1693,1024.3564099819268
+Mainland China,Hubei,2020-02-19,349,781.7812015672898
+Mainland China,Hubei,2020-02-20,411,629.360064061344
+Mainland China,Hubei,2020-02-21,220,528.8926963221238
+Mainland China,Hubei,2020-02-22,1422,427.9390150270483
+Mainland China,Hubei,2020-02-23,0,323.24327538548823
+Mainland China,Hubei,2020-02-24,203,448.17725166743185
+Mainland China,Hubei,2020-02-25,499,1156.8071019139752
+Mainland China,Hunan,2020-01-22,4,NA
+Mainland China,Hunan,2020-01-23,5,NA
+Mainland China,Hunan,2020-01-24,15,NA
+Mainland China,Hunan,2020-01-25,19,NA
+Mainland China,Hunan,2020-01-26,26,NA
+Mainland China,Hunan,2020-01-27,31,NA
+Mainland China,Hunan,2020-01-28,43,NA
+Mainland China,Hunan,2020-01-29,78,NA
+Mainland China,Hunan,2020-01-30,56,NA
+Mainland China,Hunan,2020-01-31,55,NA
+Mainland China,Hunan,2020-02-01,57,NA
+Mainland China,Hunan,2020-02-02,74,NA
+Mainland China,Hunan,2020-02-03,58,NA
+Mainland China,Hunan,2020-02-04,72,NA
+Mainland China,Hunan,2020-02-05,68,NA
+Mainland China,Hunan,2020-02-06,50,NA
+Mainland China,Hunan,2020-02-07,61,NA
+Mainland China,Hunan,2020-02-08,31,NA
+Mainland China,Hunan,2020-02-09,35,NA
+Mainland China,Hunan,2020-02-10,41,NA
+Mainland China,Hunan,2020-02-11,33,NA
+Mainland China,Hunan,2020-02-12,34,NA
+Mainland China,Hunan,2020-02-13,22,NA
+Mainland China,Hunan,2020-02-14,20,NA
+Mainland China,Hunan,2020-02-15,13,NA
+Mainland China,Hunan,2020-02-16,3,NA
+Mainland China,Hunan,2020-02-17,2,NA
+Mainland China,Hunan,2020-02-18,1,NA
+Mainland China,Hunan,2020-02-19,1,NA
+Mainland China,Hunan,2020-02-20,2,NA
+Mainland China,Hunan,2020-02-21,1,NA
+Mainland China,Hunan,2020-02-22,2,NA
+Mainland China,Hunan,2020-02-23,3,NA
+Mainland China,Hunan,2020-02-24,0,NA
+Mainland China,Hunan,2020-02-25,0,NA
+Mainland China,Inner Mongolia,2020-01-22,0,NA
+Mainland China,Inner Mongolia,2020-01-23,0,NA
+Mainland China,Inner Mongolia,2020-01-24,0,NA
+Mainland China,Inner Mongolia,2020-01-25,6,NA
+Mainland China,Inner Mongolia,2020-01-26,0,NA
+Mainland China,Inner Mongolia,2020-01-27,4,NA
+Mainland China,Inner Mongolia,2020-01-28,4,NA
+Mainland China,Inner Mongolia,2020-01-29,1,NA
+Mainland China,Inner Mongolia,2020-01-30,3,NA
+Mainland China,Inner Mongolia,2020-01-31,1,NA
+Mainland China,Inner Mongolia,2020-02-01,3,NA
+Mainland China,Inner Mongolia,2020-02-02,4,NA
+Mainland China,Inner Mongolia,2020-02-03,7,NA
+Mainland China,Inner Mongolia,2020-02-04,1,NA
+Mainland China,Inner Mongolia,2020-02-05,7,NA
+Mainland China,Inner Mongolia,2020-02-06,4,NA
+Mainland China,Inner Mongolia,2020-02-07,4,NA
+Mainland China,Inner Mongolia,2020-02-08,2,NA
+Mainland China,Inner Mongolia,2020-02-09,2,NA
+Mainland China,Inner Mongolia,2020-02-10,4,NA
+Mainland China,Inner Mongolia,2020-02-12,2,NA
+Mainland China,Inner Mongolia,2020-02-13,1,NA
+Mainland China,Inner Mongolia,2020-02-14,4,NA
+Mainland China,Inner Mongolia,2020-02-15,3,NA
+Mainland China,Inner Mongolia,2020-02-16,2,NA
+Mainland China,Inner Mongolia,2020-02-17,2,NA
+Mainland China,Inner Mongolia,2020-02-18,1,NA
+Mainland China,Inner Mongolia,2020-02-19,2,NA
+Mainland China,Inner Mongolia,2020-02-20,0,NA
+Mainland China,Inner Mongolia,2020-02-21,0,NA
+Mainland China,Inner Mongolia,2020-02-22,0,NA
+Mainland China,Inner Mongolia,2020-02-23,0,NA
+Mainland China,Inner Mongolia,2020-02-24,0,NA
+Mainland China,Inner Mongolia,2020-02-25,0,NA
+Mainland China,Jiangsu,2020-01-22,1,NA
+Mainland China,Jiangsu,2020-01-23,4,NA
+Mainland China,Jiangsu,2020-01-24,4,NA
+Mainland China,Jiangsu,2020-01-25,9,NA
+Mainland China,Jiangsu,2020-01-26,15,NA
+Mainland China,Jiangsu,2020-01-27,14,NA
+Mainland China,Jiangsu,2020-01-28,23,NA
+Mainland China,Jiangsu,2020-01-29,29,NA
+Mainland China,Jiangsu,2020-01-30,30,NA
+Mainland China,Jiangsu,2020-01-31,39,NA
+Mainland China,Jiangsu,2020-02-01,34,NA
+Mainland China,Jiangsu,2020-02-02,34,NA
+Mainland China,Jiangsu,2020-02-03,35,NA
+Mainland China,Jiangsu,2020-02-04,37,NA
+Mainland China,Jiangsu,2020-02-05,33,NA
+Mainland China,Jiangsu,2020-02-06,32,NA
+Mainland China,Jiangsu,2020-02-07,35,NA
+Mainland China,Jiangsu,2020-02-08,31,NA
+Mainland China,Jiangsu,2020-02-09,29,NA
+Mainland China,Jiangsu,2020-02-10,24,NA
+Mainland China,Jiangsu,2020-02-11,23,NA
+Mainland China,Jiangsu,2020-02-12,28,NA
+Mainland China,Jiangsu,2020-02-13,27,NA
+Mainland China,Jiangsu,2020-02-14,23,NA
+Mainland China,Jiangsu,2020-02-15,11,NA
+Mainland China,Jiangsu,2020-02-16,13,NA
+Mainland China,Jiangsu,2020-02-17,9,NA
+Mainland China,Jiangsu,2020-02-18,3,NA
+Mainland China,Jiangsu,2020-02-19,2,NA
+Mainland China,Jiangsu,2020-02-20,0,NA
+Mainland China,Jiangsu,2020-02-21,0,NA
+Mainland China,Jiangsu,2020-02-22,0,NA
+Mainland China,Jiangsu,2020-02-23,0,NA
+Mainland China,Jiangsu,2020-02-24,0,NA
+Mainland China,Jiangsu,2020-02-25,0,NA
+Mainland China,Jiangxi,2020-01-22,2,NA
+Mainland China,Jiangxi,2020-01-23,5,NA
+Mainland China,Jiangxi,2020-01-24,11,NA
+Mainland China,Jiangxi,2020-01-25,0,NA
+Mainland China,Jiangxi,2020-01-26,18,NA
+Mainland China,Jiangxi,2020-01-27,36,NA
+Mainland China,Jiangxi,2020-01-28,37,NA
+Mainland China,Jiangxi,2020-01-29,0,NA
+Mainland China,Jiangxi,2020-01-30,53,NA
+Mainland China,Jiangxi,2020-01-31,78,NA
+Mainland China,Jiangxi,2020-02-01,46,NA
+Mainland China,Jiangxi,2020-02-02,47,NA
+Mainland China,Jiangxi,2020-02-03,58,NA
+Mainland China,Jiangxi,2020-02-04,85,NA
+Mainland China,Jiangxi,2020-02-05,72,NA
+Mainland China,Jiangxi,2020-02-06,52,NA
+Mainland China,Jiangxi,2020-02-07,61,NA
+Mainland China,Jiangxi,2020-02-08,37,NA
+Mainland China,Jiangxi,2020-02-09,42,NA
+Mainland China,Jiangxi,2020-02-10,31,NA
+Mainland China,Jiangxi,2020-02-11,33,NA
+Mainland China,Jiangxi,2020-02-12,40,NA
+Mainland China,Jiangxi,2020-02-13,28,NA
+Mainland China,Jiangxi,2020-02-14,28,NA
+Mainland China,Jiangxi,2020-02-15,13,NA
+Mainland China,Jiangxi,2020-02-16,12,NA
+Mainland China,Jiangxi,2020-02-17,5,NA
+Mainland China,Jiangxi,2020-02-18,3,NA
+Mainland China,Jiangxi,2020-02-19,1,NA
+Mainland China,Jiangxi,2020-02-20,0,NA
+Mainland China,Jiangxi,2020-02-21,0,NA
+Mainland China,Jiangxi,2020-02-22,0,NA
+Mainland China,Jiangxi,2020-02-23,0,NA
+Mainland China,Jiangxi,2020-02-24,0,NA
+Mainland China,Jiangxi,2020-02-25,0,NA
+Mainland China,Jilin,2020-01-22,0,NA
+Mainland China,Jilin,2020-01-23,0,NA
+Mainland China,Jilin,2020-01-24,2,NA
+Mainland China,Jilin,2020-01-25,1,NA
+Mainland China,Jilin,2020-01-26,0,NA
+Mainland China,Jilin,2020-01-27,2,NA
+Mainland China,Jilin,2020-01-28,2,NA
+Mainland China,Jilin,2020-01-29,1,NA
+Mainland China,Jilin,2020-01-30,5,NA
+Mainland China,Jilin,2020-01-31,0,NA
+Mainland China,Jilin,2020-02-01,3,NA
+Mainland China,Jilin,2020-02-02,6,NA
+Mainland China,Jilin,2020-02-03,8,NA
+Mainland China,Jilin,2020-02-04,11,NA
+Mainland China,Jilin,2020-02-05,12,NA
+Mainland China,Jilin,2020-02-06,5,NA
+Mainland China,Jilin,2020-02-07,6,NA
+Mainland China,Jilin,2020-02-08,4,NA
+Mainland China,Jilin,2020-02-09,9,NA
+Mainland China,Jilin,2020-02-10,2,NA
+Mainland China,Jilin,2020-02-11,1,NA
+Mainland China,Jilin,2020-02-12,2,NA
+Mainland China,Jilin,2020-02-13,1,NA
+Mainland China,Jilin,2020-02-14,2,NA
+Mainland China,Jilin,2020-02-15,2,NA
+Mainland China,Jilin,2020-02-16,1,NA
+Mainland China,Jilin,2020-02-17,0,NA
+Mainland China,Jilin,2020-02-18,0,NA
+Mainland China,Jilin,2020-02-19,1,NA
+Mainland China,Jilin,2020-02-20,1,NA
+Mainland China,Jilin,2020-02-21,0,NA
+Mainland China,Jilin,2020-02-22,0,NA
+Mainland China,Jilin,2020-02-23,0,NA
+Mainland China,Jilin,2020-02-24,2,NA
+Mainland China,Jilin,2020-02-25,0,NA
+Mainland China,Liaoning,2020-01-22,2,NA
+Mainland China,Liaoning,2020-01-23,1,NA
+Mainland China,Liaoning,2020-01-24,1,NA
+Mainland China,Liaoning,2020-01-25,13,NA
+Mainland China,Liaoning,2020-01-26,4,NA
+Mainland China,Liaoning,2020-01-27,6,NA
+Mainland China,Liaoning,2020-01-28,7,NA
+Mainland China,Liaoning,2020-01-29,5,NA
+Mainland China,Liaoning,2020-01-30,2,NA
+Mainland China,Liaoning,2020-01-31,7,NA
+Mainland China,Liaoning,2020-02-01,16,NA
+Mainland China,Liaoning,2020-02-02,6,NA
+Mainland China,Liaoning,2020-02-03,4,NA
+Mainland China,Liaoning,2020-02-04,7,NA
+Mainland China,Liaoning,2020-02-05,8,NA
+Mainland China,Liaoning,2020-02-06,5,NA
+Mainland China,Liaoning,2020-02-07,5,NA
+Mainland China,Liaoning,2020-02-08,6,NA
+Mainland China,Liaoning,2020-02-09,2,NA
+Mainland China,Liaoning,2020-02-10,1,NA
+Mainland China,Liaoning,2020-02-11,3,NA
+Mainland China,Liaoning,2020-02-12,5,NA
+Mainland China,Liaoning,2020-02-13,1,NA
+Mainland China,Liaoning,2020-02-14,2,NA
+Mainland China,Liaoning,2020-02-15,0,NA
+Mainland China,Liaoning,2020-02-16,2,NA
+Mainland China,Liaoning,2020-02-17,0,NA
+Mainland China,Liaoning,2020-02-18,0,NA
+Mainland China,Liaoning,2020-02-19,0,NA
+Mainland China,Liaoning,2020-02-20,0,NA
+Mainland China,Liaoning,2020-02-21,0,NA
+Mainland China,Liaoning,2020-02-22,0,NA
+Mainland China,Liaoning,2020-02-23,0,NA
+Mainland China,Liaoning,2020-02-24,0,NA
+Mainland China,Liaoning,2020-02-25,0,NA
+Mainland China,Ningxia,2020-01-22,1,NA
+Mainland China,Ningxia,2020-01-23,0,NA
+Mainland China,Ningxia,2020-01-24,1,NA
+Mainland China,Ningxia,2020-01-25,1,NA
+Mainland China,Ningxia,2020-01-26,1,NA
+Mainland China,Ningxia,2020-01-27,3,NA
+Mainland China,Ningxia,2020-01-28,4,NA
+Mainland China,Ningxia,2020-01-29,1,NA
+Mainland China,Ningxia,2020-01-30,5,NA
+Mainland China,Ningxia,2020-01-31,4,NA
+Mainland China,Ningxia,2020-02-01,5,NA
+Mainland China,Ningxia,2020-02-02,2,NA
+Mainland China,Ningxia,2020-02-03,3,NA
+Mainland China,Ningxia,2020-02-04,3,NA
+Mainland China,Ningxia,2020-02-06,6,NA
+Mainland China,Ningxia,2020-02-07,3,NA
+Mainland China,Ningxia,2020-02-08,2,NA
+Mainland China,Ningxia,2020-02-09,0,NA
+Mainland China,Ningxia,2020-02-10,4,NA
+Mainland China,Ningxia,2020-02-11,4,NA
+Mainland China,Ningxia,2020-02-12,5,NA
+Mainland China,Ningxia,2020-02-13,6,NA
+Mainland China,Ningxia,2020-02-14,3,NA
+Mainland China,Ningxia,2020-02-15,3,NA
+Mainland China,Ningxia,2020-02-17,0,NA
+Mainland China,Ningxia,2020-02-18,0,NA
+Mainland China,Ningxia,2020-02-19,1,NA
+Mainland China,Ningxia,2020-02-20,0,NA
+Mainland China,Ningxia,2020-02-21,0,NA
+Mainland China,Ningxia,2020-02-23,0,NA
+Mainland China,Ningxia,2020-02-24,0,NA
+Mainland China,Ningxia,2020-02-25,0,NA
+Mainland China,Qinghai,2020-01-22,0,NA
+Mainland China,Qinghai,2020-01-23,0,NA
+Mainland China,Qinghai,2020-01-24,0,NA
+Mainland China,Qinghai,2020-01-25,0,NA
+Mainland China,Qinghai,2020-01-26,0,NA
+Mainland China,Qinghai,2020-01-27,5,NA
+Mainland China,Qinghai,2020-01-28,0,NA
+Mainland China,Qinghai,2020-01-29,0,NA
+Mainland China,Qinghai,2020-01-30,2,NA
+Mainland China,Qinghai,2020-01-31,0,NA
+Mainland China,Qinghai,2020-02-01,1,NA
+Mainland China,Qinghai,2020-02-02,2,NA
+Mainland China,Qinghai,2020-02-03,2,NA
+Mainland China,Qinghai,2020-02-04,2,NA
+Mainland China,Qinghai,2020-02-05,2,NA
+Mainland China,Qinghai,2020-02-06,1,NA
+Mainland China,Qinghai,2020-02-11,0,NA
+Mainland China,Qinghai,2020-02-12,0,NA
+Mainland China,Qinghai,2020-02-13,0,NA
+Mainland China,Qinghai,2020-02-15,0,NA
+Mainland China,Qinghai,2020-02-18,0,NA
+Mainland China,Qinghai,2020-02-19,0,NA
+Mainland China,Qinghai,2020-02-21,0,NA
+Mainland China,Shaanxi,2020-01-22,0,NA
+Mainland China,Shaanxi,2020-01-23,0,NA
+Mainland China,Shaanxi,2020-01-24,2,NA
+Mainland China,Shaanxi,2020-01-25,10,NA
+Mainland China,Shaanxi,2020-01-26,7,NA
+Mainland China,Shaanxi,2020-01-27,13,NA
+Mainland China,Shaanxi,2020-01-28,11,NA
+Mainland China,Shaanxi,2020-01-29,10,NA
+Mainland China,Shaanxi,2020-01-30,7,NA
+Mainland China,Shaanxi,2020-01-31,24,NA
+Mainland China,Shaanxi,2020-02-01,14,NA
+Mainland China,Shaanxi,2020-02-02,15,NA
+Mainland China,Shaanxi,2020-02-03,12,NA
+Mainland China,Shaanxi,2020-02-04,14,NA
+Mainland China,Shaanxi,2020-02-05,23,NA
+Mainland China,Shaanxi,2020-02-06,8,NA
+Mainland China,Shaanxi,2020-02-07,11,NA
+Mainland China,Shaanxi,2020-02-08,11,NA
+Mainland China,Shaanxi,2020-02-09,13,NA
+Mainland China,Shaanxi,2020-02-10,5,NA
+Mainland China,Shaanxi,2020-02-11,6,NA
+Mainland China,Shaanxi,2020-02-12,6,NA
+Mainland China,Shaanxi,2020-02-13,4,NA
+Mainland China,Shaanxi,2020-02-14,1,NA
+Mainland China,Shaanxi,2020-02-15,2,NA
+Mainland China,Shaanxi,2020-02-16,4,NA
+Mainland China,Shaanxi,2020-02-17,4,NA
+Mainland China,Shaanxi,2020-02-18,0,NA
+Mainland China,Shaanxi,2020-02-19,2,NA
+Mainland China,Shaanxi,2020-02-20,3,NA
+Mainland China,Shaanxi,2020-02-21,0,NA
+Mainland China,Shaanxi,2020-02-22,0,NA
+Mainland China,Shaanxi,2020-02-23,0,NA
+Mainland China,Shaanxi,2020-02-24,0,NA
+Mainland China,Shaanxi,2020-02-25,0,NA
+Mainland China,Shandong,2020-01-22,2,NA
+Mainland China,Shandong,2020-01-23,4,NA
+Mainland China,Shandong,2020-01-24,9,NA
+Mainland China,Shandong,2020-01-25,12,NA
+Mainland China,Shandong,2020-01-26,19,NA
+Mainland China,Shandong,2020-01-27,29,NA
+Mainland China,Shandong,2020-01-28,20,NA
+Mainland China,Shandong,2020-01-29,35,NA
+Mainland China,Shandong,2020-01-30,28,NA
+Mainland China,Shandong,2020-01-31,26,NA
+Mainland China,Shandong,2020-02-01,22,NA
+Mainland China,Shandong,2020-02-02,24,NA
+Mainland China,Shandong,2020-02-03,29,NA
+Mainland China,Shandong,2020-02-04,16,NA
+Mainland China,Shandong,2020-02-05,32,NA
+Mainland China,Shandong,2020-02-06,40,NA
+Mainland China,Shandong,2020-02-07,39,NA
+Mainland China,Shandong,2020-02-08,30,NA
+Mainland China,Shandong,2020-02-09,28,NA
+Mainland China,Shandong,2020-02-10,22,NA
+Mainland China,Shandong,2020-02-11,21,NA
+Mainland China,Shandong,2020-02-12,10,NA
+Mainland China,Shandong,2020-02-13,12,NA
+Mainland China,Shandong,2020-02-14,14,NA
+Mainland China,Shandong,2020-02-15,9,NA
+Mainland China,Shandong,2020-02-16,5,NA
+Mainland China,Shandong,2020-02-17,4,NA
+Mainland China,Shandong,2020-02-18,2,NA
+Mainland China,Shandong,2020-02-19,1,NA
+Mainland China,Shandong,2020-02-20,2,NA
+Mainland China,Shandong,2020-02-21,203,NA
+Mainland China,Shandong,2020-02-22,1,NA
+Mainland China,Shandong,2020-02-23,4,NA
+Mainland China,Shandong,2020-02-24,1,NA
+Mainland China,Shandong,2020-02-25,1,NA
+Mainland China,Shanghai,2020-01-22,9,NA
+Mainland China,Shanghai,2020-01-23,7,NA
+Mainland China,Shanghai,2020-01-24,4,NA
+Mainland China,Shanghai,2020-01-25,13,NA
+Mainland China,Shanghai,2020-01-26,7,NA
+Mainland China,Shanghai,2020-01-27,13,NA
+Mainland China,Shanghai,2020-01-28,13,NA
+Mainland China,Shanghai,2020-01-29,30,NA
+Mainland China,Shanghai,2020-01-30,16,NA
+Mainland China,Shanghai,2020-01-31,23,NA
+Mainland China,Shanghai,2020-02-01,34,NA
+Mainland China,Shanghai,2020-02-02,13,NA
+Mainland China,Shanghai,2020-02-03,21,NA
+Mainland China,Shanghai,2020-02-04,16,NA
+Mainland China,Shanghai,2020-02-05,24,NA
+Mainland China,Shanghai,2020-02-06,14,NA
+Mainland China,Shanghai,2020-02-07,20,NA
+Mainland China,Shanghai,2020-02-08,9,NA
+Mainland China,Shanghai,2020-02-09,7,NA
+Mainland China,Shanghai,2020-02-10,6,NA
+Mainland China,Shanghai,2020-02-11,4,NA
+Mainland China,Shanghai,2020-02-12,8,NA
+Mainland China,Shanghai,2020-02-13,4,NA
+Mainland China,Shanghai,2020-02-14,3,NA
+Mainland China,Shanghai,2020-02-15,8,NA
+Mainland China,Shanghai,2020-02-16,2,NA
+Mainland China,Shanghai,2020-02-17,5,NA
+Mainland China,Shanghai,2020-02-18,0,NA
+Mainland China,Shanghai,2020-02-19,0,NA
+Mainland China,Shanghai,2020-02-20,1,NA
+Mainland China,Shanghai,2020-02-21,0,NA
+Mainland China,Shanghai,2020-02-22,1,NA
+Mainland China,Shanghai,2020-02-23,0,NA
+Mainland China,Shanghai,2020-02-24,0,NA
+Mainland China,Shanghai,2020-02-25,1,NA
+Mainland China,Shanxi,2020-01-22,1,NA
+Mainland China,Shanxi,2020-01-23,0,NA
+Mainland China,Shanxi,2020-01-24,0,NA
+Mainland China,Shanxi,2020-01-25,5,NA
+Mainland China,Shanxi,2020-01-26,3,NA
+Mainland China,Shanxi,2020-01-27,4,NA
+Mainland China,Shanxi,2020-01-28,14,NA
+Mainland China,Shanxi,2020-01-29,0,NA
+Mainland China,Shanxi,2020-01-30,8,NA
+Mainland China,Shanxi,2020-01-31,4,NA
+Mainland China,Shanxi,2020-02-01,8,NA
+Mainland China,Shanxi,2020-02-02,19,NA
+Mainland China,Shanxi,2020-02-03,8,NA
+Mainland China,Shanxi,2020-02-04,7,NA
+Mainland China,Shanxi,2020-02-05,0,NA
+Mainland China,Shanxi,2020-02-06,15,NA
+Mainland China,Shanxi,2020-02-07,8,NA
+Mainland China,Shanxi,2020-02-08,11,NA
+Mainland China,Shanxi,2020-02-09,4,NA
+Mainland China,Shanxi,2020-02-11,5,NA
+Mainland China,Shanxi,2020-02-12,2,NA
+Mainland China,Shanxi,2020-02-13,0,NA
+Mainland China,Shanxi,2020-02-14,1,NA
+Mainland China,Shanxi,2020-02-15,1,NA
+Mainland China,Shanxi,2020-02-16,1,NA
+Mainland China,Shanxi,2020-02-17,1,NA
+Mainland China,Shanxi,2020-02-18,1,NA
+Mainland China,Shanxi,2020-02-19,0,NA
+Mainland China,Shanxi,2020-02-20,1,NA
+Mainland China,Shanxi,2020-02-21,0,NA
+Mainland China,Shanxi,2020-02-22,0,NA
+Mainland China,Shanxi,2020-02-23,0,NA
+Mainland China,Shanxi,2020-02-24,1,NA
+Mainland China,Shanxi,2020-02-25,0,NA
+Mainland China,Sichuan,2020-01-22,5,NA
+Mainland China,Sichuan,2020-01-23,3,NA
+Mainland China,Sichuan,2020-01-24,7,NA
+Mainland China,Sichuan,2020-01-25,13,NA
+Mainland China,Sichuan,2020-01-26,16,NA
+Mainland China,Sichuan,2020-01-27,25,NA
+Mainland China,Sichuan,2020-01-28,21,NA
+Mainland China,Sichuan,2020-01-29,18,NA
+Mainland China,Sichuan,2020-01-30,34,NA
+Mainland China,Sichuan,2020-01-31,35,NA
+Mainland China,Sichuan,2020-02-01,30,NA
+Mainland China,Sichuan,2020-02-02,24,NA
+Mainland China,Sichuan,2020-02-03,23,NA
+Mainland China,Sichuan,2020-02-04,28,NA
+Mainland China,Sichuan,2020-02-05,19,NA
+Mainland China,Sichuan,2020-02-06,20,NA
+Mainland China,Sichuan,2020-02-07,23,NA
+Mainland China,Sichuan,2020-02-08,20,NA
+Mainland China,Sichuan,2020-02-09,22,NA
+Mainland China,Sichuan,2020-02-10,19,NA
+Mainland China,Sichuan,2020-02-11,12,NA
+Mainland China,Sichuan,2020-02-12,19,NA
+Mainland China,Sichuan,2020-02-13,15,NA
+Mainland China,Sichuan,2020-02-14,12,NA
+Mainland China,Sichuan,2020-02-15,7,NA
+Mainland China,Sichuan,2020-02-16,11,NA
+Mainland China,Sichuan,2020-02-17,14,NA
+Mainland China,Sichuan,2020-02-18,13,NA
+Mainland China,Sichuan,2020-02-19,6,NA
+Mainland China,Sichuan,2020-02-20,6,NA
+Mainland China,Sichuan,2020-02-21,5,NA
+Mainland China,Sichuan,2020-02-22,1,NA
+Mainland China,Sichuan,2020-02-23,0,NA
+Mainland China,Sichuan,2020-02-24,1,NA
+Mainland China,Sichuan,2020-02-25,2,NA
+Mainland China,Tianjin,2020-01-22,4,NA
+Mainland China,Tianjin,2020-01-23,0,NA
+Mainland China,Tianjin,2020-01-24,4,NA
+Mainland China,Tianjin,2020-01-25,2,NA
+Mainland China,Tianjin,2020-01-26,4,NA
+Mainland China,Tianjin,2020-01-27,9,NA
+Mainland China,Tianjin,2020-01-28,1,NA
+Mainland China,Tianjin,2020-01-29,3,NA
+Mainland China,Tianjin,2020-01-30,4,NA
+Mainland China,Tianjin,2020-01-31,1,NA
+Mainland China,Tianjin,2020-02-01,9,NA
+Mainland China,Tianjin,2020-02-02,7,NA
+Mainland China,Tianjin,2020-02-03,12,NA
+Mainland China,Tianjin,2020-02-04,7,NA
+Mainland China,Tianjin,2020-02-05,2,NA
+Mainland China,Tianjin,2020-02-06,10,NA
+Mainland China,Tianjin,2020-02-07,2,NA
+Mainland China,Tianjin,2020-02-08,7,NA
+Mainland China,Tianjin,2020-02-09,3,NA
+Mainland China,Tianjin,2020-02-10,4,NA
+Mainland China,Tianjin,2020-02-11,11,NA
+Mainland China,Tianjin,2020-02-12,6,NA
+Mainland China,Tianjin,2020-02-13,7,NA
+Mainland China,Tianjin,2020-02-14,1,NA
+Mainland China,Tianjin,2020-02-15,2,NA
+Mainland China,Tianjin,2020-02-16,2,NA
+Mainland China,Tianjin,2020-02-17,1,NA
+Mainland China,Tianjin,2020-02-18,3,NA
+Mainland China,Tianjin,2020-02-19,2,NA
+Mainland China,Tianjin,2020-02-20,1,NA
+Mainland China,Tianjin,2020-02-21,1,NA
+Mainland China,Tianjin,2020-02-22,3,NA
+Mainland China,Tianjin,2020-02-23,0,NA
+Mainland China,Tianjin,2020-02-24,0,NA
+Mainland China,Tianjin,2020-02-25,0,NA
+Mainland China,Tibet,2020-01-22,0,NA
+Mainland China,Tibet,2020-01-23,0,NA
+Mainland China,Tibet,2020-01-30,0,NA
+Mainland China,Tibet,2020-01-31,0,NA
+Mainland China,Tibet,2020-02-01,0,NA
+Mainland China,Tibet,2020-02-12,0,NA
+Mainland China,Xinjiang,2020-01-22,0,NA
+Mainland China,Xinjiang,2020-01-23,0,NA
+Mainland China,Xinjiang,2020-01-24,0,NA
+Mainland China,Xinjiang,2020-01-25,1,NA
+Mainland China,Xinjiang,2020-01-26,1,NA
+Mainland China,Xinjiang,2020-01-27,1,NA
+Mainland China,Xinjiang,2020-01-28,5,NA
+Mainland China,Xinjiang,2020-01-29,3,NA
+Mainland China,Xinjiang,2020-01-30,1,NA
+Mainland China,Xinjiang,2020-01-31,3,NA
+Mainland China,Xinjiang,2020-02-01,1,NA
+Mainland China,Xinjiang,2020-02-02,3,NA
+Mainland China,Xinjiang,2020-02-03,3,NA
+Mainland China,Xinjiang,2020-02-04,5,NA
+Mainland China,Xinjiang,2020-02-05,3,NA
+Mainland China,Xinjiang,2020-02-06,4,NA
+Mainland China,Xinjiang,2020-02-07,3,NA
+Mainland China,Xinjiang,2020-02-08,3,NA
+Mainland China,Xinjiang,2020-02-09,3,NA
+Mainland China,Xinjiang,2020-02-10,4,NA
+Mainland China,Xinjiang,2020-02-11,6,NA
+Mainland China,Xinjiang,2020-02-12,4,NA
+Mainland China,Xinjiang,2020-02-13,4,NA
+Mainland China,Xinjiang,2020-02-14,2,NA
+Mainland China,Xinjiang,2020-02-15,5,NA
+Mainland China,Xinjiang,2020-02-16,1,NA
+Mainland China,Xinjiang,2020-02-17,4,NA
+Mainland China,Xinjiang,2020-02-18,1,NA
+Mainland China,Xinjiang,2020-02-19,0,NA
+Mainland China,Xinjiang,2020-02-20,0,NA
+Mainland China,Xinjiang,2020-02-21,0,NA
+Mainland China,Xinjiang,2020-02-22,0,NA
+Mainland China,Xinjiang,2020-02-23,0,NA
+Mainland China,Xinjiang,2020-02-24,0,NA
+Mainland China,Yunnan,2020-01-22,1,NA
+Mainland China,Yunnan,2020-01-23,1,NA
+Mainland China,Yunnan,2020-01-24,3,NA
+Mainland China,Yunnan,2020-01-25,6,NA
+Mainland China,Yunnan,2020-01-26,5,NA
+Mainland China,Yunnan,2020-01-27,10,NA
+Mainland China,Yunnan,2020-01-28,18,NA
+Mainland China,Yunnan,2020-01-29,11,NA
+Mainland China,Yunnan,2020-01-30,15,NA
+Mainland China,Yunnan,2020-01-31,13,NA
+Mainland China,Yunnan,2020-02-01,10,NA
+Mainland China,Yunnan,2020-02-02,12,NA
+Mainland China,Yunnan,2020-02-03,12,NA
+Mainland China,Yunnan,2020-02-04,5,NA
+Mainland China,Yunnan,2020-02-05,6,NA
+Mainland China,Yunnan,2020-02-06,5,NA
+Mainland China,Yunnan,2020-02-07,5,NA
+Mainland China,Yunnan,2020-02-08,0,NA
+Mainland China,Yunnan,2020-02-09,3,NA
+Mainland China,Yunnan,2020-02-10,8,NA
+Mainland China,Yunnan,2020-02-11,4,NA
+Mainland China,Yunnan,2020-02-12,1,NA
+Mainland China,Yunnan,2020-02-13,2,NA
+Mainland China,Yunnan,2020-02-14,6,NA
+Mainland China,Yunnan,2020-02-15,6,NA
+Mainland China,Yunnan,2020-02-16,3,NA
+Mainland China,Yunnan,2020-02-17,0,NA
+Mainland China,Yunnan,2020-02-18,1,NA
+Mainland China,Yunnan,2020-02-19,0,NA
+Mainland China,Yunnan,2020-02-20,2,NA
+Mainland China,Yunnan,2020-02-21,0,NA
+Mainland China,Yunnan,2020-02-22,0,NA
+Mainland China,Yunnan,2020-02-23,0,NA
+Mainland China,Yunnan,2020-02-24,0,NA
+Mainland China,Yunnan,2020-02-25,0,NA
+Mainland China,Zhejiang,2020-01-22,10,NA
+Mainland China,Zhejiang,2020-01-23,17,NA
+Mainland China,Zhejiang,2020-01-24,16,NA
+Mainland China,Zhejiang,2020-01-25,19,NA
+Mainland China,Zhejiang,2020-01-26,42,NA
+Mainland China,Zhejiang,2020-01-27,24,NA
+Mainland China,Zhejiang,2020-01-28,45,NA
+Mainland China,Zhejiang,2020-01-29,123,NA
+Mainland China,Zhejiang,2020-01-30,132,NA
+Mainland China,Zhejiang,2020-01-31,110,NA
+Mainland China,Zhejiang,2020-02-01,61,NA
+Mainland China,Zhejiang,2020-02-02,62,NA
+Mainland China,Zhejiang,2020-02-03,63,NA
+Mainland China,Zhejiang,2020-02-04,105,NA
+Mainland China,Zhejiang,2020-02-05,66,NA
+Mainland China,Zhejiang,2020-02-06,59,NA
+Mainland China,Zhejiang,2020-02-07,52,NA
+Mainland China,Zhejiang,2020-02-08,42,NA
+Mainland China,Zhejiang,2020-02-09,27,NA
+Mainland China,Zhejiang,2020-02-10,17,NA
+Mainland China,Zhejiang,2020-02-11,25,NA
+Mainland China,Zhejiang,2020-02-12,14,NA
+Mainland China,Zhejiang,2020-02-13,14,NA
+Mainland China,Zhejiang,2020-02-14,10,NA
+Mainland China,Zhejiang,2020-02-15,7,NA
+Mainland China,Zhejiang,2020-02-16,5,NA
+Mainland China,Zhejiang,2020-02-17,4,NA
+Mainland China,Zhejiang,2020-02-18,1,NA
+Mainland China,Zhejiang,2020-02-19,2,NA
+Mainland China,Zhejiang,2020-02-20,1,NA
+Mainland China,Zhejiang,2020-02-21,28,NA
+Mainland China,Zhejiang,2020-02-22,2,NA
+Mainland China,Zhejiang,2020-02-23,0,NA
+Mainland China,Zhejiang,2020-02-24,0,NA
+Mainland China,Zhejiang,2020-02-25,0,NA
+Taiwan,Taiwan,2020-01-22,1,NA
+Taiwan,Taiwan,2020-01-23,0,NA
+Taiwan,Taiwan,2020-01-24,2,NA
+Taiwan,Taiwan,2020-01-25,0,NA
+Taiwan,Taiwan,2020-01-26,1,NA
+Taiwan,Taiwan,2020-01-27,1,NA
+Taiwan,Taiwan,2020-01-28,3,NA
+Taiwan,Taiwan,2020-01-29,0,NA
+Taiwan,Taiwan,2020-01-30,1,NA
+Taiwan,Taiwan,2020-01-31,1,NA
+Taiwan,Taiwan,2020-02-04,1,NA
+Taiwan,Taiwan,2020-02-06,5,NA
+Taiwan,Taiwan,2020-02-08,1,NA
+Taiwan,Taiwan,2020-02-09,1,NA
+Taiwan,Taiwan,2020-02-14,0,NA
+Taiwan,Taiwan,2020-02-15,0,NA
+Taiwan,Taiwan,2020-02-16,2,NA
+Taiwan,Taiwan,2020-02-17,2,NA
+Taiwan,Taiwan,2020-02-19,1,NA
+Taiwan,Taiwan,2020-02-20,1,NA
+Taiwan,Taiwan,2020-02-21,2,NA
+Taiwan,Taiwan,2020-02-23,2,NA
+Taiwan,Taiwan,2020-02-24,2,NA
+Taiwan,Taiwan,2020-02-25,1,NA
+NA,Hubei,2019-12-02,NA,9.02369590741737e-5
+NA,Hubei,2019-12-03,NA,0.0013535543861126055
+NA,Hubei,2019-12-04,NA,0.005865402339821291
+NA,Hubei,2019-12-05,NA,0.015765296531622536
+NA,Hubei,2019-12-06,NA,0.032389180681308014
+NA,Hubei,2019-12-07,NA,0.05549755447536009
+NA,Hubei,2019-12-08,NA,0.08452895080750582
+NA,Hubei,2019-12-09,NA,0.11991266652264884
+NA,Hubei,2019-12-10,NA,0.1660206683158566
+NA,Hubei,2019-12-11,NA,0.22891925616892278
+NA,Hubei,2019-12-12,NA,0.3139369103130327
+NA,Hubei,2019-12-13,NA,0.4195308886419449
+NA,Hubei,2019-12-14,NA,0.5383486924891723
+NA,Hubei,2019-12-15,NA,0.6629896221354079
+NA,Hubei,2019-12-16,NA,0.7945947744579804
+NA,Hubei,2019-12-17,NA,0.9484428170248802
+NA,Hubei,2019-12-18,NA,1.142150114892618
+NA,Hubei,2019-12-19,NA,1.3854214056547942
+NA,Hubei,2019-12-20,NA,1.661762870981324
+NA,Hubei,2019-12-21,NA,1.9452240910724097
+NA,Hubei,2019-12-22,NA,2.2151047742587284
+NA,Hubei,2019-12-23,NA,2.4893716490940054
+NA,Hubei,2019-12-24,NA,2.8136342942059454
+NA,Hubei,2019-12-25,NA,3.2324767135474026
+NA,Hubei,2019-12-26,NA,3.7447276459136773
+NA,Hubei,2019-12-27,NA,4.285213031603288
+NA,Hubei,2019-12-28,NA,4.780515236396138
+NA,Hubei,2019-12-29,NA,5.200396990078723
+NA,Hubei,2019-12-30,NA,5.634234052761379
+NA,Hubei,2019-12-31,NA,6.207498594052048
+NA,Hubei,2020-01-01,NA,7.0147350464595775
+NA,Hubei,2020-01-02,NA,7.967639326806946
+NA,Hubei,2020-01-03,NA,8.867431877511876
+NA,Hubei,2020-01-04,NA,9.526959048127836
+NA,Hubei,2020-01-05,NA,9.986460465618904
+NA,Hubei,2020-01-06,NA,10.555114696286992
+NA,Hubei,2020-01-07,NA,11.5671665684078
+NA,Hubei,2020-01-08,NA,13.128611477504919
+NA,Hubei,2020-01-09,NA,14.814318779955244
+NA,Hubei,2020-01-11,NA,16.505924341108823
+NA,Hubei,2020-01-12,NA,16.624502237175193
+NA,Hubei,2020-01-13,NA,17.355763246297727
+NA,Hubei,2020-01-14,NA,19.53776012869301
+NA,Hubei,2020-01-20,NA,31.181182420954656
+NA,Hubei,2020-01-21,NA,47.73244937227605
