@@ -275,7 +275,7 @@ sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="high
 
 R0_val <- "low"
 sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -328,7 +328,7 @@ rm(sim_res)
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
 write_csv(sim_res_full, 
           file.path("results", project, paste0("sim_res_low_", 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
@@ -343,7 +343,7 @@ betas <- betas_mid
 
 R0_val <- "mid"
 sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -396,7 +396,7 @@ sim_res_mid <- sim_res_full
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
 write_csv(sim_res_mid, 
           file.path("results", project, paste0("sim_res_mid", 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
@@ -412,7 +412,7 @@ betas <- betas_high
 
 R0_val <- "high"
 sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -464,7 +464,7 @@ sim_res_high <- sim_res_full
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
 write_csv(sim_res_high,
           file.path("results", project, paste0("sim_res_high_", 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
@@ -487,10 +487,10 @@ sim_res <- sim_res %>% filter(!is.na(sim))
 
 write_csv(sim_res, 
           file.path("results", project, paste0("sim_res_", 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- read_csv(file.path("results", project, paste0("sim_res_", 
-                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 sim_res <- sim_res %>% 
   mutate(scenario = factor(scenario, 
                            levels=c("Low Transmission", "Moderate Transmission", 
