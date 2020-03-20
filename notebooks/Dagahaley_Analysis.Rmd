@@ -164,13 +164,13 @@ p_data <- bind_rows(p_data, data.frame(Location = stringr::str_to_title(project)
 # Make some boxplots
 fills <- c("1"="maroon", "2"="gold")
 cols <- c("1"="darkred", "2"="goldenrod1")
-ggplot(p_data, aes(x=Location, y=p_severe, fill=factor(col_), colour=factor(col_))) +
-  geom_boxplot() + 
-  scale_color_manual(values=c("darkred", "goldenrod4")) +
-  scale_fill_manual(values=c("maroon", "goldenrod1")) +
-  ylab("Proportion Severe") +
-  theme(legend.position = "none")
-  
+plot_severity <- ggplot(p_data, aes(x=Location, y=p_severe, fill=factor(col_), colour=factor(col_))) +
+                          geom_boxplot() + 
+                          scale_color_manual(values=c("darkred", "goldenrod4")) +
+                          scale_fill_manual(values=c("maroon", "goldenrod1")) +
+                          ylab("Proportion Severe") +
+                          theme(legend.position = "none")
+                        
 
 ```
 
@@ -513,7 +513,7 @@ write_csv(sim_res,
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 sim_res <- read_csv(file.path("results", project, paste0("sim_res_", 
                       month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 sim_res <- sim_res %>% 
@@ -524,9 +524,11 @@ sim_res <- sim_res %>%
 
 
 
+
+
 ## TABLE 1  
         
-```{r}
+```{r, echo=FALSE}
 
 # Final Size - IN first 550 days
 summ_ <- sim_res %>% as.data.frame() %>% group_by(sim_beta, scenario) %>% 
@@ -604,7 +606,7 @@ deaths <- summ_ %>% filter(final_size>=100) %>%
 
 # Summarize day cum cases exceeds 100
 hospexceeds <- sim_res %>% group_by(scenario, sim_beta) %>% 
-  filter(cum_cases>630) %>%
+  filter(cum_cases>250) %>%
   summarise( dayexceeds = min(day, na.rm=TRUE)) %>% group_by(scenario) %>%
   summarise(mean=mean(dayexceeds, na.rm=TRUE),
             ll = quantile(dayexceeds, .025, na.rm=TRUE), 
@@ -633,7 +635,7 @@ write_csv(table1, file.path("results", project, "Table1.csv"))
 
 
 
-```{r}
+```{r, echo=FALSE}
 
 # case_data <- read_csv("data/case_data.csv")
 # hubei_cases <- case_data %>% filter(Province_State=="Hubei") %>% arrange(t)
@@ -683,7 +685,7 @@ sim_res_summ <- sim_res %>% group_by(scenario, day) %>%
 
 
 
-```{r}
+```{r, echo=FALSE}
 
 sim_res_outbreaks <- sim_res %>% group_by(scenario, sim_beta) %>% 
   mutate(sim_max = max(cum_cases, na.rm = TRUE)) %>%
@@ -736,7 +738,7 @@ sim_res_summ_outbreak <- sim_res_outbreaks %>% group_by(scenario, day) %>%
 ## TABLE 2
 
 
-```{r}
+```{r, echo=FALSE}
 
 max_day_datahigh <- sim_res_outbreaks %>% filter(scenario=="High Transmission") %>% 
   group_by(sim_beta) %>% mutate(maxday = max(day), na.rm=TRUE) %>% ungroup() %>% filter(day==maxday)
@@ -886,7 +888,7 @@ table2
 write_csv(table2, file.path("results", project, "Table2.csv"))
 
 
-View(data.frame(sim_res_summ_outbreak_days[,c(1:2)], round(sim_res_summ_outbreak_days[,-c(1:3)] / 600000,2)))
+#View(data.frame(sim_res_summ_outbreak_days[,c(1:2)], round(sim_res_summ_outbreak_days[,-c(1:3)] / 600000,2)))
 
 
 ```
@@ -923,7 +925,26 @@ View(sim_res_summ_outbreak %>% filter(day==90) %>%
 
 
 
-# PLOTS
+# FIGURES
+
+
+### Age Distribution and Severity profiles
+```{r, echo=FALSE}
+
+plot_age <- ggplot(pr_age10, aes(x=age_group, y=p)) +
+                    geom_bar(stat="identity", color="navyblue", fill="navyblue", width = .95) +
+                    coord_flip() +
+                    xlab("Proportion") +
+                    ylab("Age (y)")
+
+gridExtra::grid.arrange(plot_age, plot_severity, ncol=2)
+ggsave(file.path("figures", project, "age_severity.png"), 
+       gridExtra::grid.arrange(plot_age, plot_severity, ncol=2), 
+       width=10, height=5, dpi=900, units = "in")
+
+
+```
+
     
     
 
@@ -957,7 +978,7 @@ pincidhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
     theme_classic() + 
     scale_color_brewer(palette = "Set1", direction = -1) +
     scale_fill_brewer(palette = "Set1", direction = -1) +
-    #geom_hline(yintercept = 630, col="red", linetype="dashed") +
+    #geom_hline(yintercept = 250, col="red", linetype="dashed") +
     theme(legend.position = "none") +
     ylab("Daily hospitalizations") + xlab("Day") +
   ggtitle("Estimated daily hospitalizations")
@@ -971,7 +992,7 @@ pincidhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
 #     theme_classic() + 
 #         scale_color_brewer(palette = "Set1", direction = -1) +
 #     scale_fill_brewer(palette = "Set1", direction = -1) +
-#       geom_hline(yintercept = 630, col="red", linetype="dashed") +
+#       geom_hline(yintercept = 250, col="red", linetype="dashed") +
 # 
 #     theme(legend.position = "none") +
 #     ylab("Daily hospitalizations") + xlab("Day") +
@@ -1037,13 +1058,13 @@ ggsave(file.path("figures", project, "sim_res_panel.png"), p_panel, width=8, hei
 
 ### Hospitalization Capacity Needs
 
-```{r}
+```{r, echo=FALSE}
 
 # Current Hospitalizations
 pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
     geom_line(aes(y=hosp_curr_mean, group=scenario, color=scenario)) + 
     geom_ribbon(aes(ymin=hosp_curr_ll, ymax=hosp_curr_ul, group=scenario, fill=scenario), alpha=.3) + 
-    #geom_hline(yintercept = 630, col="red", linetype="dashed") +
+    geom_hline(yintercept = 250, col="red", linetype="dashed") +
     #scale_y_continuous(trans="log") +
     theme_classic() + 
   theme(legend.position = c(0.8, 0.8),
@@ -1106,7 +1127,7 @@ ggsave(file.path("figures", project, "day_20th_case.png"), p_day20, width=8, hei
 
 
 
-```{r}
+```{r, echo=FALSE}
  
 # ggplot() +
 #     geom_line(data=sim_res, aes(x=date, y=incid, group=sim_id, color=beta)) + 
@@ -1145,27 +1166,28 @@ ggsave(file.path("figures", project, "day_20th_case.png"), p_day20, width=8, hei
 
 
 ## DISCUSSION
+       
+          
     
-#### Hospitalization Rate Ratio   
+### Hospitalization Rate Ratio   
 ```{r}
 p_severe_dagahaley$mean / p_chn$mean
 
-
 ```
+   
 
+   
+### Cumulative cases before hospitalizations
 
-
-Cumulative cases before hospitalizations
-
-```{r}
+```{r, echo=FALSE}
 
 hosp_1 <- sim_res %>% filter(cum_hosp>0) %>% group_by(scenario, sim_beta) %>% 
   filter(t == min(t)) %>% group_by(scenario) %>% 
   summarise(meanincid = mean(cum_exposed), ll = quantile(cum_exposed, c(.025)), ul = quantile(cum_exposed, c(.975)),
             day = mean(day), dayll = quantile(day, c(.025)), dayul = quantile(day, c(.975)))
-summary((hosp_1 %>% filter(scenario=="High Transmission"))$day)
-summary((hosp_1 %>% filter(scenario=="Moderate Transmission"))$day)
-summary((hosp_1 %>% filter(scenario=="Low Transmission"))$day)
+# summary((hosp_1 %>% filter(scenario=="High Transmission"))$day)
+# summary((hosp_1 %>% filter(scenario=="Moderate Transmission"))$day)
+# summary((hosp_1 %>% filter(scenario=="Low Transmission"))$day)
 
 
 
@@ -1174,9 +1196,9 @@ hosp_10 <- sim_res %>% filter(cum_hosp>9) %>% group_by(scenario, sim_beta) %>%
   filter(t == min(t)) %>% group_by(scenario) %>% 
   summarise(meanincid = mean(cum_exposed), ll = quantile(cum_exposed, c(.025)), ul = quantile(cum_exposed, c(.975)),
             day = mean(day), dayll = quantile(day, c(.025)), dayul = quantile(day, c(.975)))
-summary((hosp_10 %>% filter(scenario=="High Transmission"))$day)
-summary((hosp_10 %>% filter(scenario=="Moderate Transmission"))$day)
-summary((hosp_10 %>% filter(scenario=="Low Transmission"))$day)
+# summary((hosp_10 %>% filter(scenario=="High Transmission"))$day)
+# summary((hosp_10 %>% filter(scenario=="Moderate Transmission"))$day)
+# summary((hosp_10 %>% filter(scenario=="Low Transmission"))$day)
 
 
 
@@ -1186,19 +1208,17 @@ hosp_20 <- sim_res %>% filter(cum_hosp>19) %>% group_by(scenario, sim_beta) %>%
             day = mean(day), dayll = quantile(day, c(.025)), dayul = quantile(day, c(.975)))
 
 
-hosp_1
-hosp_10
-hosp_20
-
-
+print(hosp_1)
+print(hosp_10)
+print(hosp_20)
 
 ```
 
 
 
-Max hospitalization capacities
+### Max hospitalization capacities
 
-```{r}
+```{r, echo=FALSE}
 
 hosp_capmax <- sim_res %>% filter(cum_cases>100) %>% group_by(scenario, sim_beta) %>% 
   mutate(max_hosp_cap = max(hosp_curr)) %>% ungroup() %>%
@@ -1207,8 +1227,7 @@ hosp_capmax <- sim_res %>% filter(cum_cases>100) %>% group_by(scenario, sim_beta
             ll = quantile(day, c(.025)), 
             ul = quantile(day, c(.975)))
 
-hosp_capmax
-
+print(hosp_capmax)
 
 ```
 
