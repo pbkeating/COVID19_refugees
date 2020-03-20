@@ -12,6 +12,7 @@ editor_options:
 require(knitr)
 require(tidyverse)
 require(gridExtra)
+library(doParallel)
 # require(rstan)
 library(RColorBrewer)
 #library(RgoogleMaps)
@@ -32,10 +33,16 @@ source("R/model_functions.R")
 source("R/StochasticSEIR.R")
 source("R/CalcHospDeaths.R")
 source("R/get_ageadjust_severe.R")
-
 ```
 
+CONTEXT: Kutupalong-Bulakhali Expansion Site
 
+```{r}
+
+project <- "Kutupalong"
+
+
+```
 
 
 
@@ -171,9 +178,10 @@ n.sims <- 50 # simulations per R
 n.Rs <- 20
 run_time <- 550
 start_date_="2020-03-15"
-step.size <- .25
+end_date <- "2022-01-01"
+step.size <- 1/8
 seeds <- 1
-cores=2
+cores <- 4
 
 # Population Size - Kutupalong camp
 N <- 600000
@@ -223,7 +231,8 @@ betas_high <- R0_high * gamma / n_Icomp
 
 #p_hosp  <- c(p_severe_kutupalong, p_hosp_kutupalong_high)
 p_death <- .1
-p_vent <- .25
+p_ICU   <- 0.264
+p_vent  <- 0.15
 
 time_hosp_pars = c(1.23, 0.79)
 time_death_pars = c(log(11.25), log(1.15))
@@ -265,32 +274,30 @@ sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="high
 ```{r, echo=FALSE}
 
 R0_val <- "low"
-sim_res <- read_csv(paste0("./results/sim_res_nohosp_", R0_val,".csv"))
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
-    mutate(geoid = "KB_ES", sim_num=as.integer(sim_id))
+    mutate(geoid = "KB_ES", sim_num=as.integer(sim_id)) %>%
+    mutate(uid = paste0(geoid, "-", sim_num))
 
 
 # Get Hospitalizations
-sim_hospdeath <- build_hospdeath(
-                            data=sim_res, p_hosp=p_severe_kutupalong, p_hosp_type="gamma",
-                            p_death, p_vent, p_ICU,
+sim_hospdeath <- build_hospdeath_par(
+                            data=sim_res, p_hosp=p_severe_kutupalong, 
+                            p_death, p_vent, p_ICU, p_hosp_type="gamma",
                             time_hosp_pars = c(1.23, 0.79), 
                             time_ICU_pars = c(log(10.5), log((10.5-7)/1.35)),
                             time_vent_pars = c(log(10.5), log((10.5-8)/1.35)),
                             time_death_pars = c(log(11.25), log(1.15)), 
                             time_disch_pars = c(log(11.5), log(1.22)),
-                            time_ICUdur_pars = c(log(17.46), log(4.044)),
-                            end_date = end_date,
+                            time_ICUdur_pars = c(log(16), log(2.96)),
+                            end_date = "2022-01-01",
                             length_geoid = 5,
-                            incl.county=FALSE,
-                            cores=1, 
+                            cores=4, 
                             run_parallel=FALSE)
-
 colnames(sim_hospdeath)
-
-
 
 
 # Get simulation info to fill in where needed
@@ -298,7 +305,7 @@ sim_info <- sim_res %>% select(sim, beta_ind, sim_beta, sim_id, beta, seeds) %>%
   filter(!duplicated(paste0(sim, beta_ind)))
 
 
-sim_res_full <- sim_hospdeath %>% select(sim_beta, sim, beta_ind, sim_id, beta, seeds, time, day, everything()) %>%
+sim_res_full <- sim_hospdeath %>% dplyr::select(sim_beta, sim, beta_ind, sim_id, beta, seeds, time, day, everything()) %>%
   mutate(scenario = "Low") %>% rename(t=time) %>%
   filter(!is.na(day))
 
@@ -319,7 +326,9 @@ rm(sim_res)
 
 # Save it
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
-write_csv(sim_res_full, "results/sim_res_low.csv")
+write_csv(sim_res_full, 
+          file.path("results", project, paste0("sim_res_low_", 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
@@ -331,12 +340,10 @@ write_csv(sim_res_full, "results/sim_res_low.csv")
 ```{r, echo=FALSE}
 
 betas <- betas_mid
-# sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, sigma=sigma, gamma=gamma, 
-#                           seeds=seeds, start_date_=start_date_, step.size=step.size,
-#                           run_time=run_time, cores=cores)
 
 R0_val <- "mid"
-sim_res <- read_csv(paste0("./results/sim_res_nohosp_", R0_val,".csv"))
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -344,31 +351,26 @@ sim_res <- sim_res %>%
 
 
 # Get Hospitalizations
-sim_hospdeath <- build_hospdeath(
-                            data=sim_res, p_hosp=p_severe_kutupalong, p_hosp_type="gamma",
-                            p_death, p_vent, p_ICU,
+sim_hospdeath <- build_hospdeath_par(
+                            data=sim_res, p_hosp=p_severe_kutupalong, 
+                            p_death, p_vent, p_ICU, p_hosp_type="gamma",
                             time_hosp_pars = c(1.23, 0.79), 
                             time_ICU_pars = c(log(10.5), log((10.5-7)/1.35)),
                             time_vent_pars = c(log(10.5), log((10.5-8)/1.35)),
                             time_death_pars = c(log(11.25), log(1.15)), 
                             time_disch_pars = c(log(11.5), log(1.22)),
-                            time_ICUdur_pars = c(log(17.46), log(4.044)),
-                            end_date = end_date,
+                            time_ICUdur_pars = c(log(16), log(2.96)),
+                            end_date = "2022-01-01",
                             length_geoid = 5,
-                            incl.county=FALSE,
-                            cores=1, 
+                            cores=4, 
                             run_parallel=FALSE)
-
 colnames(sim_hospdeath)
-
 
 
 
 # Get simulation info to fill in where needed
 sim_info <- sim_res %>% select(sim, beta_ind, sim_beta, sim_id, beta, seeds) %>% 
   filter(!duplicated(paste0(sim, beta_ind)))
-
-
 
 
 
@@ -392,7 +394,9 @@ sim_res_mid <- sim_res_full
 
 # Save it
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
-write_csv(sim_res_mid, "results/sim_res_mid.csv")
+write_csv(sim_res_mid, 
+          file.path("results", project, paste0("sim_res_mid", 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
@@ -405,13 +409,10 @@ write_csv(sim_res_mid, "results/sim_res_mid.csv")
 ```{r, echo=FALSE}
 
 betas <- betas_high
-sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, sigma=sigma, gamma=gamma, 
-                          seeds=seeds, start_date_=start_date_, step.size=step.size,
-                          run_time=run_time, cores=cores)
-
 
 R0_val <- "high"
-sim_res <- read_csv(paste0("./results/sim_res_nohosp_", R0_val,".csv"))
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -419,31 +420,25 @@ sim_res <- sim_res %>%
 
 
 # Get Hospitalizations
-sim_hospdeath <- build_hospdeath(
-                            data=sim_res, p_hosp=p_severe_kutupalong, p_hosp_type="gamma",
-                            p_death, p_vent, p_ICU,
+sim_hospdeath <- build_hospdeath_par(
+                            data=sim_res, p_hosp=p_severe_kutupalong, 
+                            p_death, p_vent, p_ICU, p_hosp_type="gamma",
                             time_hosp_pars = c(1.23, 0.79), 
                             time_ICU_pars = c(log(10.5), log((10.5-7)/1.35)),
                             time_vent_pars = c(log(10.5), log((10.5-8)/1.35)),
                             time_death_pars = c(log(11.25), log(1.15)), 
                             time_disch_pars = c(log(11.5), log(1.22)),
-                            time_ICUdur_pars = c(log(17.46), log(4.044)),
-                            end_date = end_date,
+                            time_ICUdur_pars = c(log(16), log(2.96)),
+                            end_date = "2022-01-01",
                             length_geoid = 5,
-                            incl.county=FALSE,
-                            cores=1, 
+                            cores=4, 
                             run_parallel=FALSE)
-
 colnames(sim_hospdeath)
-
-
 
 
 # Get simulation info to fill in where needed
 sim_info <- sim_res %>% select(sim, beta_ind, sim_beta, sim_id, beta, seeds) %>% 
   filter(!duplicated(paste0(sim, beta_ind)))
-
-
 
 
 
@@ -467,13 +462,11 @@ sim_res_high <- sim_res_full
 
 # Save it
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
-write_csv(sim_res_high, "results/sim_res_high.csv")
+write_csv(sim_res_high,
+          file.path("results", project, paste0("sim_res_high_", 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
-
-
-
-
 
 
 
@@ -492,9 +485,12 @@ sim_res <- sim_res %>% mutate(scenario = factor(scenario, levels=c("Low Transmis
 
 sim_res <- sim_res %>% filter(!is.na(sim))
 
-write_csv(sim_res, "results/sim_res_Mar17.csv")
+write_csv(sim_res, 
+          file.path("results", project, paste0("sim_res_", 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
-sim_res <- read_csv("results/sim_res_Mar17.csv")
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_", 
+                      month.abb[month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 sim_res <- sim_res %>% 
   mutate(scenario = factor(scenario, 
                            levels=c("Low Transmission", "Moderate Transmission", 
@@ -602,8 +598,7 @@ table1 <- final_size_min100 %>% mutate(pr_outbreak=final_size_$finalsize100) %>%
   select(scenario, pr_outbreak, tot_inf, tot_hosp, tot_deaths, max_incid, max_hosp_incid, max_hosp_curr, day_hosp_exceed)
 
 table1
-write_csv(table1, "results/Table1.csv")
-
+write_csv(table1, file.path("results", project, "Table1.csv"))
 
 
 ```
@@ -657,9 +652,6 @@ sim_res_summ <- sim_res %>% group_by(scenario, day) %>%
             #vent_curr_ul = quantile(vent_curr, prob=.975, na.rm=TRUE),
             death_incid_ul = quantile(incidD, prob=.975, na.rm=TRUE),
             death_cum_ul = quantile(cum_death, prob=.975, na.rm=TRUE))
-
-
-
 
 ```
 
@@ -720,8 +712,6 @@ sim_res_summ_outbreak <- sim_res_outbreaks %>% group_by(scenario, day) %>%
 
 
 ```{r}
-
-max()
 
 max_day_datahigh <- sim_res_outbreaks %>% filter(scenario=="High Transmission") %>% 
   group_by(sim_beta) %>% mutate(maxday = max(day), na.rm=TRUE) %>% ungroup() %>% filter(day==maxday)
@@ -868,7 +858,7 @@ table2 <- sim_res_summ_outbreak_days %>% group_by(scenario, day) %>%
   #mutate(scen_day = paste0(scenario," - ",day)) %>% select(-scenario, -day) 
 
 table2
-write_csv(table2, "results/Table2.csv")
+write_csv(table2, file.path("results", project, "Table2.csv"))
 
 
 View(data.frame(sim_res_summ_outbreak_days[,c(1:2)], round(sim_res_summ_outbreak_days[,-c(1:3)] / 600000,2)))
@@ -921,7 +911,6 @@ sim_res_summ <- sim_res_summ_outbreak %>% as.data.frame() %>%
                     mutate(scenario = factor(scenario, 
                            levels=c("Low Transmission", "Moderate Transmission", 
                                     "High Transmission"), ordered = TRUE))
-
 
 
 pincid <- ggplot(data=sim_res_summ, aes(x=day)) +
@@ -1014,10 +1003,8 @@ pcumdeath <- ggplot(data=sim_res_summ, aes(x=day)) +
   ggtitle("Cumulative deaths")
 
 
-
-
 p_panel <- gridExtra::grid.arrange(pincid,pincidhosp,pinciddeath, nrow=3)
-ggsave("figures/sim_res_panel.png", p_panel, width=8, height=10, dpi=900, units = "in")
+ggsave(file.path("figures", project, "sim_res_panel.png"), p_panel, width=8, height=10, dpi=900, units = "in")
 
 
 ```
@@ -1043,7 +1030,7 @@ pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
 
 
 pcurrhosp
-ggsave("figures/curr_hosp.png", width=8, height=4, dpi=600, units = "in")
+ggsave(file.path("figures", project, "curr_hosp.png"), width=8, height=4, dpi=600, units = "in")
 
 ```
 
@@ -1085,7 +1072,7 @@ p_day20 <- ggplot(day20case, aes(x=minday, group=scenario, fill=scenario)) +
   ggtitle("Day on which cumulative cases reaches 20")
 p_day20
 
-ggsave("figures/day_20th_case.png", p_day20, width=8, height=4, dpi=900, units = "in")
+ggsave(file.path("figures", project, "day_20th_case.png"), p_day20, width=8, height=4, dpi=900, units = "in")
 
 ```
 
@@ -1196,7 +1183,6 @@ Max hospitalization capacities
 
 ```{r}
 
-
 hosp_capmax <- sim_res %>% filter(cum_cases>1000) %>% group_by(scenario, sim_beta) %>% 
   mutate(max_hosp_cap = max(hosp_curr)) %>% ungroup() %>%
   filter(hosp_curr==max_hosp_cap) %>% group_by(scenario) %>% 
@@ -1204,16 +1190,9 @@ hosp_capmax <- sim_res %>% filter(cum_cases>1000) %>% group_by(scenario, sim_bet
             ll = quantile(day, c(.025)), 
             ul = quantile(day, c(.975)))
 
-
 hosp_capmax
 
 
 ```
-
-
-
-
-
-
 
 
