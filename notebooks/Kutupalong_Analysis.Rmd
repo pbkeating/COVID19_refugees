@@ -35,11 +35,13 @@ source("R/CalcHospDeaths.R")
 source("R/get_ageadjust_severe.R")
 ```
 
-CONTEXT: Kutupalong-Bulakhali Expansion Site
+# CONTEXT: Kutupalong-Bulakhali Expansion Site
 
 ```{r}
 
 project <- "Kutupalong"
+dir.create(file.path("results",project), recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path("figures",project), recursive = TRUE, showWarnings = FALSE)
 
 
 ```
@@ -109,7 +111,7 @@ Now we need to apply the population structure of Kutupalong to estimate proporti
 
 ```{r}
 
-pop_age <- read_csv("data/age_kutupalong.csv")
+pop_age <- read_csv(file.path("data",project,"age_kutupalong.csv"))
 age_smooth <- smooth.spline(pop_age$mid, pop_age$tot_per_year)
 pr_age <- predict(age_smooth, data.frame(mid=0:89)) %>% as.data.frame()
 pr_age <- pr_age %>% rename(age=mid, prop=mid.1) %>% mutate(prop = prop / sum(pr_age$mid.1))
@@ -128,7 +130,7 @@ names(pr_age10_kutupalong) <- 0:(length(pr_age10_kutupalong)-1)
 
 # Estimate the proportion severe in the camp
 p_severe_kutupalong <- get_p_severe_pop(pr_age10_kutupalong)
-save(p_severe_kutupalong, file="results/p_severe_kutupalong.RData")
+save(p_severe_kutupalong, file=file.path("results", project, "p_severe_kutupalong.RData"))
 
 
 
@@ -249,19 +251,20 @@ We can do this locally or on a cluster if needed.
 
 ```{r}
 betas <- betas_low
-sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="low", sigma=sigma,
+sim_res <- run_seir_model_parallel(project, n.sims=n.sims, N=N, betas=betas, R0_val="low",
+                                   sigma=sigma,
                                    gamma=gamma,
                           seeds=seeds, start_date_=start_date_, step.size=step.size,
                           run_time=run_time, cores=cores)
 
 betas <- betas_mid
-sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="mid", sigma=sigma,
+sim_res <- run_seir_model_parallel(project, n.sims=n.sims, N=N, betas=betas, R0_val="mid", sigma=sigma,
                                    gamma=gamma,
                           seeds=seeds, start_date_=start_date_, step.size=step.size,
                           run_time=run_time, cores=cores)
 
 betas <- betas_high
-sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="high", sigma=sigma,
+sim_res <- run_seir_model_parallel(project, n.sims=n.sims, N=N, betas=betas, R0_val="high", sigma=sigma,
                                    gamma=gamma,
                           seeds=seeds, start_date_=start_date_, step.size=step.size,
                           run_time=run_time, cores=cores)
@@ -274,7 +277,7 @@ sim_res <- run_seir_model_parallel(n.sims=n.sims, N=N, betas=betas, R0_val="high
 ```{r, echo=FALSE}
 
 R0_val <- "low"
-sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val,"-", 
                       month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
@@ -342,7 +345,7 @@ write_csv(sim_res_full,
 betas <- betas_mid
 
 R0_val <- "mid"
-sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val,"-", 
                       month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
@@ -393,7 +396,6 @@ sim_res_full <- sim_res_full %>% filter(!is.na(t))
 sim_res_mid <- sim_res_full
 
 # Save it
-dir.create("results", recursive = TRUE, showWarnings = FALSE)
 write_csv(sim_res_mid, 
           file.path("results", project, paste0("sim_res_mid", 
                       month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
@@ -411,7 +413,7 @@ write_csv(sim_res_mid,
 betas <- betas_high
 
 R0_val <- "high"
-sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, 
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, "-",
                       month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
