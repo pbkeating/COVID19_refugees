@@ -24,7 +24,6 @@ knitr::opts_chunk$set(echo=TRUE)
 
 ```
 
-
 ```{r include=FALSE, message = F, warning = F, results = F}
 source("R/DataLoadUtils.r")
 source("R/BasicEpiAnalyses.r")
@@ -35,23 +34,33 @@ source("R/CalcHospDeaths.R")
 source("R/get_ageadjust_severe.R")
 ```
 
-CONTEXT: Dagahaley Refugee Camp
-
 ```{r}
 
+# Project location
 project <- "dagahaley"
-dir.create(file.path("data",project), recursive = TRUE, showWarnings = FALSE)
-dir.create(file.path("results",project), recursive = TRUE, showWarnings = FALSE)
-dir.create(file.path("figures",project), recursive = TRUE, showWarnings = FALSE)
+location_name <- "Dagahaley Refugee Camp"
 
-
-# Population Size - Dagahaley camp
+# Population Size
 N <- 73000
+
+
 
 
 ```
 
 
+# <center> The Potential Impact of COVID-19 in the `r print(location_name)` </center>
+<center> Shaun Truelove, Natalya Kostandova, Andrew Azman </center>
+        
+<center> `r print(format(as.Date(Sys.Date()), "%d %B %Y") )` </center>
+    
+
+```{r, echo=FALSE}
+# Create all the folders
+dir.create(file.path("data",project), recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path("results",project), recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path("figures",project), recursive = TRUE, showWarnings = FALSE)
+```
 
 
 ## PROPORTION SEVERE
@@ -941,7 +950,6 @@ gridExtra::grid.arrange(plot_age, plot_severity, ncol=2)
 ggsave(file.path("figures", project, "age_severity.png"), 
        gridExtra::grid.arrange(plot_age, plot_severity, ncol=2), 
        width=10, height=5, dpi=900, units = "in")
-
 
 ```
 
