@@ -275,7 +275,7 @@ time_disch_pars = c(log(11.5), log(1.22))
 ### Run the model 
 We can do this locally or on a cluster if needed.
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 betas <- betas_low
 sim_res <- run_seir_model_parallel(project, n.sims=n.sims, N=N, betas=betas, R0_val="low",
                                    sigma=sigma,
@@ -300,7 +300,7 @@ sim_res <- run_seir_model_parallel(project, n.sims=n.sims, N=N, betas=betas, R0_
 
    
 ### Low Beta
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 
 R0_val <- "low"
 sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, "-",
@@ -366,7 +366,7 @@ write_csv(sim_res_full,
     
 ### Mid Beta
       
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 
 betas <- betas_mid
 
@@ -435,7 +435,7 @@ write_csv(sim_res_mid,
 
 
 ### High Beta
-```{r, echo=FALSE, eval=FALSE}
+```{r, echo=FALSE, eval=TRUE}
 
 betas <- betas_high
 
@@ -505,7 +505,7 @@ write_csv(sim_res_high,
 
 ### ~ Combine results
 
-```{r, eval=FALSE}
+```{r, eval=TRUE}
 
 sim_res <- full_join(full_join(sim_res_low %>% mutate(scenario="Low Transmission"),
                                sim_res_mid %>% mutate(scenario="Moderate Transmission")),
