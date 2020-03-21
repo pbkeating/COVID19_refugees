@@ -1,5 +1,5 @@
 ---
-title: "R Notebook"
+title: "COVID-19 Impact: Dagahaley Refugee Camp"
 output:
   html_document:
     df_print: paged
@@ -24,7 +24,6 @@ knitr::opts_chunk$set(echo=TRUE)
 
 ```
 
-
 ```{r include=FALSE, message = F, warning = F, results = F}
 source("R/DataLoadUtils.r")
 source("R/BasicEpiAnalyses.r")
@@ -35,20 +34,49 @@ source("R/CalcHospDeaths.R")
 source("R/get_ageadjust_severe.R")
 ```
 
-# CONTEXT: Kutupalong-Bulakhali Expansion Site
 
-```{r}
 
-project <- "Kutupalong"
-dir.create(file.path("results",project), recursive = TRUE, showWarnings = FALSE)
-dir.create(file.path("figures",project), recursive = TRUE, showWarnings = FALSE)
+<!-- ONLY NEED TO CHANGE THE FOLLOWING CHUNK -->
+
+```{r, echo=FALSE}
+
+# Project location
+project <- "dagahaley"
+location_name <- "Dagahaley Refugee Camp"
+
+# Population Size
+N <- 73000
+
 
 
 ```
 
 
 
-# PROPORTION SEVERE
+
+
+
+# <center> The Potential Impact of COVID-19 in the `r print(location_name)` </center>
+<center> Shaun Truelove, Natalya Kostandova, Andrew Azman </center>
+        
+<center> `r print(format(as.Date(Sys.Date()), "%d %B %Y") )` </center>
+    
+
+```{r, echo=FALSE}
+# Create all the folders
+dir.create(file.path("data",project), recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path("results",project), recursive = TRUE, showWarnings = FALSE)
+dir.create(file.path("figures",project), recursive = TRUE, showWarnings = FALSE)
+```
+
+
+
+
+
+
+
+
+## PROPORTION SEVERE
 
 In a setting such as a refugee setting we will assume hospitalization will be limited to those who most require it, specifically severe cases. We assume all hospitalization capacity available will be shifted for responding to COVID-19 severe cases, and no hospitalization for purposes of isolation will be done. Under these assumptions, we can assume the proportion of infections that result in severe disease approximate the proportion that will require hospitalization.
 
@@ -59,7 +87,7 @@ While we are still trying to understand who is most at risk for severe disease a
 
 We will use bayesian methods to estimate the proportion severe by age, using data from Shenzhen, China (Bi et al. 2020).
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 # Run Stan Model to estimate probability severe by age
 prop_severe_ests <- get_severe_age_shenzhen( )
 
@@ -70,7 +98,7 @@ prop_severe_ests <- get_severe_age_shenzhen( )
 
 Now we can apply these estimates to age distributions of different locations.
 
-```{r}
+```{r, echo=FALSE}
 
 # USA
 p_usa <- get_p_severe(country="United States of America")
@@ -95,66 +123,51 @@ p_data <- bind_rows(data.frame(Location = "USA", p_severe=p_usa$ests),
                     data.frame(Location = "Switzerland", p_severe=p_che$ests)) %>%
   mutate(Location=factor(Location, levels=c("Bangladesh","China","USA","Switzerland","Italy"), ordered = TRUE))
 
-# Make some boxplots
-ggplot(p_data, aes(x=Location, y=p_severe)) +
-  geom_boxplot(fill="maroon", color="darkred") + 
-  ylab("Proportion Severe")
+# # Make some boxplots
+# ggplot(p_data, aes(x=Location, y=p_severe)) +
+#   geom_boxplot(fill="maroon", color="darkred") + 
+#   ylab("Proportion Severe")
   
 ```
 
 
 
 
-### Proportion Severe, Kutupalong-Balukhali expansion site
+### Proportion Severe, Dagahaley expansion site
     
-Now we need to apply the population structure of Kutupalong to estimate proportion hospitalized there.
+Now we need to apply the population structure of Dagahaley to estimate proportion hospitalized there.
 
-```{r}
+```{r, echo=FALSE}
 
-pop_age <- read_csv(file.path("data",project,"age_kutupalong.csv"))
-age_smooth <- smooth.spline(pop_age$mid, pop_age$tot_per_year)
-pr_age <- predict(age_smooth, data.frame(mid=0:89)) %>% as.data.frame()
-pr_age <- pr_age %>% rename(age=mid, prop=mid.1) %>% mutate(prop = prop / sum(pr_age$mid.1))
-plot(pr_age$age, pr_age$prop)
-points(pop_age$mid, pop_age$tot_per_year, col="blue", pch=20)
-
-# Get age by 10yr groups
-pr_age <- pr_age %>% mutate(age10 = floor(age/10)*10)
-pr_age10 <- pr_age %>% group_by(age10) %>% summarise(pr10 = sum(prop)) %>%
-    mutate(age = paste0(age10, "-", age10+9))
-pr_age10_kutupalong <- as.numeric(pr_age10$pr10)
-pr_age10_kutupalong[8] <- sum(pr_age10_kutupalong[8:9])
-pr_age10_kutupalong <- pr_age10_kutupalong[-9]
-names(pr_age10_kutupalong) <- 0:(length(pr_age10_kutupalong)-1)
-
+pr_age10 <- read_csv(file.path("data",project, "age_dagahaley.csv"))
 
 # Estimate the proportion severe in the camp
-p_severe_kutupalong <- get_p_severe_pop(pr_age10_kutupalong)
-save(p_severe_kutupalong, file=file.path("results", project, "p_severe_kutupalong.RData"))
+p_severe_dagahaley <- get_p_severe_pop(pr_age10$p)
+save(p_severe_dagahaley, file=file.path("results", project, "p_severe_dagahaley.RData"))
 
 
 
 # PLOT IT
-p_data <- bind_rows(p_data, data.frame(Location = "Kutupalong-\nBulakhali", p_severe=p_severe_kutupalong$ests)) %>%
+p_data <- bind_rows(p_data, data.frame(Location = stringr::str_to_title(project), p_severe=p_severe_dagahaley$ests)) %>%
   mutate(Location=factor(Location, 
-                         levels=c("Kutupalong-\nBulakhali", "Bangladesh","China","USA","Switzerland","Italy"), 
+                         levels=c(stringr::str_to_title(project), "Bangladesh","China","USA","Switzerland","Italy"), 
                          ordered = TRUE)) %>%
-  mutate(col_ = ifelse(Location=="Kutupalong-\nBulakhali", 2, 1))
+  mutate(col_ = ifelse(Location==stringr::str_to_title(project), 2, 1))
 
 # Make some boxplots
 fills <- c("1"="maroon", "2"="gold")
 cols <- c("1"="darkred", "2"="goldenrod1")
-ggplot(p_data, aes(x=Location, y=p_severe, fill=factor(col_), colour=factor(col_))) +
-  geom_boxplot() + 
-  scale_color_manual(values=c("darkred", "goldenrod4")) +
-  scale_fill_manual(values=c("maroon", "goldenrod1")) +
-  ylab("Proportion Severe") +
-  theme(legend.position = "none")
-  
+plot_severity <- ggplot(p_data, aes(x=Location, y=p_severe, fill=factor(col_), colour=factor(col_))) +
+                          geom_boxplot() + 
+                          scale_color_manual(values=c("darkred", "goldenrod4")) +
+                          scale_fill_manual(values=c("maroon", "goldenrod1")) +
+                          ylab("Proportion Severe") +
+                          theme(legend.position = "none")
+                        
 
 ```
 
-Based on this crude analysis, if we assume 75% of infections in those 70+ lead to hospitalization, and the odds of hospitalization given infection by age mirrors the odds of mortality by age, we find that the hospitalization rate in Kutupalong is likely to be between 4.9-9.2%, compared with 14.0-21.8% in China. From these estimates, it is reasonable to assume infections in Kutupalong are 35-43% as likely to result in a hositalization, as compared to China.
+Based on this crude analysis, if we assume 75% of infections in those 70+ lead to hospitalization, and the odds of hospitalization given infection by age mirrors the odds of mortality by age, we find that the hospitalization rate in `r print(stringr::str_to_title(project))` is likely to be between 4.9-9.2%, compared with 14.0-21.8% in China. From these estimates, it is reasonable to assume infections in Dagahaley are 35-43% as likely to result in a hositalization, as compared to China.
 
 
 
@@ -165,7 +178,7 @@ Based on this crude analysis, if we assume 75% of infections in those 70+ lead t
 r0 <- c(2.68,2.24,0.3,1.44,2.1,3.2,7.05,2.4,2.4,4.7,6.6,
         3.24,2.45,1.48,3.1,1.6,3.11,2.5,2.6,2.2)
 
-quantile(r0, c(0.025, .975))
+R0quants <- quantile(r0, c(0.025, .975))
 
 ```
 
@@ -176,7 +189,7 @@ quantile(r0, c(0.025, .975))
 ```{r}
 
 # Simulation specifics   ----------------------------------------------
-n.sims <- 50 # simulations per R
+n.sims <- 500 # simulations per R
 n.Rs <- 20
 run_time <- 550
 start_date_="2020-03-15"
@@ -184,9 +197,6 @@ end_date <- "2022-01-01"
 step.size <- 1/8
 seeds <- 1
 cores <- 4
-
-# Population Size - Kutupalong camp
-N <- 600000
 
 
 # Transmission Characteristics ---------------------------------
@@ -231,7 +241,7 @@ betas_high <- R0_high * gamma / n_Icomp
 # Time from hospitalization to discharge,  11.5 days (95% CI 8.0-17.3) (Sanche et al. 2020)
 # Time from hospitalization to death, 11.2 days (95% CI 8.7-14.9) (Sanche et al. 2020)
 
-#p_hosp  <- c(p_severe_kutupalong, p_hosp_kutupalong_high)
+#p_hosp  <- c(p_severe_dagahaley, p_hosp_dagahaley_high)
 p_death <- .1
 p_ICU   <- 0.264
 p_vent  <- 0.15
@@ -249,8 +259,7 @@ time_disch_pars = c(log(11.5), log(1.22))
 ### Run the model 
 We can do this locally or on a cluster if needed.
 
-```{r}
-
+```{r, eval=FALSE}
 betas <- betas_low
 sim_res <- run_seir_model_parallel(project, n.sims=n.sims, N=N, betas=betas, R0_val="low",
                                    sigma=sigma,
@@ -275,16 +284,11 @@ sim_res <- run_seir_model_parallel(project, n.sims=n.sims, N=N, betas=betas, R0_
 
    
 ### Low Beta
-```{r, echo=FALSE}
-load(file=file.path("results", project, "p_severe_kutupalong.RData")) # p_severe_kutupalong
-
-#res_date <- paste0(month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()))
-res_date <- "Mar19"
-
+```{r, echo=FALSE, eval=FALSE}
 
 R0_val <- "low"
-sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val,"-",res_date,".csv")))
-
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, "-",
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -294,7 +298,7 @@ sim_res <- sim_res %>%
 
 # Get Hospitalizations
 sim_hospdeath <- build_hospdeath_par(
-                            data=sim_res, p_hosp=p_severe_kutupalong, 
+                            data=sim_res, p_hosp=p_severe_dagahaley, 
                             p_death, p_vent, p_ICU, p_hosp_type="gamma",
                             time_hosp_pars = c(1.23, 0.79), 
                             time_ICU_pars = c(log(10.5), log((10.5-7)/1.35)),
@@ -305,7 +309,7 @@ sim_hospdeath <- build_hospdeath_par(
                             end_date = "2022-01-01",
                             length_geoid = 5,
                             cores=4, 
-                            run_parallel=TRUE)
+                            run_parallel=FALSE)
 colnames(sim_hospdeath)
 
 
@@ -336,7 +340,8 @@ rm(sim_res)
 # Save it
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
 write_csv(sim_res_full, 
-          file.path("results", project, paste0("sim_res_low_", res_date, ".csv")))
+          file.path("results", project, paste0("sim_res_low_", 
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
@@ -344,16 +349,14 @@ write_csv(sim_res_full,
     
     
 ### Mid Beta
-```{r, echo=FALSE}
-load(file=file.path("results", project, "p_severe_kutupalong.RData")) # p_severe_kutupalong
+      
+```{r, echo=FALSE, eval=FALSE}
 
-#res_date <- paste0(month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()))
-res_date <- "Mar19"
-
+betas <- betas_mid
 
 R0_val <- "mid"
-sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val,"-",res_date,".csv")))
-
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val, "-",
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -363,7 +366,7 @@ sim_res <- sim_res %>%
 
 # Get Hospitalizations
 sim_hospdeath <- build_hospdeath_par(
-                            data=sim_res, p_hosp=p_severe_kutupalong, 
+                            data=sim_res, p_hosp=p_severe_dagahaley, 
                             p_death, p_vent, p_ICU, p_hosp_type="gamma",
                             time_hosp_pars = c(1.23, 0.79), 
                             time_ICU_pars = c(log(10.5), log((10.5-7)/1.35)),
@@ -374,8 +377,9 @@ sim_hospdeath <- build_hospdeath_par(
                             end_date = "2022-01-01",
                             length_geoid = 5,
                             cores=4, 
-                            run_parallel=TRUE)
+                            run_parallel=FALSE)
 colnames(sim_hospdeath)
+
 
 
 # Get simulation info to fill in where needed
@@ -383,7 +387,8 @@ sim_info <- sim_res %>% select(sim, beta_ind, sim_beta, sim_id, beta, seeds) %>%
   filter(!duplicated(paste0(sim, beta_ind)))
 
 
-sim_res_full <- sim_hospdeath %>% dplyr::select(sim_beta, sim, beta_ind, sim_id, beta, seeds, time, day, everything()) %>%
+
+sim_res_full <- sim_hospdeath %>% select(sim_beta, sim, beta_ind, sim_id, beta, seeds, time, day, everything()) %>%
   mutate(scenario = "Mid") %>% rename(t=time) %>%
   filter(!is.na(day))
 
@@ -400,28 +405,27 @@ sim_res_full <- sim_res_full %>% filter(!is.na(t))
 
 # Rename it
 sim_res_mid <- sim_res_full
-rm(sim_res)
 
 # Save it
-dir.create("results", recursive = TRUE, showWarnings = FALSE)
-write_csv(sim_res_full, 
-          file.path("results", project, paste0("sim_res_mid_", res_date, ".csv")))
+write_csv(sim_res_mid, 
+          file.path("results", project, paste0("sim_res_mid", 
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
 
 
+
+
+
 ### High Beta
-```{r, echo=FALSE}
-load(file=file.path("results", project, "p_severe_kutupalong.RData")) # p_severe_kutupalong
+```{r, echo=FALSE, eval=FALSE}
 
-#res_date <- paste0(month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()))
-res_date <- "Mar19"
-
+betas <- betas_high
 
 R0_val <- "high"
-sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val,"-",res_date,".csv")))
-
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_nohosp_", R0_val,"-", 
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 sim_res <- sim_res %>%
     rename(time=date, incidI=incid) %>% 
@@ -431,7 +435,7 @@ sim_res <- sim_res %>%
 
 # Get Hospitalizations
 sim_hospdeath <- build_hospdeath_par(
-                            data=sim_res, p_hosp=p_severe_kutupalong, 
+                            data=sim_res, p_hosp=p_severe_dagahaley, 
                             p_death, p_vent, p_ICU, p_hosp_type="gamma",
                             time_hosp_pars = c(1.23, 0.79), 
                             time_ICU_pars = c(log(10.5), log((10.5-7)/1.35)),
@@ -442,7 +446,7 @@ sim_hospdeath <- build_hospdeath_par(
                             end_date = "2022-01-01",
                             length_geoid = 5,
                             cores=4, 
-                            run_parallel=TRUE)
+                            run_parallel=FALSE)
 colnames(sim_hospdeath)
 
 
@@ -451,7 +455,8 @@ sim_info <- sim_res %>% select(sim, beta_ind, sim_beta, sim_id, beta, seeds) %>%
   filter(!duplicated(paste0(sim, beta_ind)))
 
 
-sim_res_full <- sim_hospdeath %>% dplyr::select(sim_beta, sim, beta_ind, sim_id, beta, seeds, time, day, everything()) %>%
+
+sim_res_full <- sim_hospdeath %>% select(sim_beta, sim, beta_ind, sim_id, beta, seeds, time, day, everything()) %>%
   mutate(scenario = "High") %>% rename(t=time) %>%
   filter(!is.na(day))
 
@@ -468,12 +473,12 @@ sim_res_full <- sim_res_full %>% filter(!is.na(t))
 
 # Rename it
 sim_res_high <- sim_res_full
-rm(sim_res)
 
 # Save it
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
-write_csv(sim_res_full, 
-          file.path("results", project, paste0("sim_res_high_", res_date, ".csv")))
+write_csv(sim_res_high,
+          file.path("results", project, paste0("sim_res_high_", 
+                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 
 ```
 
@@ -484,7 +489,7 @@ write_csv(sim_res_full,
 
 ### ~ Combine results
 
-```{r}
+```{r, eval=FALSE}
 
 sim_res <- full_join(full_join(sim_res_low %>% mutate(scenario="Low Transmission"),
                                sim_res_mid %>% mutate(scenario="Moderate Transmission")),
@@ -497,12 +502,11 @@ sim_res <- sim_res %>% filter(!is.na(sim))
 write_csv(sim_res, 
           file.path("results", project, paste0("sim_res_", 
                       month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
-write_csv(sim_res, 
-          file.path("results", project, paste0("sim_res_Mar20.csv")))
+
 ```
 
-### ~ Load sim results
-```{r}
+
+```{r, echo=FALSE}
 sim_res <- read_csv(file.path("results", project, paste0("sim_res_", 
                       month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
 sim_res <- sim_res %>% 
@@ -513,9 +517,11 @@ sim_res <- sim_res %>%
 
 
 
+
+
 ## TABLE 1  
         
-```{r}
+```{r, echo=FALSE}
 
 # Final Size - IN first 550 days
 summ_ <- sim_res %>% as.data.frame() %>% group_by(sim_beta, scenario) %>% 
@@ -556,35 +562,35 @@ final_size_min1000 <- summ_ %>% filter(final_size>=1000) %>%
             ll = quantile(final_size, prob=c(.0275)),
             ul = quantile(final_size, prob=c(.975)))
 
-incid <- summ_ %>% filter(final_size>=1000) %>%
+incid <- summ_ %>% filter(final_size>=100) %>%
   group_by(scenario) %>% 
   summarise(mean = mean(max_daily_incid, na.rm=TRUE),
             median = median(max_daily_incid, na.rm=TRUE),
             ll = quantile(max_daily_incid, prob=c(.0275)),
             ul = quantile(max_daily_incid, prob=c(.975)))
 
-hosps <- summ_ %>% filter(final_size>=1000) %>%
+hosps <- summ_ %>% filter(final_size>=100) %>%
   group_by(scenario) %>% 
   summarise(mean = mean(final_hosp, na.rm=TRUE),
             median = median(final_hosp, na.rm=TRUE),
             ll = quantile(final_hosp, prob=c(.0275)),
             ul = quantile(final_hosp, prob=c(.975)))
 
-curr_hosp <- summ_ %>% filter(final_size>=1000) %>%
+curr_hosp <- summ_ %>% filter(final_size>=100) %>%
   group_by(scenario) %>% 
   summarise(mean = mean(max_curr_hosp, na.rm=TRUE),
             median = median(max_curr_hosp, na.rm=TRUE),
             ll = quantile(max_curr_hosp, prob=c(.0275)),
             ul = quantile(max_curr_hosp, prob=c(.975)))
 
-hosp_incid <- summ_ %>% filter(final_size>=1000) %>%
+hosp_incid <- summ_ %>% filter(final_size>=100) %>%
   group_by(scenario) %>% 
   summarise(mean = mean(max_daily_hosp, na.rm=TRUE),
             median = median(max_daily_hosp, na.rm=TRUE),
             ll = quantile(max_daily_hosp, prob=c(.0275)),
             ul = quantile(max_daily_hosp, prob=c(.975)))
 
-deaths <- summ_ %>% filter(final_size>=1000) %>%
+deaths <- summ_ %>% filter(final_size>=100) %>%
   group_by(scenario) %>% 
   summarise(mean = mean(final_death, na.rm=TRUE),
             median = median(final_death, na.rm=TRUE),
@@ -593,7 +599,7 @@ deaths <- summ_ %>% filter(final_size>=1000) %>%
 
 # Summarize day cum cases exceeds 100
 hospexceeds <- sim_res %>% group_by(scenario, sim_beta) %>% 
-  filter(cum_cases>340) %>%
+  filter(cum_cases>250) %>%
   summarise( dayexceeds = min(day, na.rm=TRUE)) %>% group_by(scenario) %>%
   summarise(mean=mean(dayexceeds, na.rm=TRUE),
             ll = quantile(dayexceeds, .025, na.rm=TRUE), 
@@ -618,40 +624,11 @@ write_csv(table1, file.path("results", project, "Table1.csv"))
 ```
 
 
-## Table 1 - Alternate Hospital Capacity
-```{r}
-
-
-# Summarize day cum cases exceeds 100
-hospexceeds <- sim_res %>% group_by(scenario, sim_beta) %>% 
-  filter(cum_cases>630) %>%
-  summarise( dayexceeds = min(day, na.rm=TRUE)) %>% group_by(scenario) %>%
-  summarise(mean=mean(dayexceeds, na.rm=TRUE),
-            ll = quantile(dayexceeds, .025, na.rm=TRUE), 
-            ul = quantile(dayexceeds, .975, na.rm=TRUE))
-
-
-
-table1alt <- final_size_min100 %>% mutate(pr_outbreak=final_size_$finalsize100) %>%
-  mutate(tot_inf = paste0(round(mean), " (",round(ll),"-",round(ul),")"),
-          tot_hosp = paste0(round(hosps$mean), " (",round(hosps$ll),"-",round(hosps$ul),")"),
-          tot_deaths = paste0(round(deaths$mean), " (",round(deaths$ll),"-",round(deaths$ul),")"),
-          max_incid = paste0(round(incid$mean), " (",round(incid$ll),"-",round(incid$ul),")"),
-          max_hosp_incid = paste0(round(hosp_incid$mean), " (",round(hosp_incid$ll),"-",round(hosp_incid$ul),")"),
-          max_hosp_curr = paste0(round(curr_hosp$mean), " (",round(curr_hosp$ll),"-",round(curr_hosp$ul),")"),
-          day_hosp_exceed = paste0(round(hospexceeds$mean), " (",round(hospexceeds$ll),"-",round(hospexceeds$ul),")"),) %>%
-  select(scenario, pr_outbreak, tot_inf, tot_hosp, tot_deaths, max_incid, max_hosp_incid, max_hosp_curr, day_hosp_exceed)
-
-table1alt
-write_csv(table1, file.path("results", project, "Table1_alt.csv"))
-
-```
 
 
 
 
-
-```{r}
+```{r, echo=FALSE}
 
 # case_data <- read_csv("data/case_data.csv")
 # hubei_cases <- case_data %>% filter(Province_State=="Hubei") %>% arrange(t)
@@ -701,7 +678,7 @@ sim_res_summ <- sim_res %>% group_by(scenario, day) %>%
 
 
 
-```{r}
+```{r, echo=FALSE}
 
 sim_res_outbreaks <- sim_res %>% group_by(scenario, sim_beta) %>% 
   mutate(sim_max = max(cum_cases, na.rm = TRUE)) %>%
@@ -754,7 +731,7 @@ sim_res_summ_outbreak <- sim_res_outbreaks %>% group_by(scenario, day) %>%
 ## TABLE 2
 
 
-```{r}
+```{r, echo=FALSE}
 
 max_day_datahigh <- sim_res_outbreaks %>% filter(scenario=="High Transmission") %>% 
   group_by(sim_beta) %>% mutate(maxday = max(day), na.rm=TRUE) %>% ungroup() %>% filter(day==maxday)
@@ -904,7 +881,7 @@ table2
 write_csv(table2, file.path("results", project, "Table2.csv"))
 
 
-View(data.frame(sim_res_summ_outbreak_days[,c(1:2)], round(sim_res_summ_outbreak_days[,-c(1:3)] / 600000,2)))
+#View(data.frame(sim_res_summ_outbreak_days[,c(1:2)], round(sim_res_summ_outbreak_days[,-c(1:3)] / 600000,2)))
 
 
 ```
@@ -941,7 +918,25 @@ View(sim_res_summ_outbreak %>% filter(day==90) %>%
 
 
 
-# PLOTS
+# FIGURES
+
+
+### Age Distribution and Severity profiles
+```{r, echo=FALSE}
+
+plot_age <- ggplot(pr_age10, aes(x=age_group, y=p)) +
+                    geom_bar(stat="identity", color="navyblue", fill="navyblue", width = .95) +
+                    coord_flip() +
+                    xlab("Proportion") +
+                    ylab("Age (y)")
+
+gridExtra::grid.arrange(plot_age, plot_severity, ncol=2)
+ggsave(file.path("figures", project, "age_severity.png"), 
+       gridExtra::grid.arrange(plot_age, plot_severity, ncol=2), 
+       width=10, height=5, dpi=900, units = "in")
+
+```
+
     
     
 
@@ -950,7 +945,7 @@ View(sim_res_summ_outbreak %>% filter(day==90) %>%
 ```{r, echo=FALSE}
 
 # Incid mean
-sim_res_summ <- sim_res_summ_outbreak %>% as.data.frame() %>%
+sim_res_summ <- sim_res_summ %>% as.data.frame() %>%
                     mutate(scenario = factor(scenario, 
                            levels=c("Low Transmission", "Moderate Transmission", 
                                     "High Transmission"), ordered = TRUE))
@@ -975,25 +970,25 @@ pincidhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
     theme_classic() + 
     scale_color_brewer(palette = "Set1", direction = -1) +
     scale_fill_brewer(palette = "Set1", direction = -1) +
-    #geom_hline(yintercept = 630, col="red", linetype="dashed") +
+    #geom_hline(yintercept = 250, col="red", linetype="dashed") +
     theme(legend.position = "none") +
     ylab("Daily hospitalizations") + xlab("Day") +
   ggtitle("Estimated daily hospitalizations")
 
-pincidhosp_vHubei <- ggplot(data=sim_res_summ, aes(x=day)) +
-    geom_line(aes(y=hosp_incid_mean, group=scenario, color=scenario)) + 
-    geom_ribbon(aes(ymin=hosp_incid_ll, ymax=hosp_incid_ul, group=scenario, fill=scenario), alpha=.3) + 
-    geom_line(data=hubei_cases, aes(x=(0:(nrow(hubei_cases)-1)+30), y=est_incid), 
-              color="grey50", alpha=.5, size=1.5) +
-    #scale_y_continuous(trans="log") +
-    theme_classic() + 
-        scale_color_brewer(palette = "Set1", direction = -1) +
-    scale_fill_brewer(palette = "Set1", direction = -1) +
-      geom_hline(yintercept = 630, col="red", linetype="dashed") +
-
-    theme(legend.position = "none") +
-    ylab("Daily hospitalizations") + xlab("Day") +
-  ggtitle("Estimated hospitalizations, Kutupalong-Balukhali refuge camp versus those observed in Hubei, China")
+# pincidhosp_vHubei <- ggplot(data=sim_res_summ, aes(x=day)) +
+#     geom_line(aes(y=hosp_incid_mean, group=scenario, color=scenario)) + 
+#     geom_ribbon(aes(ymin=hosp_incid_ll, ymax=hosp_incid_ul, group=scenario, fill=scenario), alpha=.3) + 
+#     geom_line(data=hubei_cases, aes(x=(0:(nrow(hubei_cases)-1)+30), y=est_incid), 
+#               color="grey50", alpha=.5, size=1.5) +
+#     #scale_y_continuous(trans="log") +
+#     theme_classic() + 
+#         scale_color_brewer(palette = "Set1", direction = -1) +
+#     scale_fill_brewer(palette = "Set1", direction = -1) +
+#       geom_hline(yintercept = 250, col="red", linetype="dashed") +
+# 
+#     theme(legend.position = "none") +
+#     ylab("Daily hospitalizations") + xlab("Day") +
+#   ggtitle("Estimated hospitalizations, Dagahaley refuge camp versus those observed in Hubei, China")
 
 pinciddeath <- ggplot(data=sim_res_summ, aes(x=day)) +
     geom_line(aes(y=death_incid_mean, group=scenario, color=scenario)) + 
@@ -1055,13 +1050,13 @@ ggsave(file.path("figures", project, "sim_res_panel.png"), p_panel, width=8, hei
 
 ### Hospitalization Capacity Needs
 
-```{r}
+```{r, echo=FALSE}
 
 # Current Hospitalizations
 pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
     geom_line(aes(y=hosp_curr_mean, group=scenario, color=scenario)) + 
     geom_ribbon(aes(ymin=hosp_curr_ll, ymax=hosp_curr_ul, group=scenario, fill=scenario), alpha=.3) + 
-    geom_hline(yintercept = 630, col="red", linetype="dashed") +
+    geom_hline(yintercept = 250, col="red", linetype="dashed") +
     #scale_y_continuous(trans="log") +
     theme_classic() + 
   theme(legend.position = c(0.8, 0.8),
@@ -1120,78 +1115,27 @@ ggsave(file.path("figures", project, "day_20th_case.png"), p_day20, width=8, hei
 ```
 
 
-
-
-
-
-```{r}
- 
-# ggplot() +
-#     geom_line(data=sim_res, aes(x=date, y=incid, group=sim_id, color=beta)) + 
-#     #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
-#     theme_classic()
-# 
-# ggplot() +
-#     geom_line(data=sim_res, aes(x=date, y=cum_cases, group=sim_id, color=beta)) + 
-#     #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
-#     theme_classic()
-# 
-# 
-# ggplot() +
-#     geom_line(data=sim_hospdeath, aes(x=t, y=hosp_curr, group=sim_beta, color=beta)) + 
-#     scale_colour_gradient(low="yellow", high="red") +
-#     #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
-#     theme_classic()
-# 
-# ggplot() +
-#     geom_line(data=sim_hospdeath, aes(x=t, y=cum_hosp, group=sim_beta, color=beta)) + 
-#     scale_colour_gradient(low="yellow", high="red") +
-#     #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
-#     theme_classic()
-# 
-# ggplot() +
-#     geom_line(data=sim_hospdeath, aes(x=t, y=cum_death, group=sim_beta, color=beta)) + 
-#     scale_colour_gradient(low="yellow", high="red") +
-#     #coord_cartesian(xlim=c(as.Date("2020-01-15"), as.Date(Sys.Date())+14)) +
-#     theme_classic()
-
-
-
-```
-
-
-
-
-## DISCUSSION
     
-#### Hospitalization Rate       
-```{r}
-p_hosp_china_low
-p_hosp_kutupalong_low
+```{r, echo=FALSE}
+### Hospitalization Rate Ratio   
 
-p_hosp_kutupalong_low /p_hosp_china_low
-
-p_hosp_china_high
-p_hosp_kutupalong_high
-
-p_hosp_kutupalong_high / p_hosp_china_high
+p_severe_dagahaley$mean / p_chn$mean
 
 ```
+   
 
+   
+### Cumulative cases before hospitalizations
 
-
-Cumulative cases before hospitalizations
-
-```{r}
-
+```{r, echo=FALSE}
 
 hosp_1 <- sim_res %>% filter(cum_hosp>0) %>% group_by(scenario, sim_beta) %>% 
   filter(t == min(t)) %>% group_by(scenario) %>% 
   summarise(meanincid = mean(cum_exposed), ll = quantile(cum_exposed, c(.025)), ul = quantile(cum_exposed, c(.975)),
             day = mean(day), dayll = quantile(day, c(.025)), dayul = quantile(day, c(.975)))
-summary((hosp_1 %>% filter(scenario=="High Transmission"))$day)
-summary((hosp_1 %>% filter(scenario=="Moderate Transmission"))$day)
-summary((hosp_1 %>% filter(scenario=="Low Transmission"))$day)
+# summary((hosp_1 %>% filter(scenario=="High Transmission"))$day)
+# summary((hosp_1 %>% filter(scenario=="Moderate Transmission"))$day)
+# summary((hosp_1 %>% filter(scenario=="Low Transmission"))$day)
 
 
 
@@ -1200,9 +1144,9 @@ hosp_10 <- sim_res %>% filter(cum_hosp>9) %>% group_by(scenario, sim_beta) %>%
   filter(t == min(t)) %>% group_by(scenario) %>% 
   summarise(meanincid = mean(cum_exposed), ll = quantile(cum_exposed, c(.025)), ul = quantile(cum_exposed, c(.975)),
             day = mean(day), dayll = quantile(day, c(.025)), dayul = quantile(day, c(.975)))
-summary((hosp_10 %>% filter(scenario=="High Transmission"))$day)
-summary((hosp_10 %>% filter(scenario=="Moderate Transmission"))$day)
-summary((hosp_10 %>% filter(scenario=="Low Transmission"))$day)
+# summary((hosp_10 %>% filter(scenario=="High Transmission"))$day)
+# summary((hosp_10 %>% filter(scenario=="Moderate Transmission"))$day)
+# summary((hosp_10 %>% filter(scenario=="Low Transmission"))$day)
 
 
 
@@ -1212,29 +1156,89 @@ hosp_20 <- sim_res %>% filter(cum_hosp>19) %>% group_by(scenario, sim_beta) %>%
             day = mean(day), dayll = quantile(day, c(.025)), dayul = quantile(day, c(.975)))
 
 
-hosp_1
-hosp_10
-hosp_20
-
-
+# print(hosp_1)
+# print(hosp_10)
+# print(hosp_20)
 
 ```
 
 
 
-Max hospitalization capacities
+### Max hospitalization capacities
 
-```{r}
+```{r, echo=FALSE}
 
-hosp_capmax <- sim_res %>% filter(cum_cases>1000) %>% group_by(scenario, sim_beta) %>% 
+hosp_capmax <- sim_res %>% filter(cum_cases>100) %>% group_by(scenario, sim_beta) %>% 
   mutate(max_hosp_cap = max(hosp_curr)) %>% ungroup() %>%
   filter(hosp_curr==max_hosp_cap) %>% group_by(scenario) %>% 
   summarise(maxhospday = mean(day), 
             ll = quantile(day, c(.025)), 
             ul = quantile(day, c(.975)))
 
-hosp_capmax
+#print(hosp_capmax)
 
+```
+
+
+
+
+
+
+
+
+
+
+<!-- THIS IS THE SUMMARY  -->
+    
+##Summary
+    
+###Background
+As of March 19, 2020, globally, there are over 244,500 confirmed cases of COVID-19, the infection caused by the newly emerged severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2). Displaced populations, especially those who reside in settlements with high density, poor access to water and sanitation, and limited health services, are especially vulnerable to a serious outbreak. Kenya, where 7 cases of COVID-19 have been confirmed so far, hosts over 200,000 refugees from Somalia and other countries in the Dadaab refugee complex, with over 73,000 of them residing in Dagahaley camp. Until recently, Dadaab was the largest refugee complex in the world, with three of the camps, including Dagahaley, established almost 30 years ago. With parts of the complex closed in 2019, humanitarian support drastically reduced over the recent years, and the humanitarian and economic effects of the United States travel ban, the capacity to meet the existing needs of this population are limited.  An outbreak of COVID-19 within this population threatens to severely disrupt an already fragile situation.
+
+###Purpose
+To explore the potential impact of SARS-CoV-2 virus on refugees in Dagahaley camp to help decision makers develop plan appropriately.
+
+###Methods
+We used a scenario-based approach to model transmission in this population after an introduction of the virus. Assuming a stable population, and a single introduction of the virus into the camp, using three different sets of assumptions about the transmission potential of SARS-CoV-2 at this site, we estimated the number of infections, hospitalizations, deaths, and health care needs that might be expected.
+
+###Results
+We found that even in a low transmission scenario, a large-scale outbreak was highly likely after a single introduction of the virus into the camp, with 61% of the simulations leading to an outbreak of at least 100 infections and increasing to 80% and 92% in moderate and high transmission scenarios, respectively. On average, in the first 30 days of the outbreak following a single introduction, we expect 117 (95% CI, 101 - 156), 170 (95% CI, 102 - 370), and 640 (95% CI, 111 – 2,471) infections in the low, moderate, and high transmission scenarios, respectively. These reach 47,921 (95% CI, 45,437 – 54,221), 66,336 (95% CI, 60,226 – 69,071) and 71,863 (95% CI, 70,274 – 72,518) infections in 12 months, respectively. Given the relatively young age distribution in Dagahaley camp, we estimate that the proportion of infections that lead to severe disease and hospitalization will be approximately half of what has been estimated in China (3.2 % vs 6.6%). However, even in the low transmission scenario, we project that there could be 152 (95% CI, 122 - 190) deaths at 12 months, rising to 227 (95% CI, 173 - 289) with the high scenario. In almost all simulations in all scenarios, the hospitalization needs, in terms of beds alone, significantly exceeded capacities. In the absence of serious efforts to reduce transmission potential of the virus (e.g,. drastic reductions in social contacts) and increases in healthcare capacity, SARS-CoV-2 may have a massive toll on residents of Dagahaley.
+
+  
+<!-- THIS IS THE MAIN TEXT -->
+
+##Methods 
+
+###Severity estimates
+The proportion of infections that result in severe disease was estimated using data from a closed population of contacts of confirmed COVID-19 cases in Shenzhen, China, for which complete data on contact, age, test results, symptoms, and severity were available (Bi et al. 2020). Using a Bayesian binomial model, we estimated the proportion of infections that were severe by 10-year age groups and then applied those estimates to the 10-year age proportions of the camp population to get an overall proportion of infections that will develop into severe disease in the specific population, as a function of age. These estimates do not account for differences in comorbidities, differing attack rates by age due to population mixing characteristics, or various other factors that may be important in this setting.
+
+###Transmission scenarios 
+One of the primary drivers of our epidemic simulations is the transmission potential characterized by the basic reproductive number (R0), or the average number of people each infected individual is expected to transmit to assuming no immunity. We considered three potential scenarios with different values of R0: 1) a low transmission scenario based on transmission levels in many of the Chinese provinces with elevated isolation and control practices and an R0 similar to influenza (R0=1.5-2.0); 2) a moderate transmission scenario that mirrors estimates in early stages of the outbreak in Wuhan, China (R0=2.0-3.0); and, 3) a high transmission scenario where we assume that R0 is increased by a factor of 1.65 (R0=3.3-5.0) compared to estimates from open community settings, as was observed during the 2017 diphtheria outbreak. The R0 in each of these scenarios falls within the 95% confidence interval of the current range of estimates for COVID-19.28 We assumed an Erlang distributed serial interval (time between the onset of symptoms in infector-infectee pairs) with a mean of 6 days (standard deviation = 4.2), and used a stochastic SEIR model to simulate transmission in this population. 
+
+###Hospitalization and mortality
+We assume that in this setting hospitalization would be limited to those with severe disease (defined as tachypnea (≧30 breaths/ min) or oxygen saturation ≤93% at rest, or PaO2/FIO2 <300, and/or lung infiltrates >50% of the lung field within 24-48 hours), and not used as a means of isolation. Thus, we assumed the hospitalization rate was equivalent to the severe disease rate. Using estimates based on data from Shenzhen, China, we estimated an age-adjusted rate of severe disease, accounting for the age distribution of Dagahaley, and applied this severe disease rate to incident infections from the model simulations. We estimated deaths assuming a 10% case fatality risk rate among hospitalizations/severe disease. We assumed hospitalization occurs a median of 3.42 days after symptom onset (lognormally distributed, sd=0.79), hospitalized cases are discharged after a mean of 11.5 days (95% CI, 8.0-17.3), and deaths occur after a mean of 11.2 days (95% CI, 8.7-14.9). Additionally, early reports from the outbreak in China indicate that mechanical ventilation was required by approximately 25% of patients with severe disease, while the remaining 75% required only oxygen supplementation. 
+
+
+
+##Results
+
+###Infections
+We found that a large-scale outbreak is highly likely in this population, even under the low transmission scenario, with 61% of the simulations producing an outbreak of at least 1,000 infections with a single introduction (Table 1) and increasing to 80% and 92% in the moderate and high transmission scenarios, respectively. On average, in the first 30 days of an outbreak following a single introduction, we expect 117 (95% CI, 101 - 156), 170 (95% CI, 102 - 370), and 640 (95% CI, 111 – 2,471)  infections in the low, moderate, and high transmission scenarios, respectively. One year after the start of an outbreak, and in the absence of any effective interventions (e.g., vaccination, quarantine) or behavior change, we expect 73% (95% CI, 63 -81%) of the population to have been infected under the low scenario, 91% (95% CI, 83 -95%) in the moderate scenario, and 98% (95% CI, 96 - 99%) in the high transmission scenario (Table 1). 
+
+We found that in all scenarios, epidemic growth is likely to remain relatively slow at the beginning of an outbreak in this population, with limited numbers of infections and few, if any, hospitalizations and deaths during the first three months (Table 2). However, this quickly changes once sufficient infections are in the population, with rapid increases and wide reached spread of the outbreak after six months (Table 2, Figure 2). 
+
+By the time the first hospitalization occurs, we expect 66 (95% CI, 2 - 246) individuals to be infected in the population under the low scenario, assuming homogeneous probability of infection by age. This increases to 113 (95% CI, 3 - 421) and 239 (95% CI, 6 - 937) in the moderate and high scenarios, respectively. When the first hospitalization occurs, we expect the virus to have been circulating in this population for an average of 42, 33, and 25 days under the low, moderate, and high transmission scenarios, respectively. 
+
+###Hospitalization and mortality
+Adjusted for the age distribution in the Dagahaley camp, we estimated that `r print(round(p_severe_dagahaley$mean*100,1))`% (95% CI, `r print(round(p_severe_dagahaley$ll*100,1))`-`r print(round(p_severe_dagahaley$ul*100,1))`%) of infections in this population would result in severe disease and hospitalization. The maximum daily hospitalization capacity needed in the low, moderate, and high scenarios was 386 (95% CI, 228-589), 770 (95% CI, 481-1,117), and 1,197 (95% CI, 803-1,702) beds, respectively (Table 1). Under the low transmission scenario, hospitalization needs exceeded the hospitalization capacity of 100 beds after 74 days (95% CI, 46-124) while in the high transmission scenario, this occurred after only 33 days (95% CI, 21-53); (Table 1, Figure 3). 
+
+Assuming that 10% of severe cases result in death, which puts the infection fatality rate at 0.32% (95% CI, 0.09 - 0.87%), we estimated a total of 169 (95% CI, 130 - 214), 210 (95% CI, 164 - 262), and 227 (95% CI, 173 - 289) deaths in the low, moderate, and high transmission scenarios, respectively (Table 1). In the high transmission scenario, the maximum number of daily deaths is reached on day 161, compared to day 102 and day 69 on average in the low and moderate scenarios, respectively (Figure 2).
+
+
+
+
+
+```{r}
 
 ```
 
