@@ -325,7 +325,7 @@ sim_hospdeath <- build_hospdeath_par(
                             end_date = "2022-01-01",
                             length_geoid = 5,
                             cores=4, 
-                            run_parallel=FALSE)
+                            run_parallel=TRUE)
 colnames(sim_hospdeath)
 
 
@@ -393,7 +393,7 @@ sim_hospdeath <- build_hospdeath_par(
                             end_date = "2022-01-01",
                             length_geoid = 5,
                             cores=4, 
-                            run_parallel=FALSE)
+                            run_parallel=TRUE)
 colnames(sim_hospdeath)
 
 
@@ -462,7 +462,7 @@ sim_hospdeath <- build_hospdeath_par(
                             end_date = "2022-01-01",
                             length_geoid = 5,
                             cores=4, 
-                            run_parallel=FALSE)
+                            run_parallel=TRUE)
 colnames(sim_hospdeath)
 
 
