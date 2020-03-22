@@ -57,11 +57,12 @@ N_beds = N/1000
 
 
 
-
-<center> The Potential Impact of COVID-19 in the `r print(location_name)` </center>
-<center> Shaun Truelove, Natalya Kostandova, Andrew Azman </center>
+\begin{center}
+The Potential Impact of COVID-19 in the `r print(location_name)` 
+Shaun Truelove, Natalya Kostandova, Andrew Azman 
         
-<center> `r print(format(as.Date(Sys.Date()), "%d %B %Y") )` </center>
+`r print(format(as.Date(Sys.Date()), "%d %B %Y") )` 
+\end{center}
     
 
 ```{r, include=FALSE, message = F, warning = F, results = F}
@@ -125,7 +126,7 @@ p_data <- bind_rows(data.frame(Location = "USA", p_severe=p_usa$ests),
                     data.frame(Location = "Switzerland", p_severe=p_che$ests)) %>%
   mutate(Location=factor(Location, levels=c("Bangladesh","China","USA","Switzerland","Italy"), ordered = TRUE))
 
-# # Make some boxplots
+ # Make some boxplots
 # ggplot(p_data, aes(x=Location, y=p_severe)) +
 #   geom_boxplot(fill="maroon", color="darkred") + 
 #   ylab("Proportion Severe")
@@ -945,10 +946,10 @@ View(sim_res_summ_outbreak %>% filter(day==90) %>%
 
     
     
+<!--
+### 3-Curve Panel   -->
 
-### 3-Curve Panel
-
-```{r, echo=FALSE}
+```{r, include=FALSE, results=FALSE}
 
 # Incid mean
 sim_res_summ <- sim_res_summ %>% as.data.frame() %>%
@@ -1053,10 +1054,10 @@ ggsave(file.path("figures", project, "sim_res_panel.png"), p_panel, width=8, hei
 
 ```
 
+<!--
+### Hospitalization Capacity Needs -->
 
-### Hospitalization Capacity Needs
-
-```{r, echo=FALSE}
+```{r, include=FALSE, results=FALSE}
 
 # Current Hospitalizations
 pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
@@ -1073,15 +1074,15 @@ pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
   ggtitle("Daily hospitalization capacity required")
 
 
-pcurrhosp
+
 ggsave(file.path("figures", project, "curr_hosp.png"), width=8, height=4, dpi=600, units = "in")
 
 ```
 
+<!--
+### Day 20th Case -->
 
-### Day 20th Case
-
-```{r, echo=FALSE}
+```{r, inlude=FALSE, results=FALSE}
 
 sim_res_nooutbreak <- sim_res %>% group_by(scenario, sim_beta) %>% 
   mutate(max_cum = max(cum_cases)) %>% ungroup() %>%
@@ -1122,7 +1123,7 @@ ggsave(file.path("figures", project, "day_20th_case.png"), p_day20, width=8, hei
 
 
     
-```{r, echo=FALSE}
+```{r, include=FALSE}
 ### Hospitalization Rate Ratio   
 
 p_severe_dagahaley$mean / p_chn$mean
@@ -1130,8 +1131,8 @@ p_severe_dagahaley$mean / p_chn$mean
 ```
    
 
-   
-### Cumulative cases before hospitalizations
+<!--   
+### Cumulative cases before hospitalizations -->
 
 ```{r, echo=FALSE}
 
@@ -1169,8 +1170,8 @@ hosp_20 <- sim_res %>% filter(cum_hosp>19) %>% group_by(scenario, sim_beta) %>%
 ```
 
 
-
-### Max hospitalization capacities
+<!--
+### Max hospitalization capacities -->
 
 ```{r, echo=FALSE}
 
@@ -1210,7 +1211,7 @@ To explore the potential impact of SARS-CoV-2 virus on refugees in Dagahaley cam
 
 We used a scenario-based approach to model transmission in this population after an introduction of the virus. Assuming a stable population, and a single introduction of the virus into the camp, using three different sets of assumptions about the transmission potential of SARS-CoV-2 at this site, we estimated the number of infections, hospitalizations, deaths, and health care needs that might be expected.
 
-###Results
+### Results
 
 ```{r include=FALSE}
 sim_res_summ_low = sim_res_summ %>% filter(scenario=="Low Transmission")
@@ -1257,7 +1258,7 @@ Adjusted for the age distribution in the `r print(location_name)`, we estimated 
 Assuming that `r (p_death*100)`% of severe cases result in death, which puts the infection fatality rate at 0.32% (95% CI, 0.09 - 0.87%), we estimated a total of `r (round(deaths$mean[1],0))` (95% CI, `r (round(deaths$ll[1],0))` - `r (round(deaths$ul[1],0))`), `r (round(deaths$mean[2],0))` (95% CI, `r (round(deaths$ll[2],0))` - `r (round(deaths$ul[2],0))`), and `r (round(deaths$mean[3],0))` (95% CI, `r (round(deaths$ll[3],0))` - `r (round(deaths$ul[3],0))`) deaths in the low, moderate, and high transmission scenarios, respectively (Table 1). In the high transmission scenario, the maximum number of daily deaths is reached on day `r (sim_res_summ_high$day[which.max(sim_res_summ_low$death_incid_high)])`, compared to day `r (sim_res_summ_low$day[which.max(sim_res_summ_low$death_incid_mean)])` and day `r (sim_res_summ_mid$day[which.max(sim_res_summ_mid$death_incid_mean)])` on average in the low and moderate scenarios, respectively (Figure 2).
 
 
-## Table 1
+### Table 1
 
 ```{r table1_knitr, echo=FALSE}
 #t1 = read_csv(table1, file.path("results", project, "Table1.csv"))
@@ -1292,13 +1293,15 @@ knitr::kable(t1,
 
 ```
 
-## Table 2
+### Table 2
 
 ```{r }
-#t1 = read_csv(table1, file.path("results", project, "Table1.csv"))
+table2 = read_csv(file.path("results", project, "Table2.csv"))
 t2_new = table2
 t2_low = t2_new %>% filter(scenario=="Low Transmission")
 t2_mid = t2_new %>% filter(scenario=="Moderate Transmission")
+#### REMEMBER TO DELETE THIS AFTER SHAUN FIXES TABLE 2
+t2_mid = t2_mid[-c(4),]
 t2_high = t2_new %>% filter(scenario=="High Transmission")
 t2 = data.frame(t2_low, t2_mid, t2_high)
 t2 = t2[-c(2,8,9,15,16)]
@@ -1319,23 +1322,64 @@ knitr::kable(t2,
   column_spec(1, border_right = TRUE, bold = TRUE)
                 
 ```
-## Figures
 
-<!-- ### Age distribution -->
+### Figure 1
 
-```{r, echo=FALSE}
+Age distribution of the `r print(location_name)` and the expected proportion of infections that will result in severe disease, compared across several countries and `r print(location_name)`, adjusted for age. These estimates inform the proportion hospitalized, admitted to intensive care, placed on ventilation, and who die. 
+
+
+``````{r fig1, echo=FALSE, message = F, warning = F, fig.fullwidth=TRUE}
+pr_age10 <- read_csv(file.path("data", "age_dagahaley.csv"))
+
+# Load the proportion severe in the camp
+p_severe_dagahaley <- load(file=file.path("results", project, "p_severe_dagahaley.RData"))
+p_severe = p_severe_dagahaley$ests
+
+# PLOT IT
+p_data <- bind_rows(p_data, data.frame(Location = stringr::str_to_title(project), p_severe)) %>%
+  mutate(Location=factor(Location, 
+                         levels=c(stringr::str_to_title(project), "Bangladesh","China","USA","Switzerland","Italy"), 
+                         ordered = TRUE)) %>%
+  mutate(col_ = ifelse(Location==stringr::str_to_title(project), 2, 1))
+
+# Make some boxplots
+fills <- c("1"="maroon", "2"="gold")
+cols <- c("1"="darkred", "2"="goldenrod1")
+plot_severity <- ggplot(p_data, aes(x=Location, y=p_severe, fill=factor(col_), colour=factor(col_))) +
+                          geom_boxplot() + 
+                          scale_color_manual(values=c("darkred", "goldenrod4")) +
+                          scale_fill_manual(values=c("maroon", "goldenrod1")) +
+                          ylab("Proportion Severe") +
+                          theme(legend.position = "none", axis.text.x = element_text(angle=45))
+                        
+
+
 plot_age <- ggplot(pr_age10, aes(x=age_group, y=p)) +
-                    geom_bar(stat="identity", color="navyblue", fill="navyblue", width = .95) +
+                    geom_bar(stat="identity", color="navyblue", fill="navyblue", width = 0.95) +
                     coord_flip() +
-                    xlab("Proportion") +
-                    ylab("Age (y)") + 
-  ggtitle("Figure 1.", subtitle= "Age distribution of the Dagahaley camp and the expected proportion of infections that will result in severe disease, compared across several countries and Dagahaley camp, adjusted for age. These estimates inform the proportion hospitalized, admitted to intensive care, placed on ventilation, and who die.") + 
-  theme(plot.caption = element_text(hjust = 0, face= "italic"),
-        plot.title.position = "plot",
-        plot.caption.position =  "plot")
+                    xlab("Age (years)") +
+                    ylab("Proportion") 
 
-gridExtra::grid.arrange(plot_age, plot_severity, ncol=2)
-ggsave(file.path("figures", project, "age_severity.png"), 
-       gridExtra::grid.arrange(plot_age, plot_severity, ncol=2), 
-       width=10, height=5, dpi=900, units = "in")
+
+ gridExtra::grid.arrange(plot_age, plot_severity, ncol=2)     
+ ggsave(file.path("figures", project, "age_severity.png"), width=15, height=5, dpi=900, units = "in") 
+     
+```
+
+
+### Figure 2
+
+Simulated outbreak trajectories for `r print(location_name)` under three transmission scenarios: low transmission ($R_0 =1.5-2.0$), moderate transmission ($R_0=2.0-3.0$), and high transmission ($R_0=3.3-5.0$). (A) daily incident infections of COVID-19, (B) daily incident hospitalizations, and (C) daily deaths under the three scenarios.  
+
+
+```{r fig1, echo=FALSE, message = F, warning = F, fig.fullwidth=TRUE}
+ppanel
+```
+
+### Figure 3
+
+Hospitalization capacity requirements for an outbreak of SARS-CoV-2 in the Dagahaley camp, under three transmission scenarios: low transmission ($R_0 =1.5-2.0$), moderate transmission ($R_0=2.0-3.0$), and high transmission ($R_0=3.3-5.0$). Dashed red line represents surge capacity for beds.
+
+```{r fig1, echo=FALSE, message = F, warning = F, fig.fullwidth=TRUE}
+pcurrhosp
 ```
