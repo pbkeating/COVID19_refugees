@@ -1,0 +1,211 @@
+---
+title: "COVID-19 Impact: Dagahaley Refugee Camp"
+output: html_document
+---
+
+
+```{r setup, include=FALSE, message = F, warning = F, results = F}
+require(knitr)
+require(tidyverse)
+require(gridExtra)
+library(doParallel)
+# require(rstan)
+library(RColorBrewer)
+#library(RgoogleMaps)
+library(pander)
+library(kableExtra)
+library(here)
+
+options(scipen = 999)
+knitr::opts_knit$set(root.dir = "..")
+knitr::opts_chunk$set(echo=TRUE)
+knitr::opts_knit$set(root.dir = normalizePath("../"))
+#setwd('..')
+```
+
+```{r include=FALSE, message = F, warning = F, results = F}
+source("R/DataLoadUtils.r")
+source("R/BasicEpiAnalyses.r")
+source("R/DataUtils.r")
+source("R/model_functions.R")
+source("R/StochasticSEIR.R")
+source("R/CalcHospDeaths.R")
+source("R/get_ageadjust_severe.R")
+```
+
+
+
+<!-- ONLY NEED TO CHANGE THE FOLLOWING CHUNK -->
+
+```{r, include=FALSE, message = F, warning = F, results = F}
+
+# Project location
+project <- "dagahaley"
+location_name <- "Dagahaley Refugee Camp"
+
+# Population Size
+N <- 200000
+N_beds = N/1000
+
+
+```
+
+
+### Table 1
+
+Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of beds corresponding to 0.1% of population.
+
+```{r table1_knitr, warning = FALSE, message = FALSE, echo=FALSE}
+t1 = read_csv(file.path("results", project, "Table1.csv"))
+
+row_labels = c(paste0("Low ", "$(R_0=1.5-2.0)$"), "Moderate $(R_0 = 2.0 - 3.0)$", "High $(R_0 = 3.0 - 5.0)$")
+t1$scenario = row_labels
+
+
+colnames(t1) = c("Transmission Scenario", "Probability of outbreak of >100 infections after a single introduction", "Total Infections, mean (95% CI)", "Total Hospitalizations, mean (95% CI)", "Total Deaths, mean (95% CI)", "Maximum Daily Incident Infections, mean (95% CI)", "Maximum Daily Incident Hospitalizations, mean (95% CI)", "Maximum Daily Hospitalization Capacity Needed (in beds), mean (95% CI)", "Day on which Hospitalization Need Exceeds Capacity, ‡ mean (95% CI)")
+names(t1)[3] = paste0("Total Infections,",
+footnote_marker_symbol(1), "\n mean (95% CI)")
+names(t1)[4] = paste0("Total Hospitalizations,",
+footnote_marker_symbol(1), "\n mean (95% CI)")
+names(t1)[5] = paste0("Total Deaths,",
+footnote_marker_symbol(1), "\n mean (95% CI)")
+names(t1)[6] = paste0("Maximum Daily Incident Infections,",
+footnote_marker_symbol(1), "\n mean (95% CI)")
+names(t1)[7] = paste0("Maximum Daily Incident Hospitalizations,",
+footnote_marker_symbol(1), "\n mean (95% CI)")
+names(t1)[8] = paste0("Maximum Daily Hospitalization Capacity Needed (in beds),",
+footnote_marker_symbol(1), "\n mean (95% CI)")
+names(t1)[9] = paste0("Day on which Hospitalization Need Exceeds Capacity,",
+footnote_marker_symbol(1), footnote_marker_symbol(2), "\n mean (95% CI)")
+
+#capt_t1 = "Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of beds corresponding to 0.1% of population."
+knitr::kable(t1, escape=FALSE) %>%
+  kable_styling(c("basic", "scale_down")) %>%
+  column_spec(1, border_right = TRUE, bold = TRUE)  %>%
+  footnote(symbol = c("Among simulations with successful introductions that result in outbreaks.", "Current hospitalization surge capacity estimated to be `r N_beds` beds." ))
+                
+
+```
+
+
+
+
+### Table 2
+
+```{r tab2, echo=FALSE, warning = FALSE, message = FALSE, }
+table2 = read_csv(file.path("results", project, "Table2.csv"))
+
+
+t2_30 = table2 %>% filter(day==30)
+t2_91 = table2 %>% filter(day==91)
+t2_182 = table2 %>% filter(day==182)
+
+
+t2 = data.frame(t2_30, t2_91, t2_182)
+t2 = t2[-c(2,8,9,15,16)]
+row_labels = c(paste0("Low, $(R_0=1.5-2.0)$"), "Moderate $(R_0 = 2.0 - 3.0)$", "High $(R_0 = 3.0 - 5.0)$")
+t2$scenario = row_labels
+
+
+colnames(t2) = c("Transmission Scenario", 
+                 "Infections, mean (95% CI)", "Hospitalizations, mean (95% CI)", "ICU, mean (95% CI)", "Ventilation, mean (95% CI)", "Deaths, mean (95% CI)", 
+                 "Infections, mean (95% CI)", "Hospitalizations, mean (95% CI)", "ICU, mean (95% CI)", "Ventilation, mean (95% CI)", "Deaths, mean (95% CI)",
+                 "Infections, mean (95% CI)", "Hospitalizations, mean (95% CI)", "ICU, mean (95% CI)", "Ventilation, mean (95% CI)", "Deaths, mean (95% CI)")
+
+
+knitr::kable(t2, 
+      caption = "Cumulative infections, hospitalizations, intensive care unit (ICU) admissions, patients requiring ventilation, and deaths at 1, 3, and 6 months following successful introduction (i.e. in simulations where an outbreak occurs).", escape=FALSE) %>%
+  kable_styling(c("basic", "scale_down")) %>%
+  add_header_above(c(" ", "1 month" = 5, "3 months" = 5, "6 months" = 5)) %>%
+  column_spec(1, border_right = TRUE, bold = TRUE) %>%
+  column_spec(6, border_right = TRUE, bold = TRUE) %>%
+  column_spec(11, border_right = TRUE, bold = TRUE)
+                
+```
+
+
+
+
+### Figure 1
+
+Age distribution of the `r print(location_name)` and the expected proportion of infections that will result in severe disease, compared across several countries and `r print(location_name)`, adjusted for age. These estimates inform the proportion hospitalized, admitted to intensive care, placed on ventilation, and who die. 
+
+
+``````{r figure1, echo=FALSE, message = F, warning = F, fig.fullwidth=TRUE}
+pr_age10 <- read_csv(file.path("data", "age_dagahaley.csv"))
+
+# Load the proportion severe in the camp
+p_severe_dagahaley <- get(load(file.path("results", project, "p_severe_dagahaley.RData")))
+
+p_severe = p_severe_dagahaley$ests
+
+p_data = read_csv(
+  file.path("results", project, "p_data.csv"))
+
+# PLOT IT
+p_data <- bind_rows(p_data, data.frame(Location = stringr::str_to_title(project), p_severe)) %>%
+  mutate(Location=factor(Location, 
+                         levels=c(stringr::str_to_title(project), "Bangladesh","China","USA","Switzerland","Italy"), 
+                         ordered = TRUE)) %>%
+  mutate(col_ = ifelse(Location==stringr::str_to_title(project), 2, 1))
+
+# Make some boxplots
+fills <- c("1"="maroon", "2"="gold")
+cols <- c("1"="darkred", "2"="goldenrod1")
+plot_severity <- ggplot(p_data, aes(x=Location, y=p_severe, fill=factor(col_), colour=factor(col_))) +
+  geom_boxplot() + 
+  scale_color_manual(values=c("darkred", "goldenrod4")) +
+  scale_fill_manual(values=c("maroon", "goldenrod1")) +
+  ylab("Proportion Severe") +
+  theme(legend.position = "none", axis.text.x = element_text(angle=45))
+
+
+
+plot_age <- ggplot(pr_age10, aes(x=age_group, y=p)) +
+  geom_bar(stat="identity", color="navyblue", fill="navyblue", width = 0.95) +
+  coord_flip() +
+  xlab("Age (years)") +
+  ylab("Proportion") 
+
+
+gridExtra::grid.arrange(plot_age, plot_severity, ncol=2)     
+ggsave(file.path("figures", project, "age_severity.png"), width=15, height=5, dpi=900, units = "in") 
+
+```
+
+
+### Figure 2
+
+Simulated outbreak trajectories for `r print(location_name)` under three transmission scenarios: low transmission ($R_0 =1.5-2.0$), moderate transmission ($R_0=2.0-3.0$), and high transmission ($R_0=3.3-5.0$). (A) daily incident infections of COVID-19, (B) daily incident hospitalizations, and (C) daily deaths under the three scenarios.  
+
+```{r, include=FALSE}
+here("figures",project,"sim_res_panel.png")
+```
+
+```{r fig2, echo=FALSE, message = F, warning = F, fig.fullwidth=TRUE, fig.pos="H"}
+
+knitr::opts_chunk$set(fig.lp = '')
+
+knitr::include_graphics(file.path(here("figures", project, "sim_res_panel.png")))
+#include_graphics(file.path("figures", project, "sim_res_panel.png"))
+
+```
+
+
+### Figure 3
+
+Hospitalization capacity requirements for an outbreak of SARS-CoV-2 in the Dagahaley camp, under three transmission scenarios: low transmission ($R_0 =1.5-2.0$), moderate transmission ($R_0=2.0-3.0$), and high transmission ($R_0=3.3-5.0$). Dashed red line represents surge capacity for beds.
+
+```{r include=FALSE}
+here("figures",project,"curr_hosp.png")
+```
+
+```{r fig3, echo=FALSE, message = F, warning = F, fig.fullwidth=TRUE, fig.pos="H", results=TRUE}
+knitr::opts_chunk$set(fig.lp = '')
+
+knitr::include_graphics(file.path(here("figures", project, "curr_hosp.png")))
+#knitr::include_graphics(file.path("figures", project, "curr_hosp.png"))
+#ggsave(file.path("figures", project, "sim_res_panel.png"), p_panel, width=8, height=10, dpi=900, units = "in")
+```
+
+
