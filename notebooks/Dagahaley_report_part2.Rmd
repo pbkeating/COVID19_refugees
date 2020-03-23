@@ -51,9 +51,11 @@ N_beds = N/1000
 ```
 
 
+    
+
 ### Table 1
 
-Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of beds corresponding to 0.1% of population.
+Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of `r round(N_beds, 0)` beds.
 
 ```{r table1_knitr, warning = FALSE, message = FALSE, echo=FALSE}
 t1 = read_csv(file.path("results", project, "Table1.csv"))
@@ -79,10 +81,11 @@ names(t1)[9] = paste0("Day on which Hospitalization Need Exceeds Capacity,",
 footnote_marker_symbol(1), footnote_marker_symbol(2), "\n mean (95% CI)")
 
 #capt_t1 = "Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of beds corresponding to 0.1% of population."
+footnote2 = paste0('Current hospitalization surge capacity estimated to be ', round(N_beds,0), ' beds.')
 knitr::kable(t1, escape=FALSE) %>%
   kable_styling(c("basic", "scale_down")) %>%
   column_spec(1, border_right = TRUE, bold = TRUE)  %>%
-  footnote(symbol = c("Among simulations with successful introductions that result in outbreaks.", "Current hospitalization surge capacity estimated to be `r N_beds` beds." ))
+  footnote(symbol = c("Among simulations with successful introductions that result in outbreaks.", footnote2 ))
                 
 
 ```

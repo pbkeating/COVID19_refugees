@@ -57,7 +57,7 @@ N_beds = N/1000
 
 
 
-<center> The Potential Impact of COVID-19 in the `r print(location_name)` </center>
+<center> The Potential Impact of COVID-19 in the Dagahaley Refugee Camp </center>
 <center> Shaun Truelove, Natalya Kostandova, Andrew Azman </center>
         
 <center> `r print(format(as.Date(Sys.Date()), "%d %B %Y") )` </center>
@@ -1237,7 +1237,7 @@ The proportion of infections that result in severe disease was estimated using d
 One of the primary drivers of our epidemic simulations is the transmission potential characterized by the basic reproductive number ($R_0$), or the average number of people each infected individual is expected to transmit to assuming no immunity. We considered three potential scenarios with different values of $R_0$: 1) a low transmission scenario based on transmission levels in many of the Chinese provinces with elevated isolation and control practices and an $R_0$ similar to influenza ($R_0=1.5-2.0$); 2) a moderate transmission scenario that mirrors estimates in early stages of the outbreak in Wuhan, China ($R_0=2.0-3.0$); and, 3) a high transmission scenario where we assume that $R_0$ is increased by a factor of 1.65 ($R_0=3.3-5.0$) compared to estimates from open community settings, as was observed during the 2017 diphtheria outbreak. The $R_0$ in each of these scenarios falls within the 95% confidence interval of the current range of estimates for COVID-19$^{28}$. We assumed an Erlang distributed serial interval (time between the onset of symptoms in infector-infectee pairs) with a mean of 6 days (standard deviation = 4.2), and used a stochastic SEIR model to simulate transmission in this population. 
 
 ### Hospitalization and mortality
-We assume that in this setting hospitalization would be limited to those with severe disease (defined as tachypnea (≧30 breaths/ min) or oxygen saturation ≤93% at rest, or PaO2/FIO2 <300, and/or lung infiltrates >50% of the lung field within 24-48 hours), and not used as a means of isolation. Thus, we assumed the hospitalization rate was equivalent to the severe disease rate. Using estimates based on data from Shenzhen, China, we estimated an age-adjusted rate of severe disease, accounting for the age distribution of Dagahaley, and applied this severe disease rate to incident infections from the model simulations. We estimated deaths assuming a 10% case fatality risk rate among hospitalizations/severe disease. We assumed hospitalization occurs a median of 3.42 days after symptom onset (lognormally distributed, sd=0.79), hospitalized cases are discharged after a mean of 11.5 days (95% CI, 8.0-17.3), and deaths occur after a mean of 11.2 days (95% CI, 8.7-14.9). Additionally, early reports from the outbreak in China indicate that mechanical ventilation was required by approximately 25% of patients with severe disease, while the remaining 75% required only oxygen supplementation. 
+We assume that in this setting hospitalization would be limited to those with severe disease (defined as tachypnea ($\ge$ 30 breaths/ min) or oxygen saturation ≤93% at rest, or PaO2/FIO2 <300, and/or lung infiltrates >50% of the lung field within 24-48 hours), and not used as a means of isolation. Thus, we assumed the hospitalization rate was equivalent to the severe disease rate. Using estimates based on data from Shenzhen, China, we estimated an age-adjusted rate of severe disease, accounting for the age distribution of Dagahaley, and applied this severe disease rate to incident infections from the model simulations. We estimated deaths assuming a 10% case fatality risk rate among hospitalizations/severe disease. We assumed hospitalization occurs a median of 3.42 days after symptom onset (lognormally distributed, sd=0.79), hospitalized cases are discharged after a mean of 11.5 days (95% CI, 8.0-17.3), and deaths occur after a mean of 11.2 days (95% CI, 8.7-14.9). Additionally, early reports from the outbreak in China indicate that mechanical ventilation was required by approximately 25% of patients with severe disease, while the remaining 75% required only oxygen supplementation. 
 
 
 
@@ -1261,9 +1261,10 @@ Assuming that `r (p_death*100)`% of severe cases result in death, which puts the
 
 
 
+
 ### Table 1
 
-Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of beds corresponding to 0.1% of population.
+Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of `r round(N_beds, 0)` beds.
 
 ```{r table1_knitr, warning = FALSE, message = FALSE, echo=FALSE}
 t1 = read_csv(file.path("results", project, "Table1.csv"))
@@ -1272,7 +1273,7 @@ row_labels = c(paste0("Low ", "$(R_0=1.5-2.0)$"), "Moderate $(R_0 = 2.0 - 3.0)$"
 t1$scenario = row_labels
 
 
-colnames(t1) = c("Transmission Scenario", "Probability of outbreak of >100 infections after a single introduction", "Total Infections, mean (95% CI)", "Total Hospitalizations, mean (95% CI)", "Total Deaths, mean (95% CI)", "Maximum Daily Incident Infections, mean (95% CI)", "Maximum Daily Incident Hospitalizations, mean (95% CI)", "Maximum Daily Hospitalization Capacity Needed (in beds), mean (95% CI)", "Day on which Hospitalization Need Exceeds Capacity, ‡ mean (95% CI)")
+colnames(t1) = c("Transmission Scenario", "Probability of outbreak of >100 infections after a single introduction", "Total Infections, mean (95% CI)", "Total Hospitalizations, mean (95% CI)", "Total Deaths, mean (95% CI)", "Maximum Daily Incident Infections, mean (95% CI)", "Maximum Daily Incident Hospitalizations, mean (95% CI)", "Maximum Daily Hospitalization Capacity Needed (in beds), mean (95% CI)", "Day on which Hospitalization Need Exceeds Capacity, mean (95% CI)")
 names(t1)[3] = paste0("Total Infections,",
 footnote_marker_symbol(1), "\n mean (95% CI)")
 names(t1)[4] = paste0("Total Hospitalizations,",
@@ -1289,10 +1290,11 @@ names(t1)[9] = paste0("Day on which Hospitalization Need Exceeds Capacity,",
 footnote_marker_symbol(1), footnote_marker_symbol(2), "\n mean (95% CI)")
 
 #capt_t1 = "Overall impact of simulated outbreaks in Dagahaley, assuming no effective novel interventions or behavior change. Total infections, hospitalizations, and deaths represent the final cumulative counts after the simulated outbreak ran its full course. Maximum daily counts are the maximum incident counts of infection and hospitalization on a single day across the full outbreak, occurring at the outbreaks peak. We estimated daily capacity need assuming hospitalized individuals remain hospitalized for a mean of 11.5 days (95% CI, 8.0-17.3)$^{25}$, and from the daily capacity needed over time, estimated the maximum capacity needed on any single day, and how many days after the first successful introduction into the expansion site at which hospitalization capacity needs exceeds the existing surge capacity of beds corresponding to 0.1% of population."
+footnote2 = paste0('Current hospitalization surge capacity estimated to be ', round(N_beds,0), ' beds.')
 knitr::kable(t1, escape=FALSE) %>%
   kable_styling(c("basic", "scale_down")) %>%
   column_spec(1, border_right = TRUE, bold = TRUE)  %>%
-  footnote(symbol = c("Among simulations with successful introductions that result in outbreaks.", "Current hospitalization surge capacity estimated to be `r N_beds` beds." ))
+  footnote(symbol = c("Among simulations with successful introductions that result in outbreaks.", footnote2 ))
                 
 
 ```
@@ -1328,8 +1330,8 @@ knitr::kable(t2,
   kable_styling(c("basic", "scale_down")) %>%
   add_header_above(c(" ", "1 month" = 5, "3 months" = 5, "6 months" = 5)) %>%
   column_spec(1, border_right = TRUE, bold = TRUE) %>%
-  column_spec(6, border_right = TRUE, bold = TRUE) %>%
-  column_spec(11, border_right = TRUE, bold = TRUE)
+  column_spec(6, border_right = TRUE, bold = FALSE) %>%
+  column_spec(11, border_right = TRUE, bold = FALSE)
                 
 ```
 
@@ -1417,6 +1419,5 @@ knitr::include_graphics(file.path(here("figures", project, "curr_hosp.png")))
 #knitr::include_graphics(file.path("figures", project, "curr_hosp.png"))
 #ggsave(file.path("figures", project, "sim_res_panel.png"), p_panel, width=8, height=10, dpi=900, units = "in")
 ```
-
 
 
