@@ -608,7 +608,7 @@ deaths <- summ_ %>% filter(final_size>=100) %>%
 
 # Summarize day cum cases exceeds N_beds
 hospexceeds <- sim_res %>% group_by(scenario, sim_beta) %>% 
-  filter(cum_cases>N_beds) %>%
+  filter(hosp_curr > N_beds) %>%
   summarise( dayexceeds = min(day, na.rm=TRUE)) %>% group_by(scenario) %>%
   summarise(mean=mean(dayexceeds, na.rm=TRUE),
             ll = quantile(dayexceeds, .025, na.rm=TRUE), 
