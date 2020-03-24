@@ -30,7 +30,7 @@ get_severe_age_shenzhen <- function( ){
     fit1 <- stan_glm(cbind(severe, tot-severe) ~ age_cat, data = dat,
                      family = binomial(link = "logit"),
                      prior = t_prior, prior_intercept = t_prior,
-                     cores = 2, seed = 12345)
+                     cores = 4, seed = 12345)
 
     PPD <- posterior_predict(fit1)
     prob <- PPD

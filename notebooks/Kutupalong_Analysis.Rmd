@@ -335,8 +335,7 @@ rm(sim_res)
 
 # Save it
 dir.create("results", recursive = TRUE, showWarnings = FALSE)
-write_csv(sim_res_full, 
-          file.path("results", project, paste0("sim_res_low_", res_date, ".csv")))
+write_csv(sim_res_full, file.path("results", project, paste0("sim_res_low_", res_date, ".csv")))
 
 ```
 
@@ -471,8 +470,7 @@ sim_res_high <- sim_res_full
 rm(sim_res)
 
 # Save it
-dir.create("results", recursive = TRUE, showWarnings = FALSE)
-write_csv(sim_res_full, 
+write_csv(sim_res_high, 
           file.path("results", project, paste0("sim_res_high_", res_date, ".csv")))
 
 ```
@@ -486,6 +484,11 @@ write_csv(sim_res_full,
 
 ```{r}
 
+sim_res_high <- read_csv(file.path("results", project, paste0("sim_res_high_", res_date, ".csv")))
+sim_res_mid <- read_csv(file.path("results", project, paste0("sim_res_mid_", res_date, ".csv")))
+sim_res_low <- read_csv(file.path("results", project, paste0("sim_res_low_", res_date, ".csv")))
+
+
 sim_res <- full_join(full_join(sim_res_low %>% mutate(scenario="Low Transmission"),
                                sim_res_mid %>% mutate(scenario="Moderate Transmission")),
                                sim_res_high %>% mutate(scenario="High Transmission"))
@@ -495,16 +498,13 @@ sim_res <- sim_res %>% mutate(scenario = factor(scenario, levels=c("Low Transmis
 sim_res <- sim_res %>% filter(!is.na(sim))
 
 write_csv(sim_res, 
-          file.path("results", project, paste0("sim_res_", 
-                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
-write_csv(sim_res, 
-          file.path("results", project, paste0("sim_res_Mar20.csv")))
+          file.path("results", project, paste0("sim_res_", res_date, ".csv")))
+
 ```
 
 ### ~ Load sim results
 ```{r}
-sim_res <- read_csv(file.path("results", project, paste0("sim_res_", 
-                      month.abb[lubridate::month(Sys.Date())],lubridate::day(Sys.Date()), ".csv")))
+sim_res <- read_csv(file.path("results", project, paste0("sim_res_", res_date, ".csv")))
 sim_res <- sim_res %>% 
   mutate(scenario = factor(scenario, 
                            levels=c("Low Transmission", "Moderate Transmission", 
@@ -591,10 +591,11 @@ deaths <- summ_ %>% filter(final_size>=1000) %>%
             ll = quantile(final_death, prob=c(.0275)),
             ul = quantile(final_death, prob=c(.975)))
 
-# Summarize day cum cases exceeds 100
+# Summarize day hospital cases exceeds capacity
+
 hospexceeds <- sim_res %>% group_by(scenario, sim_beta) %>% 
-  filter(cum_cases>340) %>%
-  summarise( dayexceeds = min(day, na.rm=TRUE)) %>% group_by(scenario) %>%
+  filter(hosp_curr>340) %>%
+  summarise( dayexceeds = min(day, na.rm=TRUE)) %>% ungroup() %>% group_by(scenario) %>%
   summarise(mean=mean(dayexceeds, na.rm=TRUE),
             ll = quantile(dayexceeds, .025, na.rm=TRUE), 
             ul = quantile(dayexceeds, .975, na.rm=TRUE))
@@ -624,7 +625,7 @@ write_csv(table1, file.path("results", project, "Table1.csv"))
 
 # Summarize day cum cases exceeds 100
 hospexceeds <- sim_res %>% group_by(scenario, sim_beta) %>% 
-  filter(cum_cases>630) %>%
+  filter(hosp_curr>630) %>%
   summarise( dayexceeds = min(day, na.rm=TRUE)) %>% group_by(scenario) %>%
   summarise(mean=mean(dayexceeds, na.rm=TRUE),
             ll = quantile(dayexceeds, .025, na.rm=TRUE), 
@@ -632,7 +633,7 @@ hospexceeds <- sim_res %>% group_by(scenario, sim_beta) %>%
 
 
 
-table1alt <- final_size_min100 %>% mutate(pr_outbreak=final_size_$finalsize100) %>%
+ table1alt <- final_size_min100 %>% mutate(pr_outbreak=final_size_$finalsize100) %>%
   mutate(tot_inf = paste0(round(mean), " (",round(ll),"-",round(ul),")"),
           tot_hosp = paste0(round(hosps$mean), " (",round(hosps$ll),"-",round(hosps$ul),")"),
           tot_deaths = paste0(round(deaths$mean), " (",round(deaths$ll),"-",round(deaths$ul),")"),
@@ -643,7 +644,7 @@ table1alt <- final_size_min100 %>% mutate(pr_outbreak=final_size_$finalsize100) 
   select(scenario, pr_outbreak, tot_inf, tot_hosp, tot_deaths, max_incid, max_hosp_incid, max_hosp_curr, day_hosp_exceed)
 
 table1alt
-write_csv(table1, file.path("results", project, "Table1_alt.csv"))
+write_csv(table1alt, file.path("results", project, "Table1_alt.csv"))
 
 ```
 
@@ -705,7 +706,7 @@ sim_res_summ <- sim_res %>% group_by(scenario, day) %>%
 
 sim_res_outbreaks <- sim_res %>% group_by(scenario, sim_beta) %>% 
   mutate(sim_max = max(cum_cases, na.rm = TRUE)) %>%
-  filter(cum_cases > 100 ) 
+  filter(cum_cases >= 1000 ) 
   
 sim_res_summ_outbreak <- sim_res_outbreaks %>% group_by(scenario, day) %>% 
   summarise(incid_mean = mean(incidI, na.rm=TRUE),
@@ -989,7 +990,7 @@ pincidhosp_vHubei <- ggplot(data=sim_res_summ, aes(x=day)) +
     theme_classic() + 
         scale_color_brewer(palette = "Set1", direction = -1) +
     scale_fill_brewer(palette = "Set1", direction = -1) +
-      geom_hline(yintercept = 630, col="red", linetype="dashed") +
+      geom_hline(yintercept = 340, col="red", linetype="dashed") +
 
     theme(legend.position = "none") +
     ylab("Daily hospitalizations") + xlab("Day") +
@@ -1061,7 +1062,7 @@ ggsave(file.path("figures", project, "sim_res_panel.png"), p_panel, width=8, hei
 pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
     geom_line(aes(y=hosp_curr_mean, group=scenario, color=scenario)) + 
     geom_ribbon(aes(ymin=hosp_curr_ll, ymax=hosp_curr_ul, group=scenario, fill=scenario), alpha=.3) + 
-    geom_hline(yintercept = 630, col="red", linetype="dashed") +
+    geom_hline(yintercept = 340, col="red", linetype="dashed") +
     #scale_y_continuous(trans="log") +
     theme_classic() + 
   theme(legend.position = c(0.8, 0.8),
@@ -1074,6 +1075,30 @@ pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
 
 pcurrhosp
 ggsave(file.path("figures", project, "curr_hosp.png"), width=8, height=4, dpi=600, units = "in")
+
+```
+
+
+#### Alternate Capacity - 630 beds
+```{r}
+
+# Current Hospitalizations
+pcurrhosp <- ggplot(data=sim_res_summ, aes(x=day)) +
+    geom_line(aes(y=hosp_curr_mean, group=scenario, color=scenario)) + 
+    geom_ribbon(aes(ymin=hosp_curr_ll, ymax=hosp_curr_ul, group=scenario, fill=scenario), alpha=.3) + 
+    geom_hline(yintercept = 630, col="red", linetype="dashed") +
+    #scale_y_continuous(trans="log") +
+    theme_classic() + 
+  theme(legend.position = c(0.8, 0.8),
+          legend.title = element_blank()) +
+    ylab("Current hospitalized") + xlab("Day") +
+        scale_color_brewer(palette = "Set1", direction = -1) +
+    scale_fill_brewer(palette = "Set1", direction = -1) +
+  ggtitle("Daily hospitalization capacity required")
+
+
+pcurrhosp
+ggsave(file.path("figures", project, "curr_hosp_alt630beds.png"), width=8, height=4, dpi=600, units = "in")
 
 ```
 
